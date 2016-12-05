@@ -12,7 +12,7 @@
     "node": "6.9.1"
   },
   "scripts": {
-    "lint": "eslint src test",
+    "lint": "eslint --ext .jsx src test",
     "lint:fix": "npm run lint -- --fix",
     "test": "npm run lint",
     "start-dev": "node webpack/server.js"
@@ -46,6 +46,7 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "babel-polyfill": "^6.16.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",

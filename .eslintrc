@@ -1,3 +1,9 @@
 {
-  "extends": "airbnb"
+  "extends": "airbnb",
+  "rules": {
+    "comma-dangle": ["error", "never"]
+  },
+  "globals": {
+    "document": true
+  }
 }

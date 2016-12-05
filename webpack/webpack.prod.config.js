@@ -9,7 +9,7 @@ var StatsPlugin = require('stats-webpack-plugin');
 module.exports = {
     // The entry file. All your app roots fromn here.
     entry: [
-        path.join(__dirname, '../src/index.js')
+        path.join(__dirname, '../src/index.jsx')
     ],
     // Where you want the output to go
     output: {
@@ -71,7 +71,7 @@ module.exports = {
         ],
         // loaders handle the assets, like transforming sass to css or jsx to js.
         loaders: [{
-            test: /\.js?$/,
+            test: /\.js(x)?$/,
             exclude: /node_modules/,
             loader: 'babel'
         }, {
