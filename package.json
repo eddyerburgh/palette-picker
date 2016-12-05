@@ -1,0 +1,52 @@
+{
+  "name": "palette-picker",
+  "version": "1.0.0",
+  "description": "webapp that lets you store and copy swatches of color",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "engines": {
+    "node": "6.9.1"
+  },
+  "scripts": {
+    "lint": "eslint src test",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "npm run lint",
+    "start-dev": "node webpack/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eddyerburgh/palette-picker.git"
+  },
+  "author": "Edd Yerburgh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eddyerburgh/palette-picker/issues"
+  },
+  "homepage": "https://github.com/eddyerburgh/palette-picker#readme",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-2": "^6.16.0",
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0",
+    "html-webpack-plugin": "^2.24.1",
+    "react-hot-loader": "^3.0.0-beta.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-redux": "^4.4.6",
+    "redux": "^3.6.0"
+  }
+}
