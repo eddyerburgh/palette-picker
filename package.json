@@ -4,7 +4,9 @@
   "description": "webapp that lets you store and copy swatches of color",
   "main": "index.js",
   "directories": {
-    "test": "test"
+    "dist": "./dist",
+    "src": "./src",
+    "test": "./test"
   },
   "engines": {
     "node": "6.9.1"
