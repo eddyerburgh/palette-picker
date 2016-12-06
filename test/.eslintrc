@@ -6,6 +6,7 @@
     "import/no-extraneous-dependencies": "off"
   },
   "globals": {
+    "beforeEach": true,
     "describe": true,
     "expect": true,
     "it": true
