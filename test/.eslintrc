@@ -1,0 +1,13 @@
+{
+  "extends": ["airbnb", "airbnb-flow"],
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "no-unused-expressions": "off",
+    "import/no-extraneous-dependencies": "off"
+  },
+  "globals": {
+    "describe": true,
+    "expect": true,
+    "it": true
+  }
+}
