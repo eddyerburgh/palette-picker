@@ -28,7 +28,8 @@ describe('<ModalContainer />', () => {
       <Provider store={store}>
         <ModalContainer />
       </Provider>
-      ); expect(wrapper).to.exist;
+      );
+    expect(wrapper).to.exist;
   });
 
   it('renders <ModalMessage />', () => {
@@ -36,7 +37,8 @@ describe('<ModalContainer />', () => {
       <Provider store={store}>
         <ModalContainer />
       </Provider>
-      ); expect(wrapper.find(modalMessageStub)).to.have.length(1);
+      );
+    expect(wrapper.find(modalMessageStub)).to.have.length(1);
   });
 
   it('passes state.modal to <ModalMessage />', () => {
