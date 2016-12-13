@@ -2,13 +2,16 @@
 
 import React, { PropTypes } from 'react';
 
-const ModalMessage = (props: {
+type Props = {
     heading: string|null,
-    message: string|null}): React$Element<any> => (
-      <div>
-        <h2>{props.heading}</h2>
-        <p>{props.message}</p>
-      </div>
+    message: string|null
+}
+
+const ModalMessage = (props: Props): React$Element<any> => (
+  <div>
+    <h2>{props.heading}</h2>
+    <p>{props.message}</p>
+  </div>
 );
 
 ModalMessage.propTypes = {

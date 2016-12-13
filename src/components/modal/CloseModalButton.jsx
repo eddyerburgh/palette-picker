@@ -2,7 +2,11 @@
 
 import React, { PropTypes } from 'react';
 
-const CloseModalButton = (props: { closeModal: Function}): React$Element<any> => (
+type Props = {
+    closeModal: Function
+}
+
+const CloseModalButton = (props: Props): React$Element<any> => (
   <input
     onClick={props.closeModal}
     type="button"

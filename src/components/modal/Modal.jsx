@@ -5,18 +5,20 @@ import ModalMessage from './ModalMessage';
 import CloseModalButton from './CloseModalButton';
 import type { ModalStateType } from '../../redux/modules/modal';
 
-const Modal = (props: {
+type Props = {
   modal: ModalStateType,
-  closeModal: Function}): React$Element<any> => (
-    <div>
-      <ModalMessage
-        message={props.modal.message}
-        heading={props.modal.heading}
-      />
-      <CloseModalButton
-        closeModal={props.closeModal}
-      />
-    </div>
+  closeModal: Function
+}
+const Modal = (props: Props): React$Element<any> => (
+  <div>
+    <ModalMessage
+      message={props.modal.message}
+      heading={props.modal.heading}
+    />
+    <CloseModalButton
+      closeModal={props.closeModal}
+    />
+  </div>
 
 );
 

@@ -6,13 +6,16 @@ import Modal from '../components/modal/Modal';
 import * as modalActions from '../redux/modules/modal';
 import type { ModalStateType } from '../redux/modules/modal';
 
-const ModalContainer = (props: {
+type Props = {
   modal: ModalStateType,
-  closeModal: Function}): React$Element<any> => (
-    <Modal
-      modal={props.modal}
-      closeModal={props.closeModal}
-    />
+  closeModal: Function
+}
+
+const ModalContainer = (props: Props): React$Element<any> => (
+  <Modal
+    modal={props.modal}
+    closeModal={props.closeModal}
+  />
 );
 
 ModalContainer.propTypes = {
