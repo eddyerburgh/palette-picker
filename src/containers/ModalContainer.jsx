@@ -1,9 +1,12 @@
+// @flow
+
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import ModalMessage from '../components/modal/ModalMessage';
+import Modal from '../components/modal/Modal';
+import type { ModalStateType } from '../redux/modules/modal';
 
-const ModalContainer = props => (
-  <ModalMessage modal={props.modal} />
+const ModalContainer = (props: { modal: ModalStateType}): React$Element<any> => (
+  <Modal modal={props.modal} />
 );
 
 const mapStateToProps = state => ({

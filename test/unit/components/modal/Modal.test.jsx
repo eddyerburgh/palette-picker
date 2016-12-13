@@ -16,7 +16,7 @@ describe('<Modal />', () => {
       './ModalMessage': ModalMessageStub
     }).default;
 
-    props = { modal: { message: 'test message' } };
+    props = { modal: { message: 'test message', heading: 'heading' } };
   });
 
   it('is rendered', () => {
@@ -32,5 +32,10 @@ describe('<Modal />', () => {
   it('passes props.modal.message to ModalMessage', () => {
     const wrapper = mount(<Modal {...props} />);
     expect(wrapper.find(ModalMessageStub)).to.have.prop('message').equal(props.modal.message);
+  });
+
+  it('passes props.modal.message to ModalMessage', () => {
+    const wrapper = mount(<Modal {...props} />);
+    expect(wrapper.find(ModalMessageStub)).to.have.prop('heading').equal(props.modal.heading);
   });
 });

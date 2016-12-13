@@ -1,15 +1,21 @@
 // @flow
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ModalMessage from './ModalMessage';
-import type { ModalType } from '../../redux/modules/modal';
+import type { ModalStateType } from '../../redux/modules/modal';
 
-const Modal = (props: { modal: ModalType}): React$Element<any> => (
-  <ModalMessage message={props.modal.message} />
+const Modal = (props: { modal: ModalStateType}): React$Element<any> => (
+  <ModalMessage
+    message={props.modal.message}
+    heading={props.modal.heading}
+  />
 );
 
 Modal.propTypes = {
-  modal: ModalType
+  modal: PropTypes.shape({
+    heading: PropTypes.string,
+    message: PropTypes.string
+  })
 };
 
 export default Modal;

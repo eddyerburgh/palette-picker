@@ -8,17 +8,17 @@ proxyquire.noCallThru();
 
 describe('<ModalContainer />', () => {
   let ModalContainer;
-  let modalMessageStub;
+  let modalStub;
   let store;
   let state;
 
   beforeEach(() => {
-    modalMessageStub = () => <div />;
+    modalStub = () => <div />;
     state = { modal: {} };
     store = storeMock(state);
 
     ModalContainer = proxyquire('../../../src/containers/ModalContainer', {
-      '../components/modal/ModalMessage': modalMessageStub
+      '../components/modal/Modal': modalStub
     }
     ).default;
   });
@@ -32,22 +32,22 @@ describe('<ModalContainer />', () => {
     expect(wrapper).to.exist;
   });
 
-  it('renders <ModalMessage />', () => {
+  it('renders <Modal />', () => {
     const wrapper = mount(
       <Provider store={store}>
         <ModalContainer />
       </Provider>
       );
-    expect(wrapper.find(modalMessageStub)).to.have.length(1);
+    expect(wrapper.find(modalStub)).to.have.length(1);
   });
 
-  it('passes state.modal to <ModalMessage />', () => {
+  it('passes state.modal to <Modal />', () => {
     const wrapper = mount(
       <Provider store={store}>
         <ModalContainer />
       </Provider>
     );
-    const modalMessageProps = wrapper.find(modalMessageStub).props();
-    expect(modalMessageProps.modal).to.equal(state.modal);
+    const modalProps = wrapper.find(modalStub).props();
+    expect(modalProps.modal).to.equal(state.modal);
   });
 });
