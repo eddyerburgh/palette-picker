@@ -3,20 +3,28 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Modal from '../components/modal/Modal';
+import * as modalActions from '../redux/modules/modal';
 import type { ModalStateType } from '../redux/modules/modal';
 
-const ModalContainer = (props: { modal: ModalStateType}): React$Element<any> => (
-  <Modal modal={props.modal} />
+const ModalContainer = (props: {
+  modal: ModalStateType,
+  closeModal: Function}): React$Element<any> => (
+    <Modal
+      modal={props.modal}
+      closeModal={props.closeModal}
+    />
 );
+
+ModalContainer.propTypes = {
+  modal: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  closeModal: PropTypes.func
+};
 
 const mapStateToProps = state => ({
   modal: state.modal
 });
 
-ModalContainer.propTypes = {
-  modal: PropTypes.object // eslint-disable-line react/forbid-prop-types
-};
-
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    { closeModal: modalActions.closeModal }
 )(ModalContainer);

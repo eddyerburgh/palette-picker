@@ -2,9 +2,11 @@ import mocha from 'mocha';
 import chai from 'chai';
 import { jsdom } from 'jsdom';
 import chaiEnzyme from 'chai-enzyme';
+import sinonChai from 'sinon-chai';
 
 // use chai plugins
 chai.use(chaiEnzyme());
+chai.use(sinonChai);
 
 // add testing globals
 global.mocha = mocha;

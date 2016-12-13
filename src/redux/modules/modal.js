@@ -3,6 +3,7 @@
 // Constants
 
 const NEW_MODAL = 'NEW_MODAL';
+const CLOSE_MODAL = 'CLOSE_MODAL';
 
 // Flow types
 
@@ -18,6 +19,10 @@ type NewModalActionType = {
     message: string|null,
     heading: string|null
   }
+}
+
+type CloseModalActionType = {
+  type: string
 }
 
 // Reducer
@@ -39,12 +44,17 @@ export default function reducer(
         heading: action.payload.heading,
         message: action.payload.message
       };
+    case CLOSE_MODAL:
+      return {
+        ...state,
+        display: false
+      };
     default:
       return state;
   }
 }
 
-// Actions
+// Action Creators
 
 export function displayNewModal(args: {
   message?: string,
@@ -56,5 +66,11 @@ export function displayNewModal(args: {
       message: args.message || null,
       heading: args.heading || null
     }
+  };
+}
+
+export function closeModal(): CloseModalActionType {
+  return {
+    type: CLOSE_MODAL
   };
 }
