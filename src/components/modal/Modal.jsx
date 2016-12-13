@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import ModalMessage from './ModalMessage';
-import CloseModalButton from './CloseModalButton';
+import CloseButton from './CloseButton';
 import type { ModalStateType } from '../../redux/modules/modal';
 
 type Props = {
@@ -15,8 +15,9 @@ const Modal = (props: Props): React$Element<any> => (
       message={props.modal.message}
       heading={props.modal.heading}
     />
-    <CloseModalButton
-      closeModal={props.closeModal}
+    <CloseButton
+      clickHandler={props.closeModal}
+      value="Close"
     />
   </div>
 

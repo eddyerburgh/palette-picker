@@ -7,16 +7,16 @@ proxyquire.noCallThru();
 describe('<Modal />', () => {
   let Modal;
   let ModalMessageStub;
-  let CloseModalButtonStub;
+  let CloseButtonStub;
   let props;
 
   beforeEach(() => {
     ModalMessageStub = () => <div />;
-    CloseModalButtonStub = () => <div />;
+    CloseButtonStub = () => <div />;
 
     Modal = proxyquire('../../../../src/components/modal/Modal', {
       './ModalMessage': ModalMessageStub,
-      './CloseModalButton': CloseModalButtonStub
+      './CloseButton': CloseButtonStub
     }).default;
 
     props = {
@@ -45,13 +45,18 @@ describe('<Modal />', () => {
     expect(wrapper.find(ModalMessageStub)).to.have.prop('heading').equal(props.modal.heading);
   });
 
-  it('renders CloseModalButton', () => {
+  it('renders CloseButton', () => {
     const wrapper = shallow(<Modal {...props} />);
-    expect(wrapper.find(CloseModalButtonStub)).to.have.length(1);
+    expect(wrapper.find(CloseButtonStub)).to.have.length(1);
   });
 
-  it('passes props.closeModal to CloseModalButton', () => {
+  it('renders CloseButton with value Close', () => {
     const wrapper = shallow(<Modal {...props} />);
-    expect(wrapper.find(CloseModalButtonStub)).to.have.prop('closeModal').equal(props.closeModal);
+    expect(wrapper.find(CloseButtonStub)).to.have.prop('value').equal('Close');
+  });
+
+  it('passes props.closeModal to CloseButton as clickHandler', () => {
+    const wrapper = shallow(<Modal {...props} />);
+    expect(wrapper.find(CloseButtonStub)).to.have.prop('clickHandler').equal(props.closeModal);
   });
 });
