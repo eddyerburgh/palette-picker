@@ -4,7 +4,7 @@ import { jsdom } from 'jsdom';
 import chaiEnzyme from 'chai-enzyme';
 
 // use chai plugins
-chai.use(chaiEnzyme);
+chai.use(chaiEnzyme());
 
 // add testing globals
 global.mocha = mocha;

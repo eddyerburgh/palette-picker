@@ -1,4 +1,8 @@
+// Constants
+
 const MESSAGE_UPDATE = 'MESSAGE_UPDATE';
+
+// Reducer
 
 const initialState = {
   message: null
@@ -15,6 +19,14 @@ export default function reducer(state = initialState, action = {}) {
       return state;
   }
 }
+
+// Flow types
+
+export type ModalType = {
+  message: string
+};
+
+// Actions
 
 export function increment(message) {
   return {
