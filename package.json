@@ -16,8 +16,9 @@
     "flow": "flow check",
     "lint": "eslint --ext .jsx,.js src test",
     "lint:fix": "npm run lint -- --fix",
-    "test": "npm run lint && npm run flow && npm run test-unit",
-    "test-unit": "mocha test/unit --recursive --compilers js:babel-register,jsx:babel-register --require ./test/unit/.setup.js"
+    "test": "npm run lint && npm run flow && npm run test:unit",
+    "test:e2e": "node test/e2e/runner.js",
+    "test:unit": "mocha test/unit --recursive --compilers js:babel-register,jsx:babel-register --require ./test/unit/.setup.js"
   },
   "repository": {
     "type": "git",
@@ -42,7 +43,9 @@
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
     "cheerio": "^0.22.0",
+    "chromedriver": "^2.27.2",
     "config": "^1.24.0",
+    "cross-spawn": "^5.0.1",
     "enzyme": "^2.6.0",
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^13.0.0",
@@ -50,6 +53,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
+    "express": "^4.14.0",
     "flow-bin": "^0.36.0",
     "html-webpack-plugin": "^2.24.1",
     "jsdom": "^9.8.3",
@@ -59,10 +63,13 @@
     "proxyquire": "^1.7.10",
     "react-addons-test-utils": "^15.4.1",
     "react-hot-loader": "^3.0.0-beta.1",
+    "selenium-server": "^3.0.1",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
     "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.15.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.16.0",

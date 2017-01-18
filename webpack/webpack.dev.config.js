@@ -12,10 +12,7 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     entry: [
-        `webpack-dev-server/client?http://localhost:${PORT}`,
-        'webpack/hot/only-dev-server',
-        'react-hot-loader/patch',
-        path.resolve(__dirname, '../src/index.jsx')
+      path.resolve(__dirname, '../src/index.jsx')
     ],
     output: {
         path: path.resolve(__dirname, '../dist/'),

@@ -8,7 +8,7 @@ type Props = {
 }
 
 const ModalMessage = (props: Props): React$Element<any> => (
-  <div>
+  <div className="modal__message">
     <h2>{props.heading}</h2>
     <p>{props.message}</p>
   </div>

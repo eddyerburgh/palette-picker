@@ -1,33 +1,34 @@
 var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
+var express = require('express');
 var config = require('config');
+
 var PORT = config.get('server.port');
 
 var webpackConfig = require('./webpack.dev.config');
 
-new WebpackDevServer(webpack(webpackConfig), {
-    publicPath: webpackConfig.output.publicPath,
-    hot: true,
-    historyApiFallback: true,
-    // It suppress error shown in console, so it has to be set to false.
-    quiet: false,
-    // It suppress everything except error, so it has to be set to false as well
-    // to see success build.
-    noInfo: false,
-    stats: {
-        // Config for minimal console.log mess.
-        assets: false,
-        colors: true,
-        version: false,
-        hash: false,
-        timings: false,
-        chunks: false,
-        chunkModules: false
-    }
-}).listen(PORT, 'localhost', function (err) {
-    if (err) {
-        console.log(err);
-    }
+var app = express();
+var compiler = webpack(webpackConfig);
 
-    console.log(`Listening at localhost:${PORT}`);
+var devMiddleware = require('webpack-dev-middleware')(compiler, {
+  publicPath: webpackConfig.output.publicPath,
+  quiet: true
+});
+
+var hotMiddleware = require('webpack-hot-middleware')(compiler);
+
+app.use(devMiddleware);
+
+app.use(hotMiddleware);
+
+var uri = 'http://localhost:' + PORT;
+
+devMiddleware.waitUntilValid(() => {
+  console.log('> Listening at ' + uri + '\n')
+});
+
+module.exports = app.listen(PORT, (err) => {
+  if (err) {
+    console.log(err);
+    return
+  }
 });
