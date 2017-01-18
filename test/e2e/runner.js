@@ -1,5 +1,5 @@
 const spawn = require('cross-spawn');
-const server = require('../../webpack/server.js');
+const server = require('../../build/dev-server.js');
 
 let opts = process.argv.slice(2);
 if (opts.indexOf('--config') === -1) {

@@ -12,7 +12,7 @@
     "node": "6.9.1"
   },
   "scripts": {
-    "dev": "node webpack/server.js",
+    "dev": "node build/dev-server.js",
     "flow": "flow check",
     "lint": "eslint --ext .jsx,.js src test",
     "lint:fix": "npm run lint -- --fix",
@@ -66,10 +66,8 @@
     "selenium-server": "^3.0.1",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
-    "webpack": "^1.13.3",
-    "webpack-dev-middleware": "^1.9.0",
-    "webpack-dev-server": "^1.16.2",
-    "webpack-hot-middleware": "^2.15.0"
+    "webpack": "beta",
+    "webpack-dev-server": "2.2.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.16.0",
