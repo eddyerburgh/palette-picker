@@ -16,7 +16,7 @@ describe('<ModalContainer />', () => {
 
   beforeEach(() => {
     modalStub = () => <div />;
-    state = { modal: {} };
+    state = { modal: {display: true} };
     store = storeMock(state);
     modalActionsStub = {
       closeModal: sinon.spy()
@@ -38,13 +38,23 @@ describe('<ModalContainer />', () => {
     expect(wrapper).to.exist;
   });
 
-  it('renders <Modal />', () => {
+  it('renders <Modal /> if prosp.modal.display is true', () => {
     const wrapper = mount(
       <Provider store={store}>
         <ModalContainer />
       </Provider>
       );
     expect(wrapper.find(modalStub)).to.have.length(1);
+  });
+
+  it('does not render <Modal /> if prosp.modal.display is false', () => {
+    state.modal.display = false;
+    const wrapper = mount(
+      <Provider store={store}>
+        <ModalContainer />
+      </Provider>
+    );
+    expect(wrapper.find(modalStub)).to.have.length(0);
   });
 
   it('passes state.modal to <Modal />', () => {

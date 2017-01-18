@@ -12,19 +12,21 @@ type Props = {
 }
 
 const ModalContainer = (props: Props): React$Element<any> => (
-  <Modal
+  props.display && <Modal
     modal={props.modal}
     closeModal={props.closeModal}
   />
 );
 
 ModalContainer.propTypes = {
+  display: PropTypes.bool,
   modal: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   closeModal: PropTypes.func
 };
 
 const mapStateToProps = state => ({
-  modal: state.modal
+  modal: state.modal,
+  display: state.modal.display
 });
 
 export default connect(
