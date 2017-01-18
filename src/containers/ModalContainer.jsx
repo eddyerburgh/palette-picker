@@ -7,6 +7,7 @@ import * as modalActions from '../redux/modules/modal';
 import type { ModalStateType } from '../redux/modules/modal';
 
 type Props = {
+  display: Boolean,
   modal: ModalStateType,
   closeModal: Function
 }

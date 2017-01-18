@@ -16,7 +16,7 @@ describe('<ModalContainer />', () => {
 
   beforeEach(() => {
     modalStub = () => <div />;
-    state = { modal: {display: true} };
+    state = { modal: { display: true } };
     store = storeMock(state);
     modalActionsStub = {
       closeModal: sinon.spy()
