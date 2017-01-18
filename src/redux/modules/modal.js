@@ -7,13 +7,13 @@ const CLOSE_MODAL = 'CLOSE_MODAL';
 
 // Flow types
 
-export type ModalStateType = {
+export type ModalState = {
   display: boolean,
   message: string|null,
   heading: string|null
 };
 
-type NewModalActionType = {
+type NewModalAction = {
   type: string,
   payload: {
     message: string|null,
@@ -21,7 +21,7 @@ type NewModalActionType = {
   }
 }
 
-type CloseModalActionType = {
+type CloseModalAction = {
   type: string
 }
 
@@ -34,8 +34,8 @@ const initialState = {
 };
 
 export default function reducer(
-    state: ModalStateType = initialState,
-    action: Object = {}): ModalStateType {
+    state: ModalState = initialState,
+    action: Object = {}): ModalState {
   switch (action.type) {
     case NEW_MODAL:
       return {
@@ -56,10 +56,12 @@ export default function reducer(
 
 // Action Creators
 
-export function displayNewModal(args: {
+type NewModalArgs = {
   message?: string,
-  heading?: string
-}): NewModalActionType {
+    heading?: string
+}
+
+export function displayNewModal(args: NewModalArgs): NewModalAction {
   return {
     type: NEW_MODAL,
     payload: {
@@ -69,7 +71,7 @@ export function displayNewModal(args: {
   };
 }
 
-export function closeModal(): CloseModalActionType {
+export function closeModal(): CloseModalAction {
   return {
     type: CLOSE_MODAL
   };
