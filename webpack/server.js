@@ -1,9 +1,12 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.dev.config');
+var config = require('config');
+var PORT = config.get('server.port');
 
-new WebpackDevServer(webpack(config), {
-    publicPath: config.output.publicPath,
+var webpackConfig = require('./webpack.dev.config');
+
+new WebpackDevServer(webpack(webpackConfig), {
+    publicPath: webpackConfig.output.publicPath,
     hot: true,
     historyApiFallback: true,
     // It suppress error shown in console, so it has to be set to false.
@@ -21,10 +24,10 @@ new WebpackDevServer(webpack(config), {
         chunks: false,
         chunkModules: false
     }
-}).listen(3000, 'localhost', function (err) {
+}).listen(PORT, 'localhost', function (err) {
     if (err) {
         console.log(err);
     }
 
-    console.log('Listening at localhost:3000');
+    console.log(`Listening at localhost:${PORT}`);
 });

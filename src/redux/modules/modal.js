@@ -28,9 +28,9 @@ type CloseModalActionType = {
 // Reducer
 
 const initialState = {
-  display: false,
-  heading: null,
-  message: null
+  display: true,
+  heading: 'Welcome!',
+  message: 'This app lets you add swatches of color and copy them on click.'
 };
 
 export default function reducer(

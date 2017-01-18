@@ -3,6 +3,8 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var config = require('config');
+var PORT = config.get('server.port');
 
 module.exports = {
     devtool: 'eval-source-map',
@@ -10,7 +12,7 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     entry: [
-        'webpack-dev-server/client?http://localhost:3000',
+        `webpack-dev-server/client?http://localhost:${PORT}`,
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
         path.resolve(__dirname, '../src/index.jsx')
