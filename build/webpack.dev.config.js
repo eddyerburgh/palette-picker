@@ -18,8 +18,6 @@ module.exports = {
     publicPath: '/',
   },
 
-
-
   context: resolve(__dirname, '../src'),
 
   resolve: {
