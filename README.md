@@ -14,7 +14,6 @@ Change into the directory
 
 ```
 cd palette-picker
-
 ```
 
 Install dependencies
@@ -22,6 +21,7 @@ Install dependencies
 ```
 yarn install
 ```
+(not got Yarn?  [JOIN US](https://yarnpkg.com/en/docs/install), or just run ```npm install```)
 
 And start
 
@@ -29,13 +29,9 @@ And start
 npm run start-dev
 ```
 
-## Dependencies
-
-* Yarn
-
 ## Support
 
-Please [open an issue](https://github.com/eddyerburgh/readme-boilerplate/issues/new) for support.
+Please [open an issue](https://github.com/eddyerburgh/palette-picker/issues/new) for support.
 
 ## Contributing
 
