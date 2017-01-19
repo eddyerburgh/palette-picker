@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import proxyquire from 'proxyquire';
 
@@ -6,23 +6,23 @@ proxyquire.noCallThru();
 
 describe('<Swatches />', () => {
   let Swatches;
-  let SwatchComponentStub;
+  let SwatchStub;
   let props;
 
   beforeEach(() => {
-    SwatchComponentStub = () => <div />;
+    SwatchStub = () => <div />;
 
     Swatches = proxyquire('../../../../src/components/swatches/Swatches', {
-      './SwatchComponent': SwatchComponentStub
+      './Swatch': SwatchStub
     }).default;
 
     props = {
-      swatches: [{}, {}, {}]
+      swatches: [{ rgb: '', hex: '', id: 1 }, { rgb: '', hex: '', id: 2 }, { rgb: '', hex: '', id: 3 }]
     };
   });
 
   it('renders SwatchType for each swatch object passed in props', () => {
-    const wrapper = shallow(<Swatches {...props} />);
-    expect(wrapper.find(SwatchComponentStub)).to.have.length(props.swatches.length);
+    const wrapper = mount(<Swatches {...props} />);
+    expect(wrapper.find(SwatchStub)).to.have.length(props.swatches.length);
   });
 });

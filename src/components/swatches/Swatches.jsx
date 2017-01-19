@@ -9,7 +9,7 @@ type Props = {
 }
 
 const Swatches = (props: Props): React$Element<any> => {
-  const swatches = props.swatches.map(swatch => <Swatch {...swatch} />);
+  const swatches = props.swatches.map(swatch => <Swatch key={swatch.id} {...swatch} />);
   return (
     <div>
       {swatches}
