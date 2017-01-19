@@ -20,6 +20,20 @@ describe('Swatch', () => {
     expect(swatch.hex).to.equal(hex);
   });
 
+  it('creates Swatch object with lightness set to "light" if lightness is > 50', () => {
+    const hex = '#fff';
+    const swatch = new Swatch(hex);
+
+    expect(swatch.lightness).to.equal('light');
+  });
+
+  it('creates Swatch object with lightness set to "dark" if lightness is < 50', () => {
+    const hex = '#000';
+    const swatch = new Swatch(hex);
+
+    expect(swatch.lightness).to.equal('dark');
+  });
+
   it('generates an id string', () => {
     const hex = '#000000';
     const swatch = new Swatch(hex);

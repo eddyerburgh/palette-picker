@@ -72,6 +72,7 @@
   "dependencies": {
     "babel-polyfill": "^6.16.0",
     "color-string": "^1.4.0",
+    "contrast": "^1.0.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.0",
