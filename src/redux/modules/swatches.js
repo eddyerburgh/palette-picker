@@ -8,6 +8,7 @@ const NEW_SWATCH = 'NEW_SWATCH';
 
 export type SwatchType = {
   color: string|null,
+  id: string,
   rgb: string,
   hex: string,
   tone: string

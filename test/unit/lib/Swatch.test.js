@@ -1,3 +1,4 @@
+import shortId from 'shortid';
 import Swatch from '../../../src/lib/Swatch';
 
 describe('Swatch', () => {
@@ -8,5 +9,21 @@ describe('Swatch', () => {
 
     expect(swatch.rgb).to.equal(rgb);
     expect(swatch.hex).to.equal(hex);
+  });
+
+  it('creates a Swatch object with the correct rgb and hex values when passed hex to constructor', () => {
+    const rgb = 'rgb(0, 0, 0)';
+    const hex = '#000000';
+    const swatch = new Swatch(hex);
+
+    expect(swatch.rgb).to.equal(rgb);
+    expect(swatch.hex).to.equal(hex);
+  });
+
+  it('generates an id string', () => {
+    const hex = '#000000';
+    const swatch = new Swatch(hex);
+
+    expect(shortId.isValid(swatch.id)).to.equal(true);
   });
 });
