@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import SwatchComponent from '../../../../src/components/swatches/SwatchComponent';
+import SwatchComponent from '../../../../src/components/swatches/Swatch';
 
-describe('<SwatchComponent />', () => {
+describe('<Swatch />', () => {
   let props;
 
   beforeEach(() => {

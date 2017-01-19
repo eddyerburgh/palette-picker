@@ -2,14 +2,14 @@
 
 import React from 'react';
 import type { SwatchType } from '../../redux/modules/swatches';
-import SwatchComponent from './SwatchComponent';
+import Swatch from './Swatch';
 
 type Props = {
   swatches: Array<SwatchType>,
 }
 
 const Swatches = (props: Props): React$Element<any> => {
-  const swatches = props.swatches.map(swatch => <SwatchComponent {...swatch} />);
+  const swatches = props.swatches.map(swatch => <Swatch {...swatch} />);
   return (
     <div>
       {swatches}
