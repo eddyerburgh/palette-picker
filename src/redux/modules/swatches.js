@@ -6,7 +6,7 @@ const NEW_SWATCH = 'NEW_SWATCH';
 
 // Flow types
 
-export type Swatch = {
+export type SwatchType = {
   color: string|null,
   rgb: string,
   hex: string,
@@ -14,12 +14,12 @@ export type Swatch = {
 };
 
 export type SwatchesState = {
-  swatches: Array<Swatch>
+  swatches: Array<SwatchType>
 };
 
 export type NewSwatchAction = {
   type: string,
-  swatch: Swatch
+  swatch: SwatchType
 };
 
 // Reducer
@@ -44,7 +44,7 @@ export default function reducer(
 
 // Action Creators
 
-export function addNewSwatch(swatch: Swatch): NewSwatchAction {
+export function addNewSwatch(swatch: SwatchType): NewSwatchAction {
   return {
     type: NEW_SWATCH,
     swatch

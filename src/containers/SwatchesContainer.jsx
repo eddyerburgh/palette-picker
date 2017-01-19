@@ -2,11 +2,11 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import type { Swatch } from '../redux/modules/swatches';
+import type { SwatchType } from '../redux/modules/swatches';
 import Swatches from '../components/swatches/Swatches';
 
 type Props = {
-  swatches: Array<Swatch>,
+  swatches: Array<SwatchType>,
 }
 
 const SwatchesContainer = (props: Props): React$Element<any> => (

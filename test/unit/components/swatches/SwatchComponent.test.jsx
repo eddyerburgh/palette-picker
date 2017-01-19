@@ -11,7 +11,7 @@ describe('<SwatchComponent />', () => {
     };
   });
 
-  it('renders Swatch for each swatch object passed in props', () => {
+  it('renders SwatchType for each swatch object passed in props', () => {
     const wrapper = shallow(<SwatchComponent {...props} />);
     expect(wrapper.find('div')).to.have.style('background', props.rgb);
   });

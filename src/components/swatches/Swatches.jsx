@@ -1,11 +1,11 @@
 // @flow
 
 import React from 'react';
-import type { Swatch } from '../../redux/modules/swatches';
+import type { SwatchType } from '../../redux/modules/swatches';
 import SwatchComponent from './SwatchComponent';
 
 type Props = {
-  swatches: Array<Swatch>,
+  swatches: Array<SwatchType>,
 }
 
 const Swatches = (props: Props): React$Element<any> => {

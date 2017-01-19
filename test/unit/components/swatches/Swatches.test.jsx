@@ -21,7 +21,7 @@ describe('<Swatches />', () => {
     };
   });
 
-  it('renders Swatch for each swatch object passed in props', () => {
+  it('renders SwatchType for each swatch object passed in props', () => {
     const wrapper = shallow(<Swatches {...props} />);
     expect(wrapper.find(SwatchComponentStub)).to.have.length(props.swatches.length);
   });
