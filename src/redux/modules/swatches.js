@@ -11,7 +11,7 @@ export type SwatchType = {
   id: string,
   rgb: string,
   hex: string,
-  tone: string
+  lightness: string
 };
 
 export type SwatchesState = {
