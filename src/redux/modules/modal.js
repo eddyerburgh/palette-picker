@@ -30,7 +30,7 @@ type CloseModalAction = {
 const initialState = {
   display: true,
   heading: 'Welcome!',
-  message: 'This app lets you add swatches of color and copy them on click.'
+  message: 'This app lets you store swatches of color. Click them to copy to clipboard.'
 };
 
 export default function reducer(

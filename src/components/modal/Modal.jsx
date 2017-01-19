@@ -10,7 +10,7 @@ type Props = {
   closeModal: Function
 }
 const Modal = (props: Props): React$Element<any> => (
-  <div>
+  <div className="modal">
     <ModalMessage
       message={props.modal.message}
       heading={props.modal.heading}
