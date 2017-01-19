@@ -2,8 +2,11 @@
 
 import React from 'react';
 
-const Swatch = (): React$Element<any> => (
-  <div />
+type Props = {
+  rgb: string
+}
+const Swatch = (props: Props): React$Element<any> => (
+  <div style={{ background: props.rgb }} />
 );
 
 export default Swatch;

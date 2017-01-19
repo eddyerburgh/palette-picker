@@ -4,7 +4,7 @@ import proxyquire from 'proxyquire';
 
 proxyquire.noCallThru();
 
-describe('<Swatch />', () => {
+describe('<Swatches />', () => {
   let Swatches;
   let SwatchComponentStub;
   let props;
