@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 type Props = {
     heading: string|null,
@@ -13,12 +13,5 @@ const ModalMessage = (props: Props): React$Element<any> => (
     <p>{props.message}</p>
   </div>
 );
-
-ModalMessage.propTypes = {
-  props: PropTypes.shape({
-    heading: PropTypes.string,
-    message: PropTypes.string
-  })
-};
 
 export default ModalMessage;

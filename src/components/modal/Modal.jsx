@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import ModalMessage from './ModalMessage';
 import CloseButton from './CloseButton';
 import type { ModalState } from '../../redux/modules/modal';
@@ -22,12 +22,5 @@ const Modal = (props: Props): React$Element<any> => (
   </div>
 
 );
-
-Modal.propTypes = {
-  modal: PropTypes.shape({
-    heading: PropTypes.string,
-    message: PropTypes.string
-  })
-};
 
 export default Modal;

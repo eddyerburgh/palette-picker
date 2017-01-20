@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 type Props = {
     clickHandler: Function,
@@ -14,10 +14,5 @@ const CloseButton = (props: Props): React$Element<any> => (
     value={props.value}
   />
 );
-
-CloseButton.propTypes = {
-  clickHandler: PropTypes.func,
-  value: PropTypes.string
-};
 
 export default CloseButton;
