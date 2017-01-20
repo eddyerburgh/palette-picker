@@ -72,6 +72,11 @@ export default function reducer(
         ...state,
         swatches: [...state.swatches, action.swatch]
       };
+    case REMOVE_SWATCH:
+      return {
+        ...state,
+        swatches: state.swatches.filter(swatch => swatch.id !== action.swatchId)
+      };
     default:
       return state;
   }

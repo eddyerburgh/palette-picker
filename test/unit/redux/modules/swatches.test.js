@@ -6,7 +6,7 @@ describe('swatches', () => {
 
     beforeEach(() => {
       initialState = {
-        swatches: [{ rgb: '', hex: '', id: '' }]
+        swatches: [{ rgb: '', hex: '', id: '1' }, { rgb: '', hex: '', id: '2' }]
       };
     });
 
@@ -15,9 +15,15 @@ describe('swatches', () => {
       const rgb = 'test rgb';
       const hex = 'test hex';
       const state = (swatches(initialState, swatchesActions.addNewSwatch({ rgb, hex, id })));
-      expect(state.swatches[1].rgb).to.equal(rgb);
-      expect(state.swatches[1].hex).to.equal(hex);
-      expect(state.swatches[1].id).to.equal(id);
+      expect(state.swatches[2].rgb).to.equal(rgb);
+      expect(state.swatches[2].hex).to.equal(hex);
+      expect(state.swatches[2].id).to.equal(id);
+    });
+
+    it('returns initialState with swatch mathcing swatchId removed when passed removeSwatch', () => {
+      const id = initialState.swatches[0].id;
+      const state = (swatches(initialState, swatchesActions.removeSwatch(id)));
+      expect(state.swatches[0].id).to.equal(initialState.swatches[1].id);
     });
   });
   describe('action creators', () => {
