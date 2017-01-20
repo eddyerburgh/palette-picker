@@ -31,10 +31,22 @@ describe('swatches', () => {
 
       it('returns an action with swatch as payload', () => {
         const expectedAction = {
-          type: 'NEW_SWATCH',
+          type: 'ADD_SWATCH',
           swatch
         };
         const action = swatchesActions.addNewSwatch(swatch);
+        expect(action).to.deep.equal(expectedAction);
+      });
+    });
+    describe('removeSwatch', () => {
+      it('returns an action with swatchId as payload', () => {
+        const swatchId = 'some id';
+
+        const expectedAction = {
+          type: 'REMOVE_SWATCH',
+          swatchId
+        };
+        const action = swatchesActions.removeSwatch(swatchId);
         expect(action).to.deep.equal(expectedAction);
       });
     });

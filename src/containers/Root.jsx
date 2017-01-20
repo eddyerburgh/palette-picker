@@ -1,10 +1,14 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import ModalContainer from './ModalContainer';
+import SwatchesContainer from './SwatchesContainer';
 
 const Root = props => (
   <Provider store={props.store}>
-    <ModalContainer />
+    <div>
+      <ModalContainer />
+      <SwatchesContainer />
+    </div>
   </Provider>
 );
 

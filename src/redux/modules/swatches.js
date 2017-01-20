@@ -2,15 +2,16 @@
 
 // Constants
 
-const NEW_SWATCH = 'NEW_SWATCH';
+const ADD_SWATCH = 'ADD_SWATCH';
+const REMOVE_SWATCH = 'REMOVE_SWATCH';
 
 // Flow types
 
 export type SwatchType = {
-  color: string|null,
   id: string,
-  rgb: string,
   hex: string,
+  rgb: string,
+  rgbArray: Array<number>,
   lightness: string
 };
 
@@ -23,17 +24,50 @@ export type NewSwatchAction = {
   swatch: SwatchType
 };
 
+export type RemoveSwatchAction = {
+  type: string,
+  swatchId: string
+};
+
 // Reducer
 
 const initialState = {
-  swatches: []
+  swatches: [
+    {
+      id: '1',
+      hex: '#AF9EFA',
+      rgb: 'rgb(175,158,250)',
+      rgbArray: [175, 158, 250],
+      lightness: 'light'
+    },
+    {
+      id: '2',
+      hex: '#978BEF',
+      rgb: 'rgb(151,139,239)',
+      rgbArray: [151, 139, 239],
+      lightness: 'light'
+    },
+    {
+      id: '3',
+      hex: '#7A72D5',
+      rgb: 'rgb(122,114,213)',
+      rgbArray: [122, 114, 213],
+      lightness: 'light'
+    },
+    {
+      id: '4',
+      hex: '#282248',
+      rgb: 'rgb(40,34,72)',
+      rgbArray: [40, 34, 72],
+      lightness: 'dark'
+    }]
 };
 
 export default function reducer(
   state: SwatchesState = initialState,
   action: Object = {}): SwatchesState {
   switch (action.type) {
-    case NEW_SWATCH:
+    case ADD_SWATCH:
       return {
         ...state,
         swatches: [...state.swatches, action.swatch]
@@ -47,7 +81,14 @@ export default function reducer(
 
 export function addNewSwatch(swatch: SwatchType): NewSwatchAction {
   return {
-    type: NEW_SWATCH,
+    type: ADD_SWATCH,
     swatch
+  };
+}
+
+export function removeSwatch(swatchId: string): RemoveSwatchAction {
+  return {
+    type: REMOVE_SWATCH,
+    swatchId
   };
 }
