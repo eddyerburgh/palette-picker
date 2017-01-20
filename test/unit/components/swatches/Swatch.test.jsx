@@ -1,5 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
+import sinon from 'sinon';
 import SwatchComponent from '../../../../src/components/swatches/Swatch';
 
 describe('<Swatch />', () => {
@@ -7,6 +8,7 @@ describe('<Swatch />', () => {
 
   beforeEach(() => {
     props = {
+      id: 'id',
       rgb: 'rgb(4,5,6)',
       lightness: 'light'
     };
@@ -26,5 +28,14 @@ describe('<Swatch />', () => {
     props.lightness = 'dark';
     const wrapper = shallow(<SwatchComponent {...props} />);
     expect(wrapper.find('div').hasClass('color-dark')).to.equal(true);
+  });
+
+  it('calls props.removeSwatch with props.id when .remove-swatch is clicked', () => {
+    const removeSwatch = sinon.stub();
+    props.removeSwatch = removeSwatch;
+    const wrapper = shallow(<SwatchComponent {...props} />);
+    wrapper.find('.remove-swatch').simulate('click');
+    expect(removeSwatch).to.have.been.calledOnce;
+    expect(removeSwatch).to.have.been.calledWith(props.id);
   });
 });

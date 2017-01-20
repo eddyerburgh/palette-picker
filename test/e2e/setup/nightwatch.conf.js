@@ -8,6 +8,7 @@ const SELENIUM_PORT = config.get('selenium.port');
 module.exports = {
   src_folders: ['test/e2e/test'],
   output_folder: 'test/e2e/reports',
+  custom_assertions_path: ['test/e2e/custom-assertions'],
 
   selenium: {
     start_process: true,

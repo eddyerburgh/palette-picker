@@ -1,26 +1,32 @@
 // @flow
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import type { SwatchType } from '../redux/modules/swatches';
 import Swatches from '../components/swatches/Swatches';
+import * as swatchesActions from '../redux/modules/swatches';
 
 type Props = {
   swatches: Array<SwatchType>,
+  removeSwatch: Function
 }
 
 const SwatchesContainer = (props: Props): React$Element<any> => (
-  <Swatches swatches={props.swatches} />
+  <Swatches
+    swatches={props.swatches}
+    removeSwatch={props.removeSwatch}
+  />
 );
-
-SwatchesContainer.propTypes = {
-  swatches: PropTypes.array // eslint-disable-line react/forbid-prop-types
-};
 
 const mapStateToProps = state => ({
   swatches: state.swatches.swatches
 });
 
+const mapDispatchToProps = {
+  removeSwatch: swatchesActions.removeSwatch
+};
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(SwatchesContainer);

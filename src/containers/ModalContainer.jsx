@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Modal from '../components/modal/Modal';
 import * as modalActions from '../redux/modules/modal';
@@ -18,12 +18,6 @@ const ModalContainer = (props: Props): React$Element<any> => (
     closeModal={props.closeModal}
   />
 );
-
-ModalContainer.propTypes = {
-  display: PropTypes.bool,
-  modal: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-  closeModal: PropTypes.func
-};
 
 const mapStateToProps = state => ({
   modal: state.modal,
