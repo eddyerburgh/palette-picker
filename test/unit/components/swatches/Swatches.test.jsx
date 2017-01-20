@@ -36,4 +36,14 @@ describe('<Swatches />', () => {
 
     expect(removeSwatch).to.have.been.calledOnce;
   });
+
+  it('passes props.displayNewModal to each Swatch component', () => {
+    const displayNewModal = sinon.stub();
+    props.displayNewModal = displayNewModal;
+    const wrapper = mount(<Swatches {...props} />);
+    const Swatch = wrapper.find(SwatchStub).first();
+    Swatch.props().displayNewModal();
+
+    expect(displayNewModal).to.have.been.calledOnce;
+  });
 });

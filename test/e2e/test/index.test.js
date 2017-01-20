@@ -21,7 +21,7 @@ module.exports = {
       .url(devServer)
       .waitForElementVisible('.swatch', 10000)
       .assert.elementCount('.swatch', 4)
-      .click('.swatch:nth-of-type(1) .remove-swatch')
+      .click('.swatch:nth-of-type(1) .swatch__remove')
       .assert.elementCount('.swatch', 3)
       .end();
   }

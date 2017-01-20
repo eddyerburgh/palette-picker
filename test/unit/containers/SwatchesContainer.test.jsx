@@ -11,6 +11,7 @@ describe('<SwatchesContainer />', () => {
   let SwatchesContainer;
   let SwatchesStub;
   let swatchesStub;
+  let modalStub;
   let store;
   let state;
 
@@ -19,12 +20,16 @@ describe('<SwatchesContainer />', () => {
     swatchesStub = {
       removeSwatch: sinon.stub()
     };
+    modalStub = {
+      displayNewModal: sinon.stub()
+    };
     state = { swatches: { swatches: [{}, {}] } };
     store = storeMock(state);
 
     SwatchesContainer = proxyquire('../../../src/containers/SwatchesContainer', {
       '../components/swatches/Swatches': SwatchesStub,
-      '../redux/modules/swatches': swatchesStub
+      '../redux/modules/swatches': swatchesStub,
+      '../redux/modules/modal': modalStub
     }
     ).default;
   });
@@ -39,7 +44,7 @@ describe('<SwatchesContainer />', () => {
     expect(Swatches.props().swatches).to.equal(state.swatches.swatches);
   });
 
-  it('passes removeSwatch() to <Swatches />', () => {
+  it('maps dispatch to removeSwatch() and passes it to <Swatches />', () => {
     const wrapper = mount(
       <Provider store={store}>
         <SwatchesContainer />
@@ -48,5 +53,16 @@ describe('<SwatchesContainer />', () => {
     const Swatches = wrapper.find(SwatchesStub);
     Swatches.props().removeSwatch();
     expect(swatchesStub.removeSwatch).to.have.been.calledOnce;
+  });
+
+  it('maps dispatch to displayNewModal() and passes it to <Swatches />', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <SwatchesContainer />
+      </Provider>
+    );
+    const Swatches = wrapper.find(SwatchesStub);
+    Swatches.props().displayNewModal();
+    expect(modalStub.displayNewModal).to.have.been.calledOnce;
   });
 });
