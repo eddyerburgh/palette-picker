@@ -12,6 +12,8 @@ module.exports = {
     '../src/index.jsx',
   ],
 
+  devtool: 'source-map',
+
   output: {
     filename: 'bundle.js',
     path: resolve(__dirname, '../dist'),
