@@ -2,8 +2,9 @@
 
 import React, { Component, PropTypes } from 'react';
 import isColor from 'is-color';
+import Swatch from '../../../lib/Swatch';
 
-class AddSwatch extends Component {
+class AddSwatchForm extends Component {
 
   constructor(props) {
     super(props);
@@ -23,7 +24,7 @@ class AddSwatch extends Component {
     const value = event.target.querySelector('[type="text"]').value;
 
     if (isColor(value)) {
-      this.props.addNewSwatch(value);
+      this.props.addNewSwatch(new Swatch(value));
       this.setState({ error: false });
     } else {
       this.setState({ error: true });
@@ -32,7 +33,7 @@ class AddSwatch extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="add-swatch-form" onSubmit={this.handleSubmit}>
         <input type="text" />
         <input
           type="submit"
@@ -44,8 +45,8 @@ class AddSwatch extends Component {
   }
 }
 
-AddSwatch.propTypes = {
+AddSwatchForm.propTypes = {
   addNewSwatch: PropTypes.func
 };
 
-export default AddSwatch;
+export default AddSwatchForm;

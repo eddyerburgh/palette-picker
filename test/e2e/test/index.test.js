@@ -14,7 +14,7 @@ module.exports = {
       .end();
   },
 
-  'renders swatches that are closed when clicked': function test(browser) {
+  'deletes a swatch when delete button is pressed': function test(browser) {
     const devServer = browser.globals.devServerURL;
 
     browser
@@ -24,6 +24,19 @@ module.exports = {
       .click('.swatch:nth-of-type(1) .swatch__remove')
       .assert.elementCount('.swatch', 3)
       .end();
-  }
+  },
 
+  'renders a swatch with correct background color when valid color is submitted in the add swatch form': function test(browser) {
+    const devServer = browser.globals.devServerURL;
+
+    browser
+      .url(devServer)
+      .waitForElementVisible('.add-swatch-form', 10000)
+      .assert.elementCount('.swatch', 4)
+      .setValue('.add-swatch-form [type="text"]', '#000')
+      .click('.add-swatch-form [type="submit"]')
+      .assert.elementCount('.swatch', 5)
+      .assert.cssProperty('.swatch:nth-of-type(5)', 'background-color', 'rgba(0, 0, 0, 1)')
+      .end();
+  }
 };

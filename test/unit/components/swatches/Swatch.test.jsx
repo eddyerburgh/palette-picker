@@ -28,7 +28,7 @@ describe('<Swatch />', () => {
 
   it('sets background to props.rgb', () => {
     const wrapper = shallow(<SwatchComponent {...props} />);
-    expect(wrapper.find('.swatch')).to.have.style('background', props.rgb);
+    expect(wrapper.find('.swatch')).to.have.style('background-color', props.rgb);
   });
 
   it('renders div with class color-light if props.lightness is light', () => {

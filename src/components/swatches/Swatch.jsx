@@ -23,16 +23,16 @@ const Swatch = (props: Props): React$Element<any> => {
     }
   }
   return (
-    <button
+    <div // eslint-disable-line jsx-a11y/no-static-element-interactions
       onClick={copyToClipboard}
-      style={{ background: props.rgb }}
+      style={{ backgroundColor: props.rgb }}
       className={`swatch color-${props.lightness}`}
     >
       <button
         className="swatch__remove material-icons"
         onClick={() => props.removeSwatch(props.id)}
       />
-    </button>
+    </div>
   );
 };
 
