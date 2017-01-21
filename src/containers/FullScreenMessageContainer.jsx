@@ -9,7 +9,7 @@ type Props = {
   message: string
 }
 
-const ModalContainer = (props: Props): React$Element<any> => (
+const FullScreenMessageContainer = (props: Props): React$Element<any> => (
   props.display && <FullScreenMessage message={props.message} />
 );
 
@@ -20,4 +20,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps
-)(ModalContainer);
+)(FullScreenMessageContainer);
