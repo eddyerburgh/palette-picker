@@ -31,6 +31,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  addNewSwatch: swatchesActions.addNewSwatch,
   removeSwatch: swatchesActions.removeSwatch,
   displayNewModal: modalActions.displayNewModal
 };
