@@ -7,6 +7,7 @@ const SWITCH_ACTIVE_TAB = 'SWITCH_ACTIVE_TAB';
 // Flow types
 
 export type TabsState = {
+  tabs: Array<string>,
   activeTab: string,
 };
 
@@ -17,7 +18,8 @@ export type SwitchActiveTabType = {
 // Reducer
 
 const initialState = {
-  activeTab: 'addSwatch'
+  tabs: ['add-swatch'],
+  activeTab: 'add-swatch'
 };
 
 export default function reducer(

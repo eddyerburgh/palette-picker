@@ -19,7 +19,7 @@ describe('<SidePanelContainer />', () => {
     tabsActionsStub = {
       switchActiveTab: sinon.stub()
     };
-    state = { tabs: { activeTab: 'active tab' } };
+    state = { tabs: { activeTab: 'active tab', tabs: ['tabs'] } };
     store = storeMock(state);
 
     SidePanelContainerStub = proxyquire('../../../src/containers/SidePanelContainer', {
@@ -36,6 +36,15 @@ describe('<SidePanelContainer />', () => {
       </Provider>
     );
     expect(wrapper.find(TabsStub).props().activeTab).to.equal(state.tabs.activeTab);
+  });
+
+  it('passes props.tabs to <Tabs />', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <SidePanelContainerStub />
+      </Provider>
+    );
+    expect(wrapper.find(TabsStub).props().tabs).to.deep.equal(state.tabs.tabs);
   });
 
   it('maps dispatch to switchActiveTab and passes it to <Tabs />', () => {
