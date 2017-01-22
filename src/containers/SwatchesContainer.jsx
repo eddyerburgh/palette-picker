@@ -4,12 +4,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import type { SwatchType } from '../redux/modules/swatches';
 import Swatches from '../components/swatches/Swatches';
-import AddSwatchForm from '../components/side-panel/add-swatches/AddSwatchForm';
 import * as swatchesActions from '../redux/modules/swatches';
 import * as modalActions from '../redux/modules/modal';
 
 type Props = {
-  addNewSwatch: Function,
   swatches: Array<SwatchType>,
   displayNewModal: Function,
   removeSwatch: Function
@@ -17,7 +15,6 @@ type Props = {
 
 const SwatchesContainer = (props: Props): React$Element<any> => (
   <div>
-    <AddSwatchForm addNewSwatch={props.addNewSwatch} />
     <Swatches
       swatches={props.swatches}
       displayNewModal={props.displayNewModal}
@@ -31,7 +28,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  addNewSwatch: swatchesActions.addNewSwatch,
   removeSwatch: swatchesActions.removeSwatch,
   displayNewModal: modalActions.displayNewModal
 };
