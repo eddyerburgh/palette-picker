@@ -13,7 +13,7 @@ describe('<Tabs />', () => {
   beforeEach(() => {
     TabStub = () => <div />;
 
-    Tabs = proxyquire('../../../../src/components/side-panel/Tabs', {
+    Tabs = proxyquire('../../../../../src/components/side-panel/tabs/Tabs', {
       './Tab': TabStub
     }).default;
 

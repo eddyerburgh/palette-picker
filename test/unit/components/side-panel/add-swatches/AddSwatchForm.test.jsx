@@ -1,8 +1,8 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 import sinon from 'sinon';
-import AddSwatchForm from '../../../../src/components/side-panel/add-swatches/AddSwatchForm';
-import Swatch from '../../../../src/lib/Swatch';
+import AddSwatchForm from '../../../../../src/components/side-panel/add-swatches/AddSwatchForm';
+import Swatch from '../../../../../src/lib/Swatch';
 
 describe('<AddSwatchForm />', () => {
   let props;

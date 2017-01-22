@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import sinon from 'sinon';
-import Tab from '../../../../src/components/side-panel/Tab';
+import Tab from '../../../../../src/components/side-panel/tabs/Tab';
 
 describe('<Tab />', () => {
   let props;

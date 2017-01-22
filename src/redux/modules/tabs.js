@@ -18,8 +18,8 @@ export type SwitchActiveTabType = {
 // Reducer
 
 const initialState = {
-  tabs: ['add-swatch'],
-  activeTab: 'add-swatch'
+  tabs: ['add swatches'],
+  activeTab: 'add swatches'
 };
 
 export default function reducer(

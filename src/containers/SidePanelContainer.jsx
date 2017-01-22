@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import Tabs from '../components/side-panel/Tabs';
+import Tabs from '../components/side-panel/tabs/Tabs';
 import * as tabsActions from '../redux/modules/tabs';
 
 type Props = {

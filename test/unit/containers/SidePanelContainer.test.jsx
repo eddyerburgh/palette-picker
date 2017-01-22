@@ -23,7 +23,7 @@ describe('<SidePanelContainer />', () => {
     store = storeMock(state);
 
     SidePanelContainerStub = proxyquire('../../../src/containers/SidePanelContainer', {
-      '../components/side-panel/Tabs': TabsStub,
+      '../components/side-panel/tabs/Tabs': TabsStub,
       '../redux/modules/tabs': tabsActionsStub
     }
     ).default;
