@@ -1,0 +1,23 @@
+.modal {
+  position: fixed;
+  lefT: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 10;
+}
+.modal__card {
+  margin: 2rem auto;
+  max-width: 700px;
+  transition: box-shadow .25s;
+  padding: 1rem 2rem 2rem;
+  border-radius: 2px;
+  @extend .z-depth-1;
+  background-color: $white-color;
+}
+
+.modal__footer {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(160,160,160,0.2);
+}

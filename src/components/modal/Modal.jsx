@@ -11,14 +11,18 @@ type Props = {
 }
 const Modal = (props: Props): React$Element<any> => (
   <div className="modal">
-    <ModalMessage
-      message={props.modal.message}
-      heading={props.modal.heading}
-    />
-    <CloseButton
-      clickHandler={props.closeModal}
-      value="Close"
-    />
+    <div className="modal__card">
+      <ModalMessage
+        message={props.modal.message}
+        heading={props.modal.heading}
+      />
+      <footer className="modal__footer">
+        <CloseButton
+          clickHandler={props.closeModal}
+          value="Close"
+        />
+      </footer>
+      </div>
   </div>
 
 );

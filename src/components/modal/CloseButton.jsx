@@ -10,6 +10,7 @@ type Props = {
 const CloseButton = (props: Props): React$Element<any> => (
   <input
     type="button"
+    className="btn"
     onClick={props.clickHandler}
     value={props.value}
   />
