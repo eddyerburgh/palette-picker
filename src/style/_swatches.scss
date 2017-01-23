@@ -1,15 +1,15 @@
 .swatch {
-  height: 100px;
   padding: 1rem;
   cursor: pointer;
+  position: relative;
 
   button {
-    display: none;
+    visibility: hidden;
   }
 
   &:hover {
     button {
-      display: inline-block;
+      visibility: visible;
     }
   }
 }
@@ -24,6 +24,13 @@
   .swatch {
     float: left;
     width: 25%;
+
+    .swatch__edit-input {
+      position: absolute;
+      width: 90%;
+      left: 5%;
+      bottom: 5%;
+    }
   }
 
   .swatch--whole {

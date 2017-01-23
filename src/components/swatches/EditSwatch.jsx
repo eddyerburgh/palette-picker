@@ -6,6 +6,7 @@ import Swatch from '../../lib/Swatch';
 
 type Props = {
   id: string,
+  hex: string,
   replaceSwatch: Function
 }
 
@@ -17,7 +18,12 @@ const EditSwatch = (props: Props): React$Element<any> => {
     }
   }
   return (
-    <input onChange={handleChange} type="text" />
+    <input
+      placeholder={props.hex}
+      onChange={handleChange}
+      type="text"
+      className="swatch__edit-input"
+    />
   );
 };
 
