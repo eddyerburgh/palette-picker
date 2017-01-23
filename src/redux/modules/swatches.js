@@ -4,6 +4,7 @@
 
 const ADD_SWATCH = 'ADD_SWATCH';
 const REMOVE_SWATCH = 'REMOVE_SWATCH';
+const REPLACE_SWATCH = 'REPLACE_SWATCH';
 
 // Flow types
 
@@ -28,6 +29,13 @@ export type RemoveSwatchAction = {
   type: string,
   swatchId: string
 };
+
+export type ReplaceSwatchAction = {
+  type: string,
+  swatch: SwatchType,
+  swatchId: string
+}
+
 
 // Reducer
 
@@ -77,6 +85,16 @@ export default function reducer(
         ...state,
         swatches: state.swatches.filter(swatch => swatch.id !== action.swatchId)
       };
+    case REPLACE_SWATCH:
+      return {
+        ...state,
+        swatches: state.swatches.map((swatch) => {
+          if (swatch.id === action.swatchId) {
+            return action.swatch;
+          }
+          return swatch;
+        })
+      };
     default:
       return state;
   }
@@ -94,6 +112,14 @@ export function addNewSwatch(swatch: SwatchType): NewSwatchAction {
 export function removeSwatch(swatchId: string): RemoveSwatchAction {
   return {
     type: REMOVE_SWATCH,
+    swatchId
+  };
+}
+
+export function replaceSwatch(swatchId: string, swatch: SwatchType): ReplaceSwatchAction {
+  return {
+    type: REPLACE_SWATCH,
+    swatch,
     swatchId
   };
 }
