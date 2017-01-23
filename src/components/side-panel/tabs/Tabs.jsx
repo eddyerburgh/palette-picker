@@ -18,7 +18,7 @@ const Tabs = (props: Props): React$Element<any> => {
       switchActiveTab={props.switchActiveTab}
     />);
   return (
-    <div>
+    <div className="tabs">
       {tabs}
     </div>
   );

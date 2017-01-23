@@ -1,6 +1,19 @@
 .sidepanel {
-  width: 30%;
-  height: 100vh;
-  float: left;
+  @extend .z-depth-1;
+}
+
+.sidepanel__header {
   padding: 1rem;
+}
+
+.sidepanel__content {
+  padding: 1rem;
+}
+
+@media #{$medium-and-up} {
+  .sidepanel {
+    width: 300px;
+    height: 100vh;
+    float: left;
+  }
 }

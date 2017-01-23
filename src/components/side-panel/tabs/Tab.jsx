@@ -11,7 +11,7 @@ type Props = {
 const Tab = (props: Props): React$Element<any> => (
   <button
     onClick={() => props.switchActiveTab(props.name)}
-    className={props.isActive && 'active'}
+    className={props.isActive ? 'active tab' : 'tab'}
   >
     {props.name}
   </button>

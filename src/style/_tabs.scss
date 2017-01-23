@@ -1,0 +1,19 @@
+.tabs {
+  display: flex;
+  text-align: center;
+  width: 100%;
+}
+
+.tab {
+  flex: 1 0 auto;
+  line-height: 36px;
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  color: $white-color;
+
+  &.active {
+    background-color: $white-color;
+    color: $primary-color;
+  }
+}
