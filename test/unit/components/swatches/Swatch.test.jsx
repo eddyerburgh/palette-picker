@@ -77,7 +77,13 @@ describe('<Swatch />', () => {
     expect(wrapper.find(EditSwatchStub)).to.have.length(1);
   });
 
-  it('passes propsreplaceSwatch to EditSwatch', () => {
+  it('has className swatch--${props.height}', () => {
+    props.height = 'third';
+    const wrapper = shallow(<SwatchComponent {...props} />);
+    expect(wrapper).to.have.className(`swatch--${props.height}`);
+  });
+
+  it('passes props replaceSwatch to EditSwatch', () => {
     const wrapper = shallow(<SwatchComponent {...props} />);
     wrapper.setState({ displayEdit: true });
     wrapper.find(EditSwatchStub).props().replaceSwatch();

@@ -45,6 +45,39 @@ describe('<SwatchesContainer />', () => {
     expect(Swatch.props()).to.shallowDeepEqual(state.swatches.swatches[0]);
   });
 
+  it('passes height=full if number of swatches is less than 5', () => {
+    state.swatches.swatches = [{}, {}, {}, {}];
+    const wrapper = mount(
+      <Provider store={store}>
+        <SwatchesContainer />
+      </Provider>
+    );
+    const Swatch = wrapper.find(SwatchStub).first();
+    expect(Swatch.props().height).to.equal('whole');
+  });
+
+  it('passes height=half if number of swatches is greater than 4 but less than 9', () => {
+    state.swatches.swatches = [{}, {}, {}, {}, {}];
+    const wrapper = mount(
+      <Provider store={store}>
+        <SwatchesContainer />
+      </Provider>
+    );
+    const Swatch = wrapper.find(SwatchStub).first();
+    expect(Swatch.props().height).to.equal('half');
+  });
+
+  it('passes height=third if number of swatches is greater than 9', () => {
+    state.swatches.swatches = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+    const wrapper = mount(
+      <Provider store={store}>
+        <SwatchesContainer />
+      </Provider>
+    );
+    const Swatch = wrapper.find(SwatchStub).first();
+    expect(Swatch.props().height).to.equal('third');
+  });
+
   it('maps dispatch to replaceSwatch() and passes it to <Swatch />', () => {
     const wrapper = mount(
       <Provider store={store}>

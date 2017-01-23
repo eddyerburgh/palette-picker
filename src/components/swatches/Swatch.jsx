@@ -8,6 +8,7 @@ type Props = {
   id: string,
   rgb: string,
   lightness: string,
+  height: string,
   displayNewModal: Function, // eslint-disable-line react/no-unused-prop-types
   replaceSwatch: Function,
   removeSwatch: Function
@@ -49,7 +50,7 @@ class Swatch extends Component {
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
         onClick={this.copyToClipboard}
         style={{ backgroundColor: this.props.rgb }}
-        className={`swatch color-${this.props.lightness}`}
+        className={`swatch swatch--${this.props.height} color-${this.props.lightness}`}
       >
         <button
           className="swatch__edit btn-floating btn-large"

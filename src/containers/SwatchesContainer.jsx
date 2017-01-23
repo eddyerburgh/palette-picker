@@ -15,12 +15,27 @@ type Props = {
 }
 
 const SwatchesContainer = (props: Props): React$Element<any> => {
+  function returnSwatchHeight() {
+    const numberOfSwatches = props.swatches.length;
+
+    if(numberOfSwatches > 8) {
+      return 'third';
+    }
+
+    if(numberOfSwatches > 4) {
+      return 'half';
+    }
+
+    return 'whole';
+  }
+
   const swatches = props.swatches.map(swatch =>
     <Swatch
       {...swatch}
       displayNewModal={props.displayNewModal}
       replaceSwatch={props.replaceSwatch}
       removeSwatch={props.removeSwatch}
+      height={returnSwatchHeight()}
       key={`swatch-${swatch.id}`}
     />
   );
