@@ -101,3 +101,15 @@ $large-and-up: "only screen and (min-width : #{$medium-screen-up})";
 $small-and-down: "only screen and (max-width : #{$small-screen})";
 $medium-and-down: "only screen and (max-width : #{$medium-screen})";
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})";
+
+// 20. Typography
+// ==========================================================================
+
+$off-black: rgba(0, 0, 0, 0.87);
+// Header Styles
+$h1-fontsize: 4.2rem;
+$h2-fontsize: 3.56rem;
+$h3-fontsize: 2.92rem;
+$h4-fontsize: 2.28rem;
+$h5-fontsize: 1.64rem;
+$h6-fontsize: 1rem;
