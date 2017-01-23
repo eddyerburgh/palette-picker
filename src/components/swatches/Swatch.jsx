@@ -52,13 +52,14 @@ class Swatch extends Component {
         className={`swatch color-${this.props.lightness}`}
       >
         <button
-          className="swatch__remove material-icons"
-          onClick={() => this.props.removeSwatch(this.props.id)}
-        />
-        <button
-          className="swatch__edit material-icons"
+          className="swatch__edit btn-floating btn-large"
           onClick={() => this.setState({ displayEdit: true })}
-        />
+        ><i className="material-icons">mode_edit</i></button>
+        <button
+          className="swatch__remove btn-floating btn-large align-right"
+          onClick={() => this.props.removeSwatch(this.props.id)}
+        ><i className="material-icons">delete</i></button>
+
         {this.state.displayEdit &&
           <EditSwatch
             id={this.props.id}
