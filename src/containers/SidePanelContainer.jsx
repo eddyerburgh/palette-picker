@@ -17,7 +17,7 @@ type Props = {
 }
 
 const SidePanelContainer = (props: Props): React$Element<any> => (
-  <div>
+  <div className="sidepanel">
     <Tabs
       tabs={props.tabs}
       activeTab={props.activeTab}
