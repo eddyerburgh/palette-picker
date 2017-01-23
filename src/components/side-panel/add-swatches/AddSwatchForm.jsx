@@ -34,7 +34,7 @@ class AddSwatchForm extends Component {
   render() {
     return (
       <form className="add-swatch-form" onSubmit={this.handleSubmit}>
-        <input type="text" />
+        <input type="text" placeholder="enter color" />
         <input
           type="submit"
           value="submit"

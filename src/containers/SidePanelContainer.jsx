@@ -18,7 +18,7 @@ type Props = {
 
 const SidePanelContainer = (props: Props): React$Element<any> => (
   <div className="sidepanel">
-    <header className="sidepanel__header bg-primary">
+    <header className="sidepanel__header bg-secondary">
       <Tabs
         tabs={props.tabs}
         activeTab={props.activeTab}
