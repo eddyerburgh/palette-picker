@@ -3,27 +3,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import type { SwatchType } from '../redux/modules/swatches';
-import Swatches from '../components/swatches/Swatches';
+import Swatch from '../components/swatches/Swatch';
 import * as swatchesActions from '../redux/modules/swatches';
 import * as modalActions from '../redux/modules/modal';
 
 type Props = {
   swatches: Array<SwatchType>,
-  displayNewModal: Function,
+  displayNewModal: Function,  // eslint-disable-line react/no-unused-prop-types
   removeSwatch: Function,
-  replaceSwatch: Function
+  replaceSwatch: Function  // eslint-disable-line react/no-unused-prop-types
 }
 
-const SwatchesContainer = (props: Props): React$Element<any> => (
-  <div>
-    <Swatches
-      swatches={props.swatches}
+const SwatchesContainer = (props: Props): React$Element<any> => {
+  const swatches = props.swatches.map(swatch =>
+    <Swatch
+      {...swatch}
       displayNewModal={props.displayNewModal}
-      removeSwatch={props.removeSwatch}
       replaceSwatch={props.replaceSwatch}
+      removeSwatch={props.removeSwatch}
+      key={`swatch-${swatch.id}`}
     />
-  </div>
-);
+  );
+  return (
+    <div className="swatches">
+      {swatches}
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
   swatches: state.swatches.swatches

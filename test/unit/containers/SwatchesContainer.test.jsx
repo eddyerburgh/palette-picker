@@ -9,14 +9,14 @@ proxyquire.noCallThru();
 
 describe('<SwatchesContainer />', () => {
   let SwatchesContainer;
-  let SwatchesStub;
+  let SwatchStub;
   let swatchesStub;
   let modalStub;
   let store;
   let state;
 
   beforeEach(() => {
-    SwatchesStub = () => <div />;
+    SwatchStub = () => <div />;
     swatchesStub = {
       removeSwatch: sinon.stub(),
       replaceSwatch: sinon.stub()
@@ -24,56 +24,56 @@ describe('<SwatchesContainer />', () => {
     modalStub = {
       displayNewModal: sinon.stub()
     };
-    state = { swatches: { swatches: [{}, {}] } };
+    state = { swatches: { swatches: [{ hex: '#666666', id: '1' }, { hex: '#777777', id: '2' }] } };
     store = storeMock(state);
 
     SwatchesContainer = proxyquire('../../../src/containers/SwatchesContainer', {
-      '../components/swatches/Swatches': SwatchesStub,
+      '../components/swatches/Swatch': SwatchStub,
       '../redux/modules/swatches': swatchesStub,
       '../redux/modules/modal': modalStub
     }
     ).default;
   });
 
-  it('passes state.swatches to <Swatches />', () => {
+  it('renders a <Swatch /> for each object in state.swatches.swatches', () => {
     const wrapper = mount(
       <Provider store={store}>
         <SwatchesContainer />
       </Provider>
     );
-    const Swatches = wrapper.find(SwatchesStub);
-    expect(Swatches.props().swatches).to.equal(state.swatches.swatches);
+    const Swatch = wrapper.find(SwatchStub).first();
+    expect(Swatch.props()).to.shallowDeepEqual(state.swatches.swatches[0]);
   });
 
-  it('maps dispatch to removeSwatch() and passes it to <Swatches />', () => {
+  it('maps dispatch to replaceSwatch() and passes it to <Swatch />', () => {
     const wrapper = mount(
       <Provider store={store}>
         <SwatchesContainer />
       </Provider>
     );
-    const Swatches = wrapper.find(SwatchesStub);
-    Swatches.props().removeSwatch();
-    expect(swatchesStub.removeSwatch).to.have.been.calledOnce;
-  });
-
-  it('maps dispatch to replaceSwatch() and passes it to <Swatches />', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <SwatchesContainer />
-      </Provider>
-    );
-    const Swatches = wrapper.find(SwatchesStub);
+    const Swatches = wrapper.find(SwatchStub).first();
     Swatches.props().replaceSwatch();
     expect(swatchesStub.replaceSwatch).to.have.been.calledOnce;
   });
 
-  it('maps dispatch to displayNewModal() and passes it to <Swatches />', () => {
+  it('maps dispatch to removeSwatch() and passes it to <Swatch />', () => {
     const wrapper = mount(
       <Provider store={store}>
         <SwatchesContainer />
       </Provider>
     );
-    const Swatches = wrapper.find(SwatchesStub);
+    const Swatches = wrapper.find(SwatchStub).first();
+    Swatches.props().removeSwatch();
+    expect(swatchesStub.removeSwatch).to.have.been.calledOnce;
+  });
+
+  it('maps dispatch to displayNewModal() and passes it to <Swatch />', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <SwatchesContainer />
+      </Provider>
+    );
+    const Swatches = wrapper.find(SwatchStub).first();
     Swatches.props().displayNewModal();
     expect(modalStub.displayNewModal).to.have.been.calledOnce;
   });

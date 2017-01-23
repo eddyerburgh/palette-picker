@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import store from './redux/store';
 import Root from './containers/Root';
+
 require('./style/style.scss');
 
 function renderWithHotReload(Root) {
