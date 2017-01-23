@@ -26,7 +26,8 @@ describe('<SidePanelContainer />', () => {
       addNewSwatch: sinon.stub()
     };
     state = {
-      tabs: { activeTab: 'add swatches', tabs: ['add swatches'] }
+      tabs: { activeTab: 'add swatches', tabs: ['add swatches'] },
+      palettes: { palettes: [{ color: '' }, { color: '' }] }
     };
     store = storeMock(state);
 
@@ -77,6 +78,16 @@ describe('<SidePanelContainer />', () => {
     );
     const AddSwatchesPanel = wrapper.find(AddSwatchesPanelStub);
     expect(AddSwatchesPanel.length).to.equal(0);
+  });
+
+  it('passes state.palettes.palettes to <AddSwatchesPanel />', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <SidePanelContainerStub />
+      </Provider>
+    );
+    const AddSwatchesPanelProps = wrapper.find(AddSwatchesPanelStub).props();
+    expect(AddSwatchesPanelProps.palettes).to.deep.equal(state.palettes.palettes);
   });
 
   it('maps dispatch to switchActiveTab and passes it to <AddSwatchesPanel />', () => {

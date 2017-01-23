@@ -2,6 +2,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import sinon from 'sinon';
 import proxyquire from 'proxyquire';
+import Swatch from '../../../../../src/lib/Swatch';
 
 proxyquire.noCallThru();
 
@@ -15,7 +16,7 @@ describe('<Palette />', () => {
     props = {
       addNewSwatch: sinon.spy(),
       name: 'palette',
-      colors: ['#555', '#666']
+      colors: ['#555666', '#666666']
     };
     Palette = proxyquire('../../../../../src/components/side-panel/add-swatches/Palette', {
       './PaletteColor': PaletteColorStub
@@ -41,7 +42,9 @@ describe('<Palette />', () => {
   it('calls addNewSwatch with each colorfor each props.color when .palette__name is clicked', () => {
     const wrapper = shallow(<Palette {...props} />);
     wrapper.find('.palette__name').simulate('click');
-    expect(props.addNewSwatch.args[0][0]).to.equal(props.colors[0]);
+    const argument = props.addNewSwatch.args[0][0];
+    expect(argument).to.be.instanceOf(Swatch);
+    expect(argument.hex).to.equal(props.colors[0]);
     expect(props.addNewSwatch).to.have.callCount(props.colors.length);
   });
 });

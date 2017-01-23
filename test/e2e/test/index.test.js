@@ -38,5 +38,17 @@ module.exports = {
       .assert.elementCount('.swatch', 5)
       .assert.cssProperty('.swatch:nth-of-type(5)', 'background-color', 'rgba(0, 0, 0, 1)')
       .end();
+  },
+
+  'renders 5 swatches when .palette is clicked': function test(browser) {
+    const devServer = browser.globals.devServerURL;
+
+    browser
+      .url(devServer)
+      .waitForElementVisible('.add-swatch-form', 10000)
+      .assert.elementCount('.swatch', 4)
+      .click('.palette:nth-of-type(1) .palette__name')
+      .assert.elementCount('.swatch', 9)
+      .end();
   }
 };

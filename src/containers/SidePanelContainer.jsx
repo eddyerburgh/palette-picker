@@ -6,12 +6,14 @@ import Tabs from '../components/side-panel/tabs/Tabs';
 import AddSwatchesPanel from '../components/side-panel/add-swatches/AddSwatchesPanel';
 import * as tabsActions from '../redux/modules/tabs';
 import * as swatchesActions from '../redux/modules/swatches';
+import type { PaletteType } from '../redux/modules/palettes';
 
 type Props = {
   addNewSwatch: Function,
   tabs: Array<string>,
   activeTab: string,
-  switchActiveTab: Function
+  switchActiveTab: Function,
+  palettes: Array<PaletteType>
 }
 
 const SidePanelContainer = (props: Props): React$Element<any> => (
@@ -21,13 +23,18 @@ const SidePanelContainer = (props: Props): React$Element<any> => (
       activeTab={props.activeTab}
       switchActiveTab={props.switchActiveTab}
     />
-    {props.activeTab === 'add swatches' && <AddSwatchesPanel addNewSwatch={props.addNewSwatch} />}
+    {props.activeTab === 'add swatches' &&
+      <AddSwatchesPanel
+        addNewSwatch={props.addNewSwatch}
+        palettes={props.palettes}
+      />}
   </div>
 );
 
 const mapStateToProps = state => ({
   tabs: state.tabs.tabs,
-  activeTab: state.tabs.activeTab
+  activeTab: state.tabs.activeTab,
+  palettes: state.palettes.palettes
 });
 
 const mapDispatchToProps = {

@@ -3,10 +3,12 @@ import chai from 'chai';
 import { jsdom } from 'jsdom';
 import chaiEnzyme from 'chai-enzyme';
 import sinonChai from 'sinon-chai';
+import shallowDeepEqual from 'chai-shallow-deep-equal';
 
 // use chai plugins
 chai.use(chaiEnzyme());
 chai.use(sinonChai);
+chai.use(shallowDeepEqual);
 
 // add testing globals
 global.mocha = mocha;
