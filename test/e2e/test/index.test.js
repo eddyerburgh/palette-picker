@@ -50,5 +50,17 @@ module.exports = {
       .click('.palette:nth-of-type(1) .palette__name')
       .assert.elementCount('.swatch', 9)
       .end();
+  },
+
+  'replaces a swatch with a new one when the edit field is filled out': function test(browser) {
+    const devServer = browser.globals.devServerURL;
+
+    browser
+      .url(devServer)
+      .waitForElementVisible('.add-swatch-form', 10000)
+      .click('.swatch:nth-of-type(1) .swatch__edit')
+      .setValue('.swatch:nth-of-type(1) [type="text"]', '#000')
+      .assert.cssProperty('.swatch:nth-of-type(1)', 'background-color', 'rgba(0, 0, 0, 1)')
+      .end();
   }
 };
