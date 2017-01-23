@@ -38,6 +38,7 @@ class AddSwatchForm extends Component {
         <input
           type="submit"
           value="submit"
+          className="btn"
         />
         {this.state.error && <span className="color-warning">Invalid color. Must be a valid hex, rgb or CSS color</span>}
       </form>

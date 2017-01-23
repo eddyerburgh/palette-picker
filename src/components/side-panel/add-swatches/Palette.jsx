@@ -23,7 +23,7 @@ const Palette = (props: Props): React$Element<any> => {
   );
   return (
     <div className="palette">
-      <button className="palette__name" onClick={addNewPalette}>{props.name}</button>
+      <button className="palette__name btn" onClick={addNewPalette}>{props.name}</button>
       {paletteColors}
     </div>
   );
