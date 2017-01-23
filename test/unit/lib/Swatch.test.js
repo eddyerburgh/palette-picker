@@ -20,18 +20,18 @@ describe('Swatch', () => {
     expect(swatch.hex).to.equal(hex);
   });
 
-  it('creates Swatch object with lightness set to "light" if lightness is > 50', () => {
+  it('creates Swatch object with fontColor set to "light" if fontColor is > 50', () => {
     const hex = '#fff';
     const swatch = new Swatch(hex);
 
-    expect(swatch.lightness).to.equal('light');
+    expect(swatch.fontColor).to.equal('dark');
   });
 
-  it('creates Swatch object with lightness set to "dark" if lightness is < 50', () => {
+  it('creates Swatch object with fontColor set to "dark" if fontColor is < 50', () => {
     const hex = '#000';
     const swatch = new Swatch(hex);
 
-    expect(swatch.lightness).to.equal('dark');
+    expect(swatch.fontColor).to.equal('light');
   });
 
   it('generates an id string', () => {

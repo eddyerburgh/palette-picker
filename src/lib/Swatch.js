@@ -7,9 +7,7 @@ export default class Swatch {
     this.rgbArray = colorString.get.rgb(color);
     this.rgb = colorString.to.rgb(this.rgbArray);
     this.hex = colorString.to.hex(this.rgbArray);
-    this.lightness = contrast(this.hex);
+    this.fontColor = contrast(this.hex) === 'light' ? 'dark' : 'light';
     this.id = shortId.generate();
   }
-
-
 }

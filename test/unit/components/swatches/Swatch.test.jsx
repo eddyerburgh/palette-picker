@@ -19,7 +19,7 @@ describe('<Swatch />', () => {
     props = {
       id: 'id',
       rgb: 'rgb(4,5,6)',
-      lightness: 'light',
+      fontColor: 'light',
       removeSwatch: sinon.stub(),
       displayNewModal: sinon.stub(),
       replaceSwatch: sinon.stub()
@@ -35,13 +35,13 @@ describe('<Swatch />', () => {
     expect(wrapper.find('.swatch')).to.have.style('background-color', props.rgb);
   });
 
-  it('renders div with class color-light if props.lightness is light', () => {
+  it('renders div with class color-light if props.fontColor is light', () => {
     const wrapper = shallow(<SwatchComponent {...props} />);
     expect(wrapper.find('.swatch').hasClass('color-light')).to.equal(true);
   });
 
-  it('renders div with class color-dark if props.lightness is dark', () => {
-    props.lightness = 'dark';
+  it('renders div with class color-dark if props.fontColor is dark', () => {
+    props.fontColor = 'dark';
     const wrapper = shallow(<SwatchComponent {...props} />);
     expect(wrapper.find('.swatch').hasClass('color-dark')).to.equal(true);
   });

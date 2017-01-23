@@ -6,6 +6,19 @@
   background-color: $secondary-color!important;
 }
 
+.bg-transparent {
+  background-color: transparent!important;
+}
+
+.color-dark {
+  color: $off-black!important;
+;
+}
+
+.color-light {
+  color: $white-color!important;
+}
+
 .color-error {
   color: $error-color!important;
 }

@@ -1,6 +1,17 @@
 .swatch {
   height: 100px;
   padding: 1rem;
+  cursor: pointer;
+
+  button {
+    display: none;
+  }
+
+  &:hover {
+    button {
+      display: inline-block;
+    }
+  }
 }
 
 @media #{$medium-and-up} {

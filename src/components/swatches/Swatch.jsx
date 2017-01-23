@@ -7,7 +7,7 @@ import EditSwatch from './EditSwatch';
 type Props = {
   id: string,
   rgb: string,
-  lightness: string,
+  fontColor: string,
   height: string,
   displayNewModal: Function, // eslint-disable-line react/no-unused-prop-types
   replaceSwatch: Function,
@@ -50,14 +50,14 @@ class Swatch extends Component {
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
         onClick={this.copyToClipboard}
         style={{ backgroundColor: this.props.rgb }}
-        className={`swatch swatch--${this.props.height} color-${this.props.lightness}`}
+        className={`swatch swatch--${this.props.height} color-${this.props.fontColor}`}
       >
         <button
-          className="swatch__edit btn-floating btn-large"
+          className="swatch__edit btn-floating btn-inherit btn-large bg-transparent"
           onClick={() => this.setState({ displayEdit: !this.state.displayEdit })}
         ><i className="material-icons">mode_edit</i></button>
         <button
-          className="swatch__remove btn-floating btn-large align-right"
+          className="swatch__remove btn-floating  btn-inherit btn-large  bg-transparent align-right"
           onClick={() => this.props.removeSwatch(this.props.id)}
         ><i className="material-icons">delete</i></button>
 

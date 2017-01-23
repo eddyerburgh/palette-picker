@@ -13,7 +13,7 @@ export type SwatchType = {
   hex: string,
   rgb: string,
   rgbArray: Array<number>,
-  lightness: string
+  fontColor: string
 };
 
 export type SwatchesState = {
@@ -46,28 +46,28 @@ const initialState = {
       hex: '#AF9EFA',
       rgb: 'rgb(175,158,250)',
       rgbArray: [175, 158, 250],
-      lightness: 'light'
+      fontColor: 'light'
     },
     {
       id: '2',
       hex: '#978BEF',
       rgb: 'rgb(151,139,239)',
       rgbArray: [151, 139, 239],
-      lightness: 'light'
+      fontColor: 'light'
     },
     {
       id: '3',
       hex: '#7A72D5',
       rgb: 'rgb(122,114,213)',
       rgbArray: [122, 114, 213],
-      lightness: 'light'
+      fontColor: 'light'
     },
     {
       id: '4',
       hex: '#282248',
       rgb: 'rgb(40,34,72)',
       rgbArray: [40, 34, 72],
-      lightness: 'dark'
+      fontColor: 'light'
     }]
 };
 
