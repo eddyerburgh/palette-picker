@@ -22,7 +22,7 @@ const Modal = (props: Props): React$Element<any> => (
           value="Close"
         />
       </footer>
-      </div>
+    </div>
   </div>
 
 );

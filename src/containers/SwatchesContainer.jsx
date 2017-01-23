@@ -18,11 +18,11 @@ const SwatchesContainer = (props: Props): React$Element<any> => {
   function returnSwatchHeight() {
     const numberOfSwatches = props.swatches.length;
 
-    if(numberOfSwatches > 8) {
+    if (numberOfSwatches > 8) {
       return 'third';
     }
 
-    if(numberOfSwatches > 4) {
+    if (numberOfSwatches > 4) {
       return 'half';
     }
 

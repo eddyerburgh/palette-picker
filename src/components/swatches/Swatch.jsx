@@ -54,7 +54,7 @@ class Swatch extends Component {
       >
         <button
           className="swatch__edit btn-floating btn-large"
-          onClick={() => this.setState({ displayEdit: true })}
+          onClick={() => this.setState({ displayEdit: !this.state.displayEdit })}
         ><i className="material-icons">mode_edit</i></button>
         <button
           className="swatch__remove btn-floating btn-large align-right"

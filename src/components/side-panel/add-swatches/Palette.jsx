@@ -1,5 +1,7 @@
 // @flow
 
+/* eslint-disable jsx-a11y/href-no-hash */
+
 import React from 'react';
 import PaletteColor from './PaletteColor';
 import Swatch from '../../../lib/Swatch';
@@ -23,11 +25,16 @@ const Palette = (props: Props): React$Element<any> => {
   );
   return (
     <div className="palette">
-      <a href="javascript:" className="palette__name" onClick={addNewPalette}>{props.name}</a>
+      <a
+        href="#"
+        className="palette__name"
+        onClick={addNewPalette}
+      >{props.name}
+      </a>
       <div>
         {paletteColors}
       </div>
-      </div>
+    </div>
   );
 };
 

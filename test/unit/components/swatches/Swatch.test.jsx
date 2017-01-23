@@ -64,6 +64,8 @@ describe('<Swatch />', () => {
     const wrapper = shallow(<SwatchComponent {...props} />);
     wrapper.find('.swatch__edit').simulate('click');
     expect(wrapper.state('displayEdit')).to.equal(true);
+    wrapper.find('.swatch__edit').simulate('click');
+    expect(wrapper.state('displayEdit')).to.equal(false);
   });
 
   it('does not render EditSwatch when state.displayEdit is false', () => {
@@ -77,7 +79,7 @@ describe('<Swatch />', () => {
     expect(wrapper.find(EditSwatchStub)).to.have.length(1);
   });
 
-  it('has className swatch--${props.height}', () => {
+  it('has className swatch--props.height', () => {
     props.height = 'third';
     const wrapper = shallow(<SwatchComponent {...props} />);
     expect(wrapper).to.have.className(`swatch--${props.height}`);
