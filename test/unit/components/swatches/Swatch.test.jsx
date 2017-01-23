@@ -9,20 +9,24 @@ describe('<Swatch />', () => {
   let props;
   let SwatchComponent;
   let copyStub;
+  let EditSwatchStub;
 
   beforeEach(() => {
-    props = {
-      id: 'id',
-      rgb: 'rgb(4,5,6)',
-      lightness: 'light'
-    };
-
+    EditSwatchStub = () => <div />;
     copyStub = {
       copy: sinon.stub()
     };
-
+    props = {
+      id: 'id',
+      rgb: 'rgb(4,5,6)',
+      lightness: 'light',
+      removeSwatch: sinon.stub(),
+      displayNewModal: sinon.stub(),
+      replaceSwatch: sinon.stub()
+    };
     SwatchComponent = proxyquire('../../../../src/components/swatches/Swatch', {
-      'copy-to-clipboard': copyStub
+      'copy-to-clipboard': copyStub,
+      './EditSwatch': EditSwatchStub
     }).default;
   });
 
@@ -43,29 +47,40 @@ describe('<Swatch />', () => {
   });
 
   it('calls props.removeSwatch with props.id when .swatch__remove is clicked', () => {
-    const removeSwatch = sinon.stub();
-    props.removeSwatch = removeSwatch;
     const wrapper = shallow(<SwatchComponent {...props} />);
     wrapper.find('.swatch__remove').simulate('click');
-    expect(removeSwatch).to.have.been.calledOnce;
-    expect(removeSwatch).to.have.been.calledWith(props.id);
-  });
-
-  it('calls props.removeSwatch with props.id when .swatch__remove is clicked', () => {
-    const removeSwatch = sinon.stub();
-    props.removeSwatch = removeSwatch;
-    const wrapper = shallow(<SwatchComponent {...props} />);
-    wrapper.find('.swatch__remove').simulate('click');
-    expect(removeSwatch).to.have.been.calledOnce;
-    expect(removeSwatch).to.have.been.calledWith(props.id);
+    expect(props.removeSwatch).to.have.been.calledOnce;
+    expect(props.removeSwatch).to.have.been.calledWith(props.id);
   });
 
   it('calls props.displayModal when copy throws an error', () => {
-    copyStub.copy = sinon.stub().throws();
-    const displayNewModal = sinon.stub();
-    props.displayNewModal = displayNewModal;
     const wrapper = shallow(<SwatchComponent {...props} />);
     wrapper.simulate('click');
-    expect(displayNewModal).to.have.been.calledOnce;
+    expect(props.displayNewModal.args[0][0].heading).to.equal('Error');
+    expect(props.displayNewModal).to.have.been.calledOnce;
+  });
+
+  it('toggles state.displayEdit when .swatch__edit is clicked', () => {
+    const wrapper = shallow(<SwatchComponent {...props} />);
+    wrapper.find('.swatch__edit').simulate('click');
+    expect(wrapper.state('displayEdit')).to.equal(true);
+  });
+
+  it('does not render EditSwatch when state.displayEdit is false', () => {
+    const wrapper = shallow(<SwatchComponent {...props} />);
+    expect(wrapper.find(EditSwatchStub)).to.have.length(0);
+  });
+
+  it('renders EditSwatch when state.displayEdit is true', () => {
+    const wrapper = shallow(<SwatchComponent {...props} />);
+    wrapper.setState({ displayEdit: true });
+    expect(wrapper.find(EditSwatchStub)).to.have.length(1);
+  });
+
+  it('passes propsreplaceSwatch to EditSwatch', () => {
+    const wrapper = shallow(<SwatchComponent {...props} />);
+    wrapper.setState({ displayEdit: true });
+    wrapper.find(EditSwatchStub).props().replaceSwatch();
+    expect(props.replaceSwatch).to.have.been.calledOnce;
   });
 });

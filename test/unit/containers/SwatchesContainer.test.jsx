@@ -18,7 +18,8 @@ describe('<SwatchesContainer />', () => {
   beforeEach(() => {
     SwatchesStub = () => <div />;
     swatchesStub = {
-      removeSwatch: sinon.stub()
+      removeSwatch: sinon.stub(),
+      replaceSwatch: sinon.stub()
     };
     modalStub = {
       displayNewModal: sinon.stub()
@@ -53,6 +54,17 @@ describe('<SwatchesContainer />', () => {
     const Swatches = wrapper.find(SwatchesStub);
     Swatches.props().removeSwatch();
     expect(swatchesStub.removeSwatch).to.have.been.calledOnce;
+  });
+
+  it('maps dispatch to replaceSwatch() and passes it to <Swatches />', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <SwatchesContainer />
+      </Provider>
+    );
+    const Swatches = wrapper.find(SwatchesStub);
+    Swatches.props().replaceSwatch();
+    expect(swatchesStub.replaceSwatch).to.have.been.calledOnce;
   });
 
   it('maps dispatch to displayNewModal() and passes it to <Swatches />', () => {

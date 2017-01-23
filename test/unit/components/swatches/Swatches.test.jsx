@@ -18,7 +18,10 @@ describe('<Swatches />', () => {
     }).default;
 
     props = {
-      swatches: [{ rgb: '', hex: '', id: 1 }, { rgb: '', hex: '', id: 2 }, { rgb: '', hex: '', id: 3 }]
+      swatches: [{ rgb: '', hex: '', id: 1 }, { rgb: '', hex: '', id: 2 }, { rgb: '', hex: '', id: 3 }],
+      displayNewModal: sinon.stub(),
+      replaceSwatch: sinon.stub(),
+      removeSwatch: sinon.stub()
     };
   });
 
@@ -37,13 +40,27 @@ describe('<Swatches />', () => {
     expect(removeSwatch).to.have.been.calledOnce;
   });
 
+  it('passes props.removeSwatch to each Swatch component', () => {
+    const wrapper = mount(<Swatches {...props} />);
+    const Swatch = wrapper.find(SwatchStub).first();
+    Swatch.props().removeSwatch();
+
+    expect(props.removeSwatch).to.have.been.calledOnce;
+  });
+
+  it('passes props.replaceSwatch to each Swatch component', () => {
+    const wrapper = mount(<Swatches {...props} />);
+    const Swatch = wrapper.find(SwatchStub).first();
+    Swatch.props().replaceSwatch();
+
+    expect(props.replaceSwatch).to.have.been.calledOnce;
+  });
+
   it('passes props.displayNewModal to each Swatch component', () => {
-    const displayNewModal = sinon.stub();
-    props.displayNewModal = displayNewModal;
     const wrapper = mount(<Swatches {...props} />);
     const Swatch = wrapper.find(SwatchStub).first();
     Swatch.props().displayNewModal();
 
-    expect(displayNewModal).to.have.been.calledOnce;
+    expect(props.displayNewModal).to.have.been.calledOnce;
   });
 });

@@ -10,7 +10,8 @@ import * as modalActions from '../redux/modules/modal';
 type Props = {
   swatches: Array<SwatchType>,
   displayNewModal: Function,
-  removeSwatch: Function
+  removeSwatch: Function,
+  replaceSwatch: Function
 }
 
 const SwatchesContainer = (props: Props): React$Element<any> => (
@@ -19,6 +20,7 @@ const SwatchesContainer = (props: Props): React$Element<any> => (
       swatches={props.swatches}
       displayNewModal={props.displayNewModal}
       removeSwatch={props.removeSwatch}
+      replaceSwatch={props.replaceSwatch}
     />
   </div>
 );
@@ -29,6 +31,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   removeSwatch: swatchesActions.removeSwatch,
+  replaceSwatch: swatchesActions.replaceSwatch,
   displayNewModal: modalActions.displayNewModal
 };
 

@@ -7,7 +7,8 @@ import Swatch from './Swatch';
 type Props = {
   swatches: Array<SwatchType>,
   displayNewModal: Function, // eslint-disable-line react/no-unused-prop-types
-  removeSwatch: Function
+  removeSwatch: Function, // eslint-disable-line react/no-unused-prop-types
+  replaceSwatch: Function,
 }
 
 const Swatches = (props: Props): React$Element<any> => {
@@ -16,6 +17,7 @@ const Swatches = (props: Props): React$Element<any> => {
       key={swatch.id} {...swatch}
       displayNewModal={props.displayNewModal}
       removeSwatch={props.removeSwatch}
+      replaceSwatch={props.replaceSwatch}
     />
   );
   return (
