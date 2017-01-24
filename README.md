@@ -2,6 +2,8 @@
 
 A web app that lets you store and copy swatches of color. Great when designing something with a large color palette.
 
+[See it live here](https://eddyerburgh.github.io/palette-picker/)
+
 ## Installation
 
 Clone the repository
