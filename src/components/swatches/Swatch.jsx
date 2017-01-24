@@ -20,7 +20,6 @@ type State = {
 
 class Swatch extends Component {
 
-
   constructor(props: Props) {
     super(props);
 
@@ -51,7 +50,7 @@ class Swatch extends Component {
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
         onClick={this.copyToClipboard}
         style={{ backgroundColor: this.props.rgb }}
-        className={`swatch swatch--${this.props.height} color-${this.props.fontColor}`}
+        className={`swatch hoverable swatch--${this.props.height} color-${this.props.fontColor}`}
       >
         <div>
           <button
