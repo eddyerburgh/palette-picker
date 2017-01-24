@@ -83,11 +83,13 @@ describe('<AddSwatchForm />', () => {
     expect(wrapper.find('label')).to.have.className('active');
   });
 
-  it('removes text label className active when text input has text value when input and is unfocussed', () => {
+  it('removes text label className active, invalid and valid when text input has text value when input and is unfocussed', () => {
     const wrapper = mount(<AddSwatchForm {...props} />);
     const textInput = wrapper.find('[type="text"]');
     textInput.simulate('focus');
     textInput.simulate('blur');
     expect(wrapper.find('label')).to.not.have.className('active');
+    expect(wrapper.find('label')).to.not.have.className('invalid');
+    expect(wrapper.find('label')).to.not.have.className('valid');
   });
 });

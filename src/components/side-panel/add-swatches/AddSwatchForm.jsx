@@ -10,7 +10,9 @@ class AddSwatchForm extends Component {
     super(props);
 
     this.state = {
-      error: false
+      invalid: false,
+      valid: false,
+      active: false
     };
 
     // Bind this to handleSubmit in constructor to avoid recreating function on render()
@@ -41,7 +43,7 @@ class AddSwatchForm extends Component {
 
   handleBlur(event) {
     if (event.target.value === '') {
-      this.setState({ active: false });
+      this.setState({ active: false, invalid: false, valid: false });
     }
   }
 
