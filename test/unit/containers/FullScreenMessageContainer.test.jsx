@@ -2,6 +2,7 @@ import { mount } from 'enzyme';
 import React from 'react';
 import { Provider } from 'react-redux';
 import proxyquire from 'proxyquire';
+import sinon from 'sinon';
 import storeMock from '../../resources/mocks/store.mock';
 
 proxyquire.noCallThru();
@@ -9,16 +10,21 @@ proxyquire.noCallThru();
 describe('<FullScreenMessageContainer />', () => {
   let FullScreenMessageContainer;
   let FullScreenMessageStub;
+  let fullScreenMessageActionsStub;
   let store;
   let state;
 
   beforeEach(() => {
     FullScreenMessageStub = () => <div />;
+    fullScreenMessageActionsStub = {
+      closeFullScreenMessage: sinon.stub()
+    };
     state = { fullScreenMessage: { display: true } };
     store = storeMock(state);
 
     FullScreenMessageContainer = proxyquire('../../../src/containers/FullScreenMessageContainer', {
-      '../components/full-screen-message/FullScreenMessage': FullScreenMessageStub
+      '../components/full-screen-message/FullScreenMessage': FullScreenMessageStub,
+      '../redux/modules/fullScreenMessage': fullScreenMessageActionsStub
     }
     ).default;
   });
@@ -50,5 +56,16 @@ describe('<FullScreenMessageContainer />', () => {
     );
     const FullScreenMessageProps = wrapper.find(FullScreenMessageStub).props();
     expect(FullScreenMessageProps.message).to.equal(state.fullScreenMessage.message);
+  });
+
+  it('maps dispatch to closeFullScreenMessage and passes to <FullScreenMessage />', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <FullScreenMessageContainer />
+      </Provider>
+    );
+    const FullScreenMessageProps = wrapper.find(FullScreenMessageStub).props();
+    FullScreenMessageProps.closeMessage();
+    expect(fullScreenMessageActionsStub.closeFullScreenMessage).to.have.been.calledOnce;
   });
 });

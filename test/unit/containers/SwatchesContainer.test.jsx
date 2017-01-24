@@ -11,6 +11,7 @@ describe('<SwatchesContainer />', () => {
   let SwatchesContainer;
   let SwatchStub;
   let swatchesStub;
+  let fullScreenMessageStub;
   let modalStub;
   let store;
   let state;
@@ -24,13 +25,17 @@ describe('<SwatchesContainer />', () => {
     modalStub = {
       displayNewModal: sinon.stub()
     };
+    fullScreenMessageStub = {
+      displayNewFullScreenMessage: sinon.stub()
+    };
     state = { swatches: { swatches: [{ hex: '#666666', id: '1' }, { hex: '#777777', id: '2' }] } };
     store = storeMock(state);
 
     SwatchesContainer = proxyquire('../../../src/containers/SwatchesContainer', {
       '../components/swatches/Swatch': SwatchStub,
       '../redux/modules/swatches': swatchesStub,
-      '../redux/modules/modal': modalStub
+      '../redux/modules/modal': modalStub,
+      '../redux/modules/fullScreenMessage': fullScreenMessageStub
     }
     ).default;
   });
@@ -76,6 +81,17 @@ describe('<SwatchesContainer />', () => {
     );
     const Swatch = wrapper.find(SwatchStub).first();
     expect(Swatch.props().height).to.equal('third');
+  });
+
+  it('maps dispatch to displayNewFullScreenMessage() and passes it to <Swatch />', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <SwatchesContainer />
+      </Provider>
+    );
+    const Swatches = wrapper.find(SwatchStub).first();
+    Swatches.props().displayNewFullScreenMessage();
+    expect(fullScreenMessageStub.displayNewFullScreenMessage).to.have.been.calledOnce;
   });
 
   it('maps dispatch to replaceSwatch() and passes it to <Swatch />', () => {

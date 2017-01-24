@@ -11,9 +11,17 @@ type Props = {
   fontColor: string,
   height: string,
   displayNewModal: Function, // eslint-disable-line react/no-unused-prop-types
+  displayNewFullScreenMessage: Function,
   replaceSwatch: Function,
   removeSwatch: Function
 }
+
+type ClickEvent = {
+  target: {
+    className: string
+  }
+}
+
 type State = {
   displayEdit: boolean
 }
@@ -33,9 +41,12 @@ class Swatch extends Component {
   }
 
   state: State;
-
-  copyToClipboard() {
+  copyToClipboard(event: ClickEvent) {
+    if (event.target.className.indexOf('swatch ') === -1) {
+      return;
+    }
     try {
+      this.props.displayNewFullScreenMessage('Copied to clipboard!');
       copy(this.props.rgb);
     } catch (error) {
       this.props.displayNewModal({

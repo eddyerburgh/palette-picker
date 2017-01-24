@@ -3,14 +3,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import FullScreenMessage from '../components/full-screen-message/FullScreenMessage';
+import * as fullScreenMessageActions from '../redux/modules/fullScreenMessage';
 
 type Props = {
   display: Boolean,
-  message: string
+  message: string,
+  closeMessage: Function
 }
 
 const FullScreenMessageContainer = (props: Props): React$Element<any> => (
-  props.display && <FullScreenMessage message={props.message} />
+  props.display && <FullScreenMessage message={props.message} closeMessage={props.closeMessage} />
 );
 
 const mapStateToProps = state => ({
@@ -18,6 +20,11 @@ const mapStateToProps = state => ({
   display: state.fullScreenMessage.display
 });
 
+const mapDispatchToProps = {
+  closeMessage: fullScreenMessageActions.closeFullScreenMessage
+};
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(FullScreenMessageContainer);
