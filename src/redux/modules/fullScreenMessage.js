@@ -18,14 +18,16 @@ type NewMessageAction = {
 }
 
 type CloseMessageAction = {
-  type: string
+type: string
 }
+
 
 // Reducer
 
 const initialState = {
   display: false,
-  message: null
+  message: null,
+  swatch: {}
 };
 
 export default function reducer(
@@ -36,7 +38,9 @@ export default function reducer(
       return {
         ...state,
         display: true,
-        message: action.message
+        message: action.message,
+        rgb: action.rgb,
+        fontColor: action.fontColor
       };
     case CLOSE_MESSAGE:
       return {
@@ -50,10 +54,16 @@ export default function reducer(
 
 // Action Creators
 
-export function displayNewFullScreenMessage(message: string): NewMessageAction {
+export function displayNewFullScreenMessage(
+  message: string,
+  rgb: string,
+  fontColor: string
+): NewMessageAction {
   return {
     type: NEW_MESSAGE,
-    message
+    message,
+    rgb,
+    fontColor
   };
 }
 

@@ -46,8 +46,13 @@ class Swatch extends Component {
       return;
     }
     try {
-      this.props.displayNewFullScreenMessage('Copied to clipboard!');
       copy(this.props.rgb);
+
+      this.props.displayNewFullScreenMessage(
+        'Copied to clipboard!',
+        this.props.rgb,
+        this.props.fontColor
+      );
     } catch (error) {
       this.props.displayNewModal({
         heading: 'Error',

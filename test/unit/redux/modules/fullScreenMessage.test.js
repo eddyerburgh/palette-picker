@@ -13,9 +13,14 @@ describe('fullScreenMessage', () => {
 
     it('returns initialState with display set to true and message set to message when NEW_MESSAGE is passed', () => {
       const message = 'test message';
-      const closeMessageAction = fullScreenActions.displayNewFullScreenMessage(message);
+      const rgb = 'rgb';
+      const fontColor = 'fontColor';
+      const closeMessageAction = fullScreenActions.displayNewFullScreenMessage(
+        message, rgb, fontColor);
       const state = (fullScreen(initialState, closeMessageAction));
       expect(state.message).to.equal(message);
+      expect(state.rgb).to.equal(rgb);
+      expect(state.fontColor).to.equal(fontColor);
       expect(state.display).to.equal(true);
     });
 
@@ -29,13 +34,17 @@ describe('fullScreenMessage', () => {
   describe('action creators', () => {
     describe('displayNewMessage', () => {
       const message = 'test message';
+      const rgb = 'rgb';
+      const fontColor = 'font-color';
 
       it('returns an action with message property', () => {
         const expectedAction = {
           type: 'NEW_MESSAGE',
-          message
+          message,
+          rgb,
+          fontColor
         };
-        const action = fullScreenActions.displayNewFullScreenMessage(message);
+        const action = fullScreenActions.displayNewFullScreenMessage(message, rgb, fontColor);
         expect(action).to.deep.equal(expectedAction);
       });
     });

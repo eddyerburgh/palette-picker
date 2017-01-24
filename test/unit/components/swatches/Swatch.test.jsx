@@ -57,6 +57,8 @@ describe('<Swatch />', () => {
     wrapper.simulate('click', { target: { className: 'swatch ' } });
     expect(props.displayNewFullScreenMessage).to.have.been.calledOnce;
     expect(props.displayNewFullScreenMessage.args[0][0]).to.equal('Copied to clipboard!');
+    expect(props.displayNewFullScreenMessage.args[0][1]).to.equal(props.rgb);
+    expect(props.displayNewFullScreenMessage.args[0][2]).to.equal(props.fontColor);
   });
 
   it('does nothing when .swatch__remove or .swatch__edit are clicked', () => {

@@ -1,0 +1,12 @@
+.fullscreen-message {
+  @extend .fullscreen;
+  background-color: $white-color;
+}
+
+.fullscreen-message__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}

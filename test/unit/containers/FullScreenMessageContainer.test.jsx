@@ -19,7 +19,7 @@ describe('<FullScreenMessageContainer />', () => {
     fullScreenMessageActionsStub = {
       closeFullScreenMessage: sinon.stub()
     };
-    state = { fullScreenMessage: { display: true } };
+    state = { fullScreenMessage: { display: true, rgb: 'rgb', fontColor: 'light' } };
     store = storeMock(state);
 
     FullScreenMessageContainer = proxyquire('../../../src/containers/FullScreenMessageContainer', {
@@ -56,6 +56,26 @@ describe('<FullScreenMessageContainer />', () => {
     );
     const FullScreenMessageProps = wrapper.find(FullScreenMessageStub).props();
     expect(FullScreenMessageProps.message).to.equal(state.fullScreenMessage.message);
+  });
+
+  it('passes state.fullScreenMessage.fontColor to <FullScreenMessage /> as color', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <FullScreenMessageContainer />
+      </Provider>
+    );
+    const FullScreenMessageProps = wrapper.find(FullScreenMessageStub).props();
+    expect(FullScreenMessageProps.color).to.equal(state.fullScreenMessage.fontColor);
+  });
+
+  it('passes state.fullScreenMessage.rgb to <FullScreenMessage /> as background', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <FullScreenMessageContainer />
+      </Provider>
+    );
+    const FullScreenMessageProps = wrapper.find(FullScreenMessageStub).props();
+    expect(FullScreenMessageProps.background).to.equal(state.fullScreenMessage.rgb);
   });
 
   it('maps dispatch to closeFullScreenMessage and passes to <FullScreenMessage />', () => {
