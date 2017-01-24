@@ -19,8 +19,11 @@ module.exports = {
 
     browser
       .url(devServer)
+      .waitForElementVisible('.modal__message', 10000)
+      .click('.modal input[type=button]')
       .waitForElementVisible('.swatch', 10000)
       .assert.elementCount('.swatch', 4)
+      .moveToElement('.swatch:nth-of-type(1)', 10, 10)
       .click('.swatch:nth-of-type(1) .swatch__remove')
       .assert.elementCount('.swatch', 3)
       .end();
@@ -31,7 +34,9 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('.add-swatch-form', 10000)
+      .waitForElementVisible('.modal__message', 10000)
+      .click('.modal input[type=button]')
+      .waitForElementVisible('.swatch', 10000)
       .assert.elementCount('.swatch', 4)
       .setValue('.add-swatch-form [type="text"]', '#000')
       .click('.add-swatch-form [type="submit"]')
@@ -45,7 +50,9 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('.add-swatch-form', 10000)
+      .waitForElementVisible('.modal__message', 10000)
+      .click('.modal input[type=button]')
+      .waitForElementVisible('.swatch', 10000)
       .assert.elementCount('.swatch', 4)
       .click('.palette:nth-of-type(1) .palette__name')
       .assert.elementCount('.swatch', 9)
@@ -57,7 +64,9 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('.add-swatch-form', 10000)
+      .waitForElementVisible('.modal__message', 10000)
+      .click('.modal input[type=button]')
+      .moveToElement('.swatch:nth-of-type(1)', 10, 10)
       .click('.swatch:nth-of-type(1) .swatch__edit')
       .setValue('.swatch:nth-of-type(1) [type="text"]', '#000')
       .assert.cssProperty('.swatch:nth-of-type(1)', 'background-color', 'rgba(0, 0, 0, 1)')
