@@ -11,6 +11,7 @@ describe('<SidePanelContainer />', () => {
   let SidePanelContainerStub;
   let TabsStub;
   let AddSwatchesPanelStub;
+  let AboutPanelStub;
   let swatchesActionsStub;
   let tabsActionsStub;
   let state;
@@ -19,6 +20,7 @@ describe('<SidePanelContainer />', () => {
   beforeEach(() => {
     TabsStub = () => <div />;
     AddSwatchesPanelStub = () => <div />;
+    AboutPanelStub = () => <div />;
     tabsActionsStub = {
       switchActiveTab: sinon.stub()
     };
@@ -33,6 +35,7 @@ describe('<SidePanelContainer />', () => {
 
     SidePanelContainerStub = proxyquire('../../../src/containers/SidePanelContainer', {
       '../components/side-panel/tabs/Tabs': TabsStub,
+      '../components/side-panel/about/AboutPanel': AboutPanelStub,
       '../components/side-panel/add-swatches/AddSwatchesPanel': AddSwatchesPanelStub,
       '../redux/modules/tabs': tabsActionsStub,
       '../redux/modules/swatches': swatchesActionsStub
@@ -88,6 +91,16 @@ describe('<SidePanelContainer />', () => {
     );
     const AddSwatchesPanelProps = wrapper.find(AddSwatchesPanelStub).props();
     expect(AddSwatchesPanelProps.palettes).to.deep.equal(state.palettes.palettes);
+  });
+
+  it('renders <AboutPanel /> if props.activeTab equals "about"', () => {
+    state.tabs.activeTab = 'about';
+    const wrapper = mount(
+      <Provider store={store}>
+        <SidePanelContainerStub />
+      </Provider>
+    );
+    expect(wrapper.find(AboutPanelStub).length).to.equal(1);
   });
 
   it('maps dispatch to switchActiveTab and passes it to <AddSwatchesPanel />', () => {
