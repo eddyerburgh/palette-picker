@@ -12,6 +12,7 @@
     "node": "6.9.1"
   },
   "scripts": {
+    "build": "webpack --config build/webpack.prod.config.js",
     "dev": "node build/dev-server.js",
     "flow": "flow check",
     "lint": "eslint --ext .jsx,.js src test",
@@ -56,6 +57,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
     "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^2.0.0-beta",
     "flow-bin": "^0.36.0",
     "html-webpack-plugin": "^2.24.1",
     "jsdom": "^9.8.3",
