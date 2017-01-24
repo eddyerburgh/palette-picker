@@ -14,11 +14,10 @@
   }
 }
 
-@media #{$medium-and-up} {
+@media #{$large-and-up} {
   .swatches {
-    width: calc(100% - 300px);
     height: 100vh;
-    float: left;
+    margin-left: 300px;
   }
 
   .swatch {
