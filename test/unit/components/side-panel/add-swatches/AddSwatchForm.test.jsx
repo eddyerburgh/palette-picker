@@ -53,17 +53,41 @@ describe('<AddSwatchForm />', () => {
     expect(props.addNewSwatch.args[0][0].hex).to.equal('#FFFF00');
   });
 
-  it('sets state.error to true if value is invalid color when form is submitted', () => {
-    const validColor = 'sfdadf##';
+  it('sets text input className to ivalid if value is invalid color when form is submitted', () => {
+    const invalidColor = 'sfdadf##';
     const wrapper = mount(<AddSwatchForm {...props} />);
-    wrapper.find('[type="text"]').node.value = validColor;
+    wrapper.find('[type="text"]').node.value = invalidColor;
     wrapper.find('[type="submit"]').get(0).click();
-    expect(wrapper.state().error).to.equal(true);
+    expect(wrapper.find('[type="text"]')).to.have.className('invalid');
   });
 
-  it('renders an error message if state.error is true', () => {
+  it('sets text input className to valid if value is valid color on change', () => {
+    const validColor = '#666';
     const wrapper = mount(<AddSwatchForm {...props} />);
-    wrapper.setState({ error: true });
-    expect(wrapper.find('.color-warning').length).to.equal(1);
+    wrapper.find('[type="text"]').simulate('change', { target: { value: validColor } });
+    expect(wrapper.find('[type="text"]')).to.have.className('valid');
+  });
+
+  it('sets text label className to active when text input is focussed', () => {
+    const wrapper = mount(<AddSwatchForm {...props} />);
+    wrapper.find('[type="text"]').simulate('focus');
+    expect(wrapper.find('label')).to.have.className('active');
+  });
+
+  it('persists text label className active when text input has text value when input is unfocussed', () => {
+    const wrapper = mount(<AddSwatchForm {...props} />);
+    const textInput = wrapper.find('[type="text"]');
+    textInput.simulate('focus');
+    textInput.node.value = 'something';
+    textInput.simulate('blur');
+    expect(wrapper.find('label')).to.have.className('active');
+  });
+
+  it('removes text label className active when text input has text value when input and is unfocussed', () => {
+    const wrapper = mount(<AddSwatchForm {...props} />);
+    const textInput = wrapper.find('[type="text"]');
+    textInput.simulate('focus');
+    textInput.simulate('blur');
+    expect(wrapper.find('label')).to.not.have.className('active');
   });
 });

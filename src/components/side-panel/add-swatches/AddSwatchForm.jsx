@@ -16,6 +16,8 @@ class AddSwatchForm extends Component {
     // Bind this to handleSubmit in constructor to avoid recreating function on render()
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
   }
 
   handleSubmit(event) {
@@ -25,22 +27,48 @@ class AddSwatchForm extends Component {
 
     if (isColor(value)) {
       this.props.addNewSwatch(new Swatch(value));
-      this.setState({ error: false });
+      this.setState({ valid: false, invalid: false });
     } else {
-      this.setState({ error: true });
+      this.setState({ valid: false, invalid: true });
+    }
+  }
+
+  handleChange(event) {
+    if (isColor(event.target.value)) {
+      this.setState({ valid: true, invalid: false });
+    }
+  }
+
+  handleBlur(event) {
+    if (event.target.value === '') {
+      this.setState({ active: false });
     }
   }
 
   render() {
     return (
       <form className="add-swatch-form" onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="enter color" />
+        <div className="input-field">
+          <input
+            className={(this.state.valid && 'valid') || (this.state.invalid && 'invalid')}
+            id="add-swatch"
+            type="text"
+            onChange={this.handleChange}
+            onFocus={() => this.setState({ active: true })}
+            onBlur={this.handleBlur}
+          />
+          <label
+            htmlFor="add-swatch"
+            data-error="invalid color"
+            data-success="valid color"
+            className={this.state.active && 'active'}
+          >enter color</label>
+        </div>
         <input
           type="submit"
-          value="submit"
+          value="add swatch"
           className="btn"
         />
-        {this.state.error && <span className="color-warning">Invalid color. Must be a valid hex, rgb or CSS color</span>}
       </form>
     );
   }
