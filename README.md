@@ -21,14 +21,13 @@ cd palette-picker
 Install dependencies
 
 ```
-yarn install
+npm install
 ```
-(not got Yarn?  [JOIN US](https://yarnpkg.com/en/docs/install), or just run ```npm install```)
 
 And start
 
 ```
-npm run start-dev
+npm run dev
 ```
 
 ## Support
