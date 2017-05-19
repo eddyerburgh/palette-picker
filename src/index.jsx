@@ -1,29 +1,27 @@
 /* eslint-disable no-shadow, import/no-extraneous-dependencies */
 import 'babel-polyfill';
 import React from 'react';
-import { render } from 'react-dom';
+import reactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import store from './redux/store';
 import Root from './containers/Root';
 
 require('./style/style.scss');
 
-function renderWithHotReload(Root) {
-  render(
+const render = (Component) => {
+  reactDOM.render(
     <AppContainer>
-      <Root store={store} />
+      <Component store={store} />
     </AppContainer>,
-        document.getElementById('root')
+      document.getElementById('root')
     );
-}
+};
 
-renderWithHotReload(Root);
+render(Root);
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./containers/Root', () => {
-    const Root = require('./containers/Root').default; // eslint-disable-line
-    renderWithHotReload(Root);
+  module.hot.accept('./components/App', () => {
+    render(Root);
   });
 }
-

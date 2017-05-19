@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "webpack --config build/webpack.prod.config.js",
-    "dev": "node build/dev-server.js",
+    "dev": "webpack-dev-server --config build/webpack.dev.config",
     "flow": "flow check",
     "lint": "eslint --ext .jsx,.js src test",
     "lint:fix": "npm run lint -- --fix",
@@ -73,7 +73,7 @@
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.1",
-    "webpack": "beta",
+    "webpack": "^2.5.1",
     "webpack-dev-server": "2.2.0"
   },
   "dependencies": {
