@@ -69,7 +69,7 @@ class AddSwatchForm extends Component {
         <input
           type="submit"
           value="add swatch"
-          className="btn"
+          className="btn z-index-1"
         />
       </form>
     );
