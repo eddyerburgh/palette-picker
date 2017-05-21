@@ -5,25 +5,25 @@ import copy from 'copy-to-clipboard';
 import EditSwatch from './EditSwatch';
 
 type Props = {
-  id: string,
-  rgb: string,
-  hex: string,
-  fontColor: string,
-  height: string,
-  displayNewModal: Function, // eslint-disable-line react/no-unused-prop-types
-  displayNewFullScreenMessage: Function,
-  replaceSwatch: Function,
-  removeSwatch: Function
+    displayNewModal: Function,  // eslint-disable-line react/no-unused-prop-types
+    removeSwatch: Function, // eslint-disable-line react/no-unused-prop-types
+    replaceSwatch: Function,  // eslint-disable-line react/no-unused-prop-types
+    displayNewFullScreenMessage: Function,
+    moveSwatch: Function, // eslint-disable-line react/no-unused-prop-types
+    fontColor: string,
+    rgb: string,
+    id: string,
+    hex: string
 }
 
 type ClickEvent = {
-  target: {
-    className: string
-  }
+    target: {
+        className: string
+    }
 }
 
 type State = {
-  displayEdit: boolean
+    displayEdit: boolean
 }
 
 class Swatch extends Component {
@@ -35,8 +35,8 @@ class Swatch extends Component {
       displayEdit: false
     };
 
-    // Bind this to copyToClipboard in constructor to avoid recreating function on render()
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
+        // Bind this to copyToClipboard in constructor to avoid recreating function on render()
+        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
     (this:any).copyToClipboard = this.copyToClipboard.bind(this);
   }
 
@@ -49,10 +49,10 @@ class Swatch extends Component {
       copy(this.props.rgb);
 
       this.props.displayNewFullScreenMessage(
-        'Copied to clipboard!',
-        this.props.rgb,
-        this.props.fontColor
-      );
+                'Copied to clipboard!',
+                this.props.rgb,
+                this.props.fontColor
+            );
     } catch (error) {
       this.props.displayNewModal({
         heading: 'Error',
@@ -64,9 +64,9 @@ class Swatch extends Component {
   render() {
     return (
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
+        className="swatch__inner"
         onClick={this.copyToClipboard}
         style={{ backgroundColor: this.props.rgb }}
-        className={`swatch hoverable swatch--${this.props.height} color-${this.props.fontColor}`}
       >
         <div>
           <button

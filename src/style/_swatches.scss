@@ -1,5 +1,4 @@
 .swatch {
-  padding: 1rem;
   cursor: pointer;
   position: relative;
 
@@ -12,6 +11,11 @@
       visibility: visible;
     }
   }
+}
+
+.swatch__inner {
+  height: 100%;
+  padding: 1rem;
 }
 
 @media #{$large-and-up} {

@@ -1,6 +1,5 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { Provider } from 'react-redux';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 import storeMock from '../../resources/mocks/store.mock';
@@ -9,7 +8,7 @@ proxyquire.noCallThru();
 
 describe('<SwatchesContainer />', () => {
   let SwatchesContainer;
-  let SwatchStub;
+  let SwatchesStub;
   let swatchesStub;
   let fullScreenMessageStub;
   let modalStub;
@@ -17,10 +16,11 @@ describe('<SwatchesContainer />', () => {
   let state;
 
   beforeEach(() => {
-    SwatchStub = () => <div />;
+    SwatchesStub = () => <div />;
     swatchesStub = {
       removeSwatch: sinon.stub(),
-      replaceSwatch: sinon.stub()
+      replaceSwatch: sinon.stub(),
+      moveSwatch: sinon.stub()
     };
     modalStub = {
       displayNewModal: sinon.stub()
@@ -32,7 +32,7 @@ describe('<SwatchesContainer />', () => {
     store = storeMock(state);
 
     SwatchesContainer = proxyquire('../../../src/containers/SwatchesContainer', {
-      '../components/swatches/Swatch': SwatchStub,
+      '../components/swatches/Swatches': SwatchesStub,
       '../redux/modules/swatches': swatchesStub,
       '../redux/modules/modal': modalStub,
       '../redux/modules/fullScreenMessage': fullScreenMessageStub
@@ -40,90 +40,40 @@ describe('<SwatchesContainer />', () => {
     ).default;
   });
 
-  it('renders a <Swatch /> for each object in state.swatches.swatches', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <SwatchesContainer />
-      </Provider>
-    );
-    const Swatch = wrapper.find(SwatchStub).first();
-    expect(Swatch.props()).to.shallowDeepEqual(state.swatches.swatches[0]);
-  });
-
-  it('passes height=full if number of swatches is less than 5', () => {
-    state.swatches.swatches = [{}, {}, {}, {}];
-    const wrapper = mount(
-      <Provider store={store}>
-        <SwatchesContainer />
-      </Provider>
-    );
-    const Swatch = wrapper.find(SwatchStub).first();
-    expect(Swatch.props().height).to.equal('whole');
-  });
-
-  it('passes height=half if number of swatches is greater than 4 but less than 9', () => {
-    state.swatches.swatches = [{}, {}, {}, {}, {}];
-    const wrapper = mount(
-      <Provider store={store}>
-        <SwatchesContainer />
-      </Provider>
-    );
-    const Swatch = wrapper.find(SwatchStub).first();
-    expect(Swatch.props().height).to.equal('half');
-  });
-
-  it('passes height=third if number of swatches is greater than 9', () => {
-    state.swatches.swatches = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
-    const wrapper = mount(
-      <Provider store={store}>
-        <SwatchesContainer />
-      </Provider>
-    );
-    const Swatch = wrapper.find(SwatchStub).first();
-    expect(Swatch.props().height).to.equal('third');
-  });
-
-  it('maps dispatch to displayNewFullScreenMessage() and passes it to <Swatch />', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <SwatchesContainer />
-      </Provider>
-    );
-    const Swatches = wrapper.find(SwatchStub).first();
+  it('maps dispatch to displayNewFullScreenMessage() and passes it to <Swatches />', () => {
+    const wrapper = mount(<SwatchesContainer store={store} />);
+    const Swatches = wrapper.find(SwatchesStub).first();
     Swatches.props().displayNewFullScreenMessage();
     expect(fullScreenMessageStub.displayNewFullScreenMessage).to.have.been.calledOnce;
   });
 
-  it('maps dispatch to replaceSwatch() and passes it to <Swatch />', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <SwatchesContainer />
-      </Provider>
-    );
-    const Swatches = wrapper.find(SwatchStub).first();
+  it('maps dispatch to replaceSwatch() and passes it to <Swatches />', () => {
+    const wrapper = mount(<SwatchesContainer store={store} />);
+
+    const Swatches = wrapper.find(SwatchesStub).first();
     Swatches.props().replaceSwatch();
     expect(swatchesStub.replaceSwatch).to.have.been.calledOnce;
   });
 
-  it('maps dispatch to removeSwatch() and passes it to <Swatch />', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <SwatchesContainer />
-      </Provider>
-    );
-    const Swatches = wrapper.find(SwatchStub).first();
+  it('maps dispatch to removeSwatch() and passes it to <Swatches />', () => {
+    const wrapper = mount(<SwatchesContainer store={store} />);
+
+    const Swatches = wrapper.find(SwatchesStub).first();
     Swatches.props().removeSwatch();
     expect(swatchesStub.removeSwatch).to.have.been.calledOnce;
   });
 
-  it('maps dispatch to displayNewModal() and passes it to <Swatch />', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <SwatchesContainer />
-      </Provider>
-    );
-    const Swatches = wrapper.find(SwatchStub).first();
+  it('maps dispatch to displayNewModal() and passes it to <Swatches />', () => {
+    const wrapper = mount(<SwatchesContainer store={store} />);
+    const Swatches = wrapper.find(SwatchesStub).first();
     Swatches.props().displayNewModal();
     expect(modalStub.displayNewModal).to.have.been.calledOnce;
+  });
+
+  it('maps dispatch to moveSwatch() and passes it to <Swatches />', () => {
+    const wrapper = mount(<SwatchesContainer store={store} />);
+    const Swatches = wrapper.find(SwatchesStub).first();
+    Swatches.props().moveSwatch();
+    expect(swatchesStub.moveSwatch).to.have.been.calledOnce;
   });
 });

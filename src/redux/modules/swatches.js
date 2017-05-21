@@ -37,9 +37,10 @@ export type ReplaceSwatchAction = {
   swatchId: string
 }
 
-export type ReplaceSwatchesAction = {
+export type MoveSwatchAction = {
   type: string,
-  swatch: Array<SwatchType>,
+  oldIndex: number,
+  newIndex: number,
 }
 
 // Reducer
@@ -151,7 +152,7 @@ export function replaceSwatch(swatchId: string, swatch: SwatchType): ReplaceSwat
   };
 }
 
-export function moveSwatch(oldIndex: Number, newIndex: number): ReplaceSwatchesAction {
+export function moveSwatch(oldIndex: number, newIndex: number): MoveSwatchAction {
   return {
     type: MOVE_SWATCH,
     oldIndex,

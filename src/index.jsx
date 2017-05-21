@@ -21,7 +21,7 @@ render(Root);
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
+  module.hot.accept('./containers/Root', () => {
     render(Root);
   });
 }
