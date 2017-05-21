@@ -7,7 +7,8 @@ import type { PaletteType } from '../../../redux/modules/palettes';
 
 type Props = {
   palettes: Array<PaletteType>,
-  addNewSwatch: Function
+  addNewSwatch: Function,
+  deleteSwatches: Function
 }
 
 const AddSwatchesPanel = (props: Props): React$Element<any> => {
@@ -23,6 +24,14 @@ const AddSwatchesPanel = (props: Props): React$Element<any> => {
       <AddSwatchForm addNewSwatch={props.addNewSwatch} />
       <p>Or choose from some pre made palettes</p>
       {palettes}
+      <hr />
+      <button
+        className="btn"
+        id="delete-all"
+        onClick={props.deleteSwatches}
+      >
+          Delete all
+      </button>
     </div>
   );
 };

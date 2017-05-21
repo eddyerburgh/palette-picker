@@ -29,6 +29,17 @@ module.exports = {
       .end();
   },
 
+  'deletes all swatches when delete all button is pressed': function test(browser) {
+    const devServer = browser.globals.devServerURL;
+
+    browser
+          .url(devServer)
+          .waitForElementVisible('.modal__message', 10000)
+          .click('#delete-all')
+          .assert.elementCount('.swatch', 0)
+          .end();
+  },
+
   'renders a swatch with correct background color when valid color is submitted in the add swatch form': function test(browser) {
     const devServer = browser.globals.devServerURL;
 

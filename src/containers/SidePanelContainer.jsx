@@ -14,7 +14,8 @@ type Props = {
   tabs: Array<string>,
   activeTab: string,
   switchActiveTab: Function,
-  palettes: Array<PaletteType> // eslint-disable-line react/no-unused-prop-types
+  palettes: Array<PaletteType>, // eslint-disable-line react/no-unused-prop-types
+  deleteSwatches: Function // eslint-disable-line react/no-unused-prop-types
 }
 
 const SidePanelContainer = (props: Props): React$Element<any> => {
@@ -24,6 +25,7 @@ const SidePanelContainer = (props: Props): React$Element<any> => {
         return (
           <AddSwatchesPanel
             addNewSwatch={props.addNewSwatch}
+            deleteSwatches={props.deleteSwatches}
             palettes={props.palettes}
           />
         );
@@ -59,6 +61,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   addNewSwatch: swatchesActions.addNewSwatch,
+  deleteSwatches: swatchesActions.deleteSwatches,
   switchActiveTab: tabsActions.switchActiveTab
 };
 
