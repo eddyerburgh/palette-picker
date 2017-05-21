@@ -33,6 +33,7 @@ const Swatches = (props: Props): React$Element<any> => {
           {...swatch}
           displayNewModal={props.displayNewModal}
           replaceSwatch={props.replaceSwatch}
+          removeSwatch={props.removeSwatch}
           moveSwatch={props.moveSwatch}
           displayNewFullScreenMessage={props.displayNewFullScreenMessage}
           height={returnSwatchHeight()}
