@@ -6,6 +6,7 @@ const ADD_SWATCH = 'ADD_SWATCH';
 const REMOVE_SWATCH = 'REMOVE_SWATCH';
 const REPLACE_SWATCH = 'REPLACE_SWATCH';
 const MOVE_SWATCH = 'MOVE_SWATCH';
+const DELETE_SWATCHES = 'DELETE_SWATCHES';
 
 // Flow types
 
@@ -41,6 +42,10 @@ export type MoveSwatchAction = {
   type: string,
   oldIndex: number,
   newIndex: number,
+}
+
+export type DeleteSwatchesAction = {
+  type: string
 }
 
 // Reducer
@@ -101,6 +106,11 @@ export default function reducer(
           return swatch;
         })
       };
+    case DELETE_SWATCHES:
+      return {
+        ...state,
+        swatches: []
+      };
     case MOVE_SWATCH: // eslint-disable-line no-case-declarations
       const { oldIndex, newIndex } = action;
       let newSwatches;
@@ -157,5 +167,11 @@ export function moveSwatch(oldIndex: number, newIndex: number): MoveSwatchAction
     type: MOVE_SWATCH,
     oldIndex,
     newIndex
+  };
+}
+
+export function deleteSwatches(): DeleteSwatchesAction {
+  return {
+    type: DELETE_SWATCHES
   };
 }

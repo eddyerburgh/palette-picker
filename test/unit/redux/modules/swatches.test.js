@@ -52,6 +52,12 @@ describe('swatches', () => {
       expect(state.swatches[2].id).to.equal(1);
       expect(state.swatches[3].id).to.equal(2);
     });
+
+    it('returns state with swatches as an empty array when passed deleteSwatches', () => {
+      const state = (swatches(initialState, swatchesActions.deleteSwatches()));
+      expect(state.swatches.length).to.equal(0);
+      expect(Array.isArray(state.swatches)).to.equal(true);
+    });
   });
   describe('action creators', () => {
     describe('addNewSwatch', () => {
@@ -109,6 +115,16 @@ describe('swatches', () => {
           newIndex
         };
         const action = swatchesActions.moveSwatch(oldIndex, newIndex);
+        expect(action).to.deep.equal(expectedAction);
+      });
+    });
+
+    describe('deleteSwatches', () => {
+      it('returns an action with DELETE_SWATCHES type', () => {
+        const expectedAction = {
+          type: 'DELETE_SWATCHES'
+        };
+        const action = swatchesActions.deleteSwatches();
         expect(action).to.deep.equal(expectedAction);
       });
     });
