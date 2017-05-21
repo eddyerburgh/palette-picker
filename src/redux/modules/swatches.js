@@ -5,7 +5,7 @@
 const ADD_SWATCH = 'ADD_SWATCH';
 const REMOVE_SWATCH = 'REMOVE_SWATCH';
 const REPLACE_SWATCH = 'REPLACE_SWATCH';
-const REPLACE_SWATCHES = 'REPLACE_SWATCHES';
+const MOVE_SWATCH = 'MOVE_SWATCH';
 
 // Flow types
 
@@ -100,10 +100,27 @@ export default function reducer(
           return swatch;
         })
       };
-    case REPLACE_SWATCHES:
+    case MOVE_SWATCH: // eslint-disable-line no-case-declarations
+      const { oldIndex, newIndex } = action;
+      let newSwatches;
+      if (newIndex > oldIndex) {
+        newSwatches = [
+          ...state.swatches.slice(0, oldIndex),
+          ...state.swatches.slice(oldIndex + 1, newIndex + 1),
+          state.swatches[oldIndex],
+          ...state.swatches.slice(newIndex + 1)
+        ];
+      } else {
+        newSwatches = [
+          ...state.swatches.slice(0, newIndex),
+          state.swatches[oldIndex],
+          ...state.swatches.slice(newIndex, oldIndex),
+          ...state.swatches.slice(oldIndex + 1)
+        ];
+      }
       return {
         ...state,
-        swatches: action.swatches
+        swatches: newSwatches
       };
     default:
       return state;
@@ -134,9 +151,10 @@ export function replaceSwatch(swatchId: string, swatch: SwatchType): ReplaceSwat
   };
 }
 
-export function replaceSwatches(swatches: SwatchType): ReplaceSwatchesAction {
+export function moveSwatch(oldIndex: Number, newIndex: number): ReplaceSwatchesAction {
   return {
-    type: REPLACE_SWATCHES,
-    swatches
+    type: MOVE_SWATCH,
+    oldIndex,
+    newIndex
   };
 }

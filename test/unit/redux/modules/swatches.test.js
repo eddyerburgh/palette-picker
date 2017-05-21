@@ -33,12 +33,24 @@ describe('swatches', () => {
       expect(state.swatches[1]).to.deep.equal(swatch);
     });
 
-    it('returns initialState with swatches replaced by new swatches when passed replaceSwatches', () => {
-      const newSwatches = [{}, {}];
-      const state = (swatches(initialState, swatchesActions.replaceSwatches(newSwatches)));
-      expect(state.swatches[0]).deep.equal(newSwatches[0]);
-      expect(state.swatches[1]).deep.equal(newSwatches[1]);
-      expect(state.swatches.length).to.equal(2);
+    it('moves swatch to new position, pushing other swatches back when passed moveSwatch', () => {
+      initialState.swatches = [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }];
+      const state = (swatches(initialState, swatchesActions.moveSwatch(1, 3)));
+      expect(state.swatches.length).to.equal(4);
+      expect(state.swatches[0].id).to.equal(0);
+      expect(state.swatches[1].id).to.equal(2);
+      expect(state.swatches[2].id).to.equal(3);
+      expect(state.swatches[3].id).to.equal(1);
+    });
+
+    it('moves swatch to new position, pushing other swatches forward when passed moveSwatch', () => {
+      initialState.swatches = [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }];
+      const state = (swatches(initialState, swatchesActions.moveSwatch(3, 1)));
+      expect(state.swatches.length).to.equal(4);
+      expect(state.swatches[0].id).to.equal(0);
+      expect(state.swatches[1].id).to.equal(3);
+      expect(state.swatches[2].id).to.equal(1);
+      expect(state.swatches[3].id).to.equal(2);
     });
   });
   describe('action creators', () => {
@@ -87,14 +99,16 @@ describe('swatches', () => {
       });
     });
 
-    describe('replaceSwatches', () => {
+    describe('moveSwatch', () => {
       it('returns an action with swatch and swatchId as payload', () => {
-        const newSwatches = [{}, {}];
+        const oldIndex = 9;
+        const newIndex = 8;
         const expectedAction = {
-          type: 'REPLACE_SWATCHES',
-          swatches
+          type: 'MOVE_SWATCH',
+          oldIndex,
+          newIndex
         };
-        const action = swatchesActions.replaceSwatches(newSwatches);
+        const action = swatchesActions.moveSwatch(oldIndex, newIndex);
         expect(action).to.deep.equal(expectedAction);
       });
     });
