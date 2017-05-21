@@ -32,6 +32,14 @@ describe('swatches', () => {
       const state = (swatches(initialState, swatchesActions.replaceSwatch(swatchId, swatch)));
       expect(state.swatches[1]).to.deep.equal(swatch);
     });
+
+    it('returns initialState with swatches replaced by new swatches when passed replaceSwatches', () => {
+      const newSwatches = [{}, {}];
+      const state = (swatches(initialState, swatchesActions.replaceSwatches(newSwatches)));
+      expect(state.swatches[0]).deep.equal(newSwatches[0]);
+      expect(state.swatches[1]).deep.equal(newSwatches[1]);
+      expect(state.swatches.length).to.equal(2);
+    });
   });
   describe('action creators', () => {
     describe('addNewSwatch', () => {
@@ -75,6 +83,18 @@ describe('swatches', () => {
           swatchId
         };
         const action = swatchesActions.replaceSwatch(swatchId, swatch);
+        expect(action).to.deep.equal(expectedAction);
+      });
+    });
+
+    describe('replaceSwatches', () => {
+      it('returns an action with swatch and swatchId as payload', () => {
+        const newSwatches = [{}, {}];
+        const expectedAction = {
+          type: 'REPLACE_SWATCHES',
+          swatches
+        };
+        const action = swatchesActions.replaceSwatches(newSwatches);
         expect(action).to.deep.equal(expectedAction);
       });
     });
