@@ -35,6 +35,8 @@ module.exports = {
     browser
           .url(devServer)
           .waitForElementVisible('.modal__message', 10000)
+          .click('.modal input[type=button]')
+          .waitForElementVisible('.swatch', 10000)
           .click('#delete-all')
           .assert.elementCount('.swatch', 0)
           .end();
@@ -52,7 +54,7 @@ module.exports = {
       .setValue('.add-swatch-form [type="text"]', '#000')
       .click('.add-swatch-form [type="submit"]')
       .assert.elementCount('.swatch', 5)
-      .assert.cssProperty('.swatch:nth-of-type(5)', 'background-color', 'rgba(0, 0, 0, 1)')
+      .assert.cssProperty('.swatch:nth-of-type(5) .swatch__inner', 'background-color', 'rgba(0, 0, 0, 1)')
       .end();
   },
 
@@ -81,7 +83,7 @@ module.exports = {
       .click('.swatch:nth-of-type(1) .swatch__edit')
       .moveToElement('.swatch:nth-of-type(1)', 10, 10)
       .setValue('.swatch:nth-of-type(1) [type="text"]', '#000')
-      .assert.cssProperty('.swatch:nth-of-type(1)', 'background-color', 'rgba(0, 0, 0, 1)')
+      .assert.cssProperty('.swatch:nth-of-type(1) .swatch__inner', 'background-color', 'rgba(0, 0, 0, 1)')
       .end();
   }
 };
