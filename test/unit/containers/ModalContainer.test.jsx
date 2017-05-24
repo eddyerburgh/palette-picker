@@ -1,8 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { Provider } from 'react-redux';
-import proxyquire from 'proxyquire';
 import sinon from 'sinon';
+import proxyquire from 'proxyquire';
 import storeMock from '../../resources/mocks/store.mock';
 
 proxyquire.noCallThru();
@@ -30,49 +29,29 @@ describe('<ModalContainer />', () => {
   });
 
   it('is rendered', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <ModalContainer />
-      </Provider>
-      );
+    const wrapper = mount(<ModalContainer store={store} />);
     expect(wrapper).to.exist;
   });
 
   it('renders <Modal /> if prosp.modal.display is true', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <ModalContainer />
-      </Provider>
-      );
+    const wrapper = mount(<ModalContainer store={store} />);
     expect(wrapper.find(modalStub)).to.have.length(1);
   });
 
   it('does not render <Modal /> if prosp.modal.display is false', () => {
     state.modal.display = false;
-    const wrapper = mount(
-      <Provider store={store}>
-        <ModalContainer />
-      </Provider>
-    );
+    const wrapper = mount(<ModalContainer store={store} />);
     expect(wrapper.find(modalStub)).to.have.length(0);
   });
 
   it('passes state.modal to <Modal />', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <ModalContainer />
-      </Provider>
-    );
+    const wrapper = mount(<ModalContainer store={store} />);
     const modalProps = wrapper.find(modalStub).props();
     expect(modalProps.modal).to.equal(state.modal);
   });
 
   it('maps dispatch to modalActions.closeModal', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <ModalContainer />
-      </Provider>
-    );
+    const wrapper = mount(<ModalContainer store={store} />);
     const modal = wrapper.find(modalStub);
     modal.props().closeModal();
     expect(modalActionsStub.closeModal).to.have.been.calledOnce;

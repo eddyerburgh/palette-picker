@@ -38,7 +38,6 @@ describe('<SidePanelContainer />', () => {
 
   it('renders <Tabs /> with props.activeTab', () => {
     const wrapper = mount(<SidePanelContainer store={store} />);
-
     expect(wrapper.find(SidePanelStub).props().activeTab).to.equal(state.tabs.activeTab);
   });
 
@@ -57,7 +56,6 @@ describe('<SidePanelContainer />', () => {
     const wrapper = mount(<SidePanelContainer store={store} />);
     expect(wrapper.find(SidePanelStub).props().palettes).to.deep.equal(state.palettes.palettes);
   });
-
 
   it('maps dispatch to switchActiveTab and passes it to <SidePanel />', () => {
     const wrapper = mount(<SidePanelContainer store={store} />);
