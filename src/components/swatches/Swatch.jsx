@@ -39,7 +39,7 @@ class Swatch extends Component {
   state: State;
 
   copyToClipboard = (event: ClickEvent) => {
-    if (event.target.className.indexOf('swatch ') === -1) {
+    if (event.target.className.indexOf('swatch__inner') === -1) {
       return;
     }
     try {

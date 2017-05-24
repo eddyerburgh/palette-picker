@@ -9,12 +9,14 @@ type Props = {
 }
 
 const Tab = (props: Props): React$Element<any> => (
-  <button
-    onClick={() => props.switchActiveTab(props.name)}
-    className={props.isActive ? 'active tab' : 'tab'}
-  >
-    {props.name}
-  </button>
+  <li className={props.isActive ? 'active tab-item' : 'tab-item'} >
+    <a
+      onClick={() => props.switchActiveTab(props.name)}
+      href={`#${props.name}`}
+    >
+      {props.name}
+    </a>
+  </li>
 );
 
 export default Tab;

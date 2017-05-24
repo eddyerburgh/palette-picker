@@ -1,5 +1,5 @@
 .sidepanel {
-  @extend .z-depth-1;
+ z-index: 1;
 }
 
 .sidepanel__header {

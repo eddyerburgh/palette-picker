@@ -1,12 +1,3 @@
-// ==========================================================================
-// Variables
-// ==========================================================================
-//
-// Table of Contents:
-//
-//  1. Colors
-//  2. Buttons
-//  3. Forms
 
 // 1. Colors
 // ==========================================================================
@@ -21,95 +12,12 @@ $success-color: #4CAF50;
 $error-color: #F44336;
 $link-color: $secondary-color;
 
-// 2. Buttons
+// 2. Media Queries
 // ==========================================================================
 
-// Shared styles
-$button-border: none ;
-$button-background-focus: lighten($secondary-color, 4%);
-$button-font-size: 1.3rem;
-$button-height: 36px;
-$button-padding: 0 2rem;
-$button-radius: 2px;
-
-// Disabled styles
-$button-disabled-background: #DFDFDF;
-$button-disabled-color: #9F9F9F;
-
-// Raised buttons
-$button-raised-background: $secondary-color;
-$button-raised-background-hover: lighten($button-raised-background, 5%);
-$button-raised-color: #fff;
-
-// Large buttons
-$button-large-icon-font-size: 1.6rem;
-$button-large-height: $button-height * 1.5;
-
-// Flat buttons
-$button-flat-color: #343434;
-$button-flat-disabled-color: lighten(#999, 10%);
-
-// Floating buttons
-$button-floating-background: $secondary-color;
-$button-floating-background-hover: $button-floating-background;
-$button-floating-color: #fff;
-$button-floating-size: 40px;
-$button-floating-large-size: 56px;
-$button-floating-radius: 50%;
-
-// 3. Forms
-// ==========================================================================
-
-// Text Inputs + Textarea
-$input-height: 3rem;
-$input-border-color: $secondary-color;
-$input-border: 1px solid $input-border-color;
-$input-background: $white-color;
-$input-error-color: $error-color;
-$input-success-color: $success-color;
-$input-focus-color: $primary-color;
-$input-font-size: 1rem;
-$input-margin: 0 0 20px 0;
-$input-padding: 0;
-$input-transition: all .3s;
-$label-font-size: .8rem;
-$input-disabled-color: rgba(0,0,0, .26);
-$input-disabled-solid-color: #BDBDBD;
-$input-disabled-border: 1px dotted $input-disabled-color;
-$input-invalid-border: 1px solid $input-error-color;
-$placeholder-text-color: lighten($input-border-color, 20%);
-
-// 12. Grid
-// ==========================================================================
-
-$num-cols: 12;
-$gutter-width: 1.5rem;
-
-// 11. Global
-// ==========================================================================
-
-// Media Query Ranges
-$small-screen-up: 601px;
-$medium-screen-up: 993px;
-$large-screen-up: 1201px;
 $small-screen: 600px;
 $medium-screen: 992px;
 $large-screen: 1200px;
 
-$medium-and-up: "only screen and (min-width : #{$small-screen-up})";
-$large-and-up: "only screen and (min-width : #{$medium-screen-up})";
-$small-and-down: "only screen and (max-width : #{$small-screen})";
-$medium-and-down: "only screen and (max-width : #{$medium-screen})";
-$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})";
-
-// 20. Typography
-// ==========================================================================
-
-$off-black: rgba(0, 0, 0, 0.87);
-// Header Styles
-$h1-fontsize: 4.2rem;
-$h2-fontsize: 3.56rem;
-$h3-fontsize: 2.92rem;
-$h4-fontsize: 2.28rem;
-$h5-fontsize: 1.64rem;
-$h6-fontsize: 1rem;
+$medium-and-up: "only screen and (min-width : #{$small-screen})";
+$large-and-up: "only screen and (min-width : #{$medium-screen})";

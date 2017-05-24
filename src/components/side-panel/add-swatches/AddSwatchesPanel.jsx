@@ -22,7 +22,6 @@ const AddSwatchesPanel = (props: Props): React$Element<any> => (
         addNewSwatch={props.addNewSwatch}
         key={`palette${i}`}
       />)}
-    <hr />
     <button
       className="btn"
       id="delete-all"

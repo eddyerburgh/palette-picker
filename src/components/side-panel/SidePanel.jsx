@@ -16,15 +16,18 @@ type Props = {
 }
 
 const SidePanel = (props: Props): React$Element<any> => (
-  <div className="sidepanel">
-    <header className="sidepanel__header bg-secondary">
+  <div className="sidepanel panel">
+    <header className="bg-secondary panel-header">
+      <div className="panel-title">Palette Picker</div>
+    </header>
+    <nav className="panel-nav">
       <Tabs
         tabs={props.tabs}
         activeTab={props.activeTab}
         switchActiveTab={props.switchActiveTab}
       />
-    </header>
-    <main className="sidepanel__content">
+    </nav>
+    <main className="panel-body">
       {props.activeTab === 'add swatches' &&
         <AddSwatchesPanel
           addNewSwatch={props.addNewSwatch}
@@ -33,6 +36,9 @@ const SidePanel = (props: Props): React$Element<any> => (
         />}
       {props.activeTab === 'about' && <AboutPanel />}
     </main>
+    <div className="panel-footer">
+          Edd Yerburgh
+      </div>
   </div>
 );
 

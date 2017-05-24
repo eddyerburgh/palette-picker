@@ -32,7 +32,7 @@ describe('<Tab />', () => {
     const switchActiveTab = sinon.stub();
     props.switchActiveTab = switchActiveTab;
     const wrapper = shallow(<Tab {...props} />);
-    wrapper.simulate('click');
+    wrapper.find('a').simulate('click');
     expect(switchActiveTab).to.have.been.calledOnce;
   });
 });

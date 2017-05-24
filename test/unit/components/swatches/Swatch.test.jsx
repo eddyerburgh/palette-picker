@@ -1,4 +1,4 @@
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
 import sinon from 'sinon';
 import proxyquire from 'proxyquire';
@@ -30,20 +30,20 @@ describe('<Swatch />', () => {
   });
 
   it('sets background to props.rgb', () => {
-    const wrapper = mount(<Swatch {...props} />);
+    const wrapper = shallow(<Swatch {...props} />);
     expect(wrapper.find('.swatch__inner')).to.have.style('background-color', props.rgb);
   });
 
   it('calls props.removeSwatch with props.id when .swatch__remove is clicked', () => {
-    const wrapper = mount(<Swatch {...props} />);
+    const wrapper = shallow(<Swatch {...props} />);
     wrapper.find('.swatch__remove').simulate('click');
     expect(props.removeSwatch).to.have.been.calledOnce;
     expect(props.removeSwatch).to.have.been.calledWith(props.id);
   });
 
   it('calls props.displayNewFullScreenMessage when copy does not throw an error', () => {
-    const wrapper = mount(<Swatch {...props} />);
-    wrapper.simulate('click', { target: { className: 'swatch ' } });
+    const wrapper = shallow(<Swatch {...props} />);
+    wrapper.simulate('click', { target: { className: 'swatch__inner' } });
     expect(props.displayNewFullScreenMessage).to.have.been.calledOnce;
     expect(props.displayNewFullScreenMessage.args[0][0]).to.equal('Copied to clipboard!');
     expect(props.displayNewFullScreenMessage.args[0][1]).to.equal(props.rgb);
@@ -51,7 +51,7 @@ describe('<Swatch />', () => {
   });
 
   it('does nothing when .swatch__remove or .swatch__edit are clicked', () => {
-    const wrapper = mount(<Swatch {...props} />);
+    const wrapper = shallow(<Swatch {...props} />);
     wrapper.find('.swatch__remove').simulate('click', { target: { className: 'swatch__remove' } });
     wrapper.find('.swatch__edit').simulate('click', { target: { className: 'swatch__edit' } });
     expect(props.displayNewFullScreenMessage).to.have.not.been.calledOnce;
@@ -59,14 +59,14 @@ describe('<Swatch />', () => {
 
   it('calls props.displayModal when copy throws an error', () => {
     copyStub.throws();
-    const wrapper = mount(<Swatch {...props} />);
-    wrapper.simulate('click', { target: { className: 'swatch ' } });
+    const wrapper = shallow(<Swatch {...props} />);
+    wrapper.simulate('click', { target: { className: 'swatch__inner' } });
     expect(props.displayNewModal).to.have.been.calledOnce;
     expect(props.displayNewModal.args[0][0].heading).to.equal('Error');
   });
 
   it('toggles state.displayEdit when .swatch__edit is clicked', () => {
-    const wrapper = mount(<Swatch {...props} />);
+    const wrapper = shallow(<Swatch {...props} />);
     wrapper.find('.swatch__edit').simulate('click');
     expect(wrapper.state('displayEdit')).to.equal(true);
     wrapper.find('.swatch__edit').simulate('click');
@@ -74,18 +74,18 @@ describe('<Swatch />', () => {
   });
 
   it('does not render EditSwatch when state.displayEdit is false', () => {
-    const wrapper = mount(<Swatch {...props} />);
+    const wrapper = shallow(<Swatch {...props} />);
     expect(wrapper.find(EditSwatchStub)).to.have.length(0);
   });
 
   it('renders EditSwatch when state.displayEdit is true', () => {
-    const wrapper = mount(<Swatch {...props} />);
+    const wrapper = shallow(<Swatch {...props} />);
     wrapper.setState({ displayEdit: true });
     expect(wrapper.find(EditSwatchStub)).to.have.length(1);
   });
 
   it('passes props replaceSwatch to EditSwatch', () => {
-    const wrapper = mount(<Swatch {...props} />);
+    const wrapper = shallow(<Swatch {...props} />);
     wrapper.setState({ displayEdit: true });
     wrapper.find(EditSwatchStub).props().replaceSwatch();
     expect(props.replaceSwatch).to.have.been.calledOnce;

@@ -2,6 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import reactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader'; // eslint-disable-line import/no-extraneous-dependencies
+import 'spectre.css';
 import store from './redux/store';
 import Root from './containers/Root';
 import './style/style.scss';
