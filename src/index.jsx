@@ -1,12 +1,10 @@
-/* eslint-disable no-shadow, import/no-extraneous-dependencies */
 import 'babel-polyfill';
 import React from 'react';
 import reactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+import { AppContainer } from 'react-hot-loader'; // eslint-disable-line import/no-extraneous-dependencies
 import store from './redux/store';
 import Root from './containers/Root';
-
-require('./style/style.scss');
+import './style/style.scss';
 
 const render = (Component) => {
   reactDOM.render(
