@@ -13,10 +13,12 @@ type Props = {
 }
 
 const ModalContainer = (props: Props): React$Element<any> => (
-  props.display && <Modal
-    modal={props.modal}
-    closeModal={props.closeModal}
-  />
+  props.display && (
+    <Modal
+      modal={props.modal}
+      closeModal={props.closeModal}
+    />
+  )
 );
 
 const mapStateToProps = state => ({
