@@ -1,4 +1,11 @@
-// Reducer
+// @flow
+
+import type { PaletteType } from '../../../types';
+
+type PalettesState = {
+  palettes: Array<PaletteType>
+}
+
 const initialState = {
   palettes: [
     {
@@ -21,8 +28,8 @@ const initialState = {
 };
 
 export default function reducer(
-  state: ModalState = initialState,
-  action: Object = {}): ModalState {
+  state: PalettesState = initialState,
+  action: Object = {}): PalettesState {
   switch (action.type) {
     default:
       return state;

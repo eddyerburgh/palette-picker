@@ -1,31 +1,9 @@
 // @flow
 
-// Constants
+import type { ModalType } from '../../../types';
 
 const NEW_MODAL = 'NEW_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
-
-// Flow types
-
-export type ModalState = {
-  display: boolean,
-  message: string|null,
-  heading: string|null
-};
-
-type NewModalAction = {
-  type: string,
-  payload: {
-    message: string|null,
-    heading: string|null
-  }
-}
-
-type CloseModalAction = {
-  type: string
-}
-
-// Reducer
 
 const initialState = {
   display: true,
@@ -34,8 +12,8 @@ const initialState = {
 };
 
 export default function reducer(
-    state: ModalState = initialState,
-    action: Object = {}): ModalState {
+    state: ModalType = initialState,
+    action: Object = {}): ModalType {
   switch (action.type) {
     case NEW_MODAL:
       return {
@@ -54,11 +32,17 @@ export default function reducer(
   }
 }
 
-// Action Creators
-
 type NewModalArgs = {
   message?: string,
     heading?: string
+}
+
+type NewModalAction = {
+    type: string,
+    payload: {
+        message: string|null,
+        heading: string|null
+    }
 }
 
 export function displayNewModal(args: NewModalArgs): NewModalAction {
@@ -69,6 +53,10 @@ export function displayNewModal(args: NewModalArgs): NewModalAction {
       heading: args.heading || null
     }
   };
+}
+
+type CloseModalAction = {
+    type: string
 }
 
 export function closeModal(): CloseModalAction {

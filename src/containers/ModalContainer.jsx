@@ -4,11 +4,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Modal from '../components/modal/Modal';
 import * as modalActions from '../redux/modules/modal';
-import type { ModalState } from '../redux/modules/modal';
+import type { ModalType } from '../../types';
 
 type Props = {
   display: Boolean,
-  modal: ModalState,
+  modal: ModalType,
   closeModal: Function
 }
 

@@ -1,21 +1,11 @@
 // @flow
 
-// Constants
-
 const SWITCH_ACTIVE_TAB = 'SWITCH_ACTIVE_TAB';
 
-// Flow types
-
-export type TabsState = {
+type TabsState = {
   tabs: Array<string>,
   activeTab: string,
 };
-
-export type SwitchActiveTabType = {
-  activeTab: string,
-};
-
-// Reducer
 
 const initialState = {
   tabs: ['add swatches', 'about'],
@@ -36,7 +26,9 @@ export default function reducer(
   }
 }
 
-// Action Creators
+type SwitchActiveTabType = {
+    activeTab: string,
+};
 
 export function switchActiveTab(activeTab: string): SwitchActiveTabType {
   return {

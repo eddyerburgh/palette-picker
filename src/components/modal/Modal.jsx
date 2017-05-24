@@ -3,10 +3,10 @@
 import React from 'react';
 import ModalMessage from './ModalMessage';
 import CloseButton from './CloseButton';
-import type { ModalState } from '../../redux/modules/modal';
+import type { ModalType } from '../../../types';
 
 type Props = {
-  modal: ModalState,
+  modal: ModalType,
   closeModal: Function
 }
 const Modal = (props: Props): React$Element<any> => (

@@ -1,28 +1,12 @@
 // @flow
 
-// Constants
-
 const NEW_MESSAGE = 'NEW_MESSAGE';
 const CLOSE_MESSAGE = 'CLOSE_MESSAGE';
 
-// Flow types
-
-export type FullScreenMessageState = {
-  display: boolean,
-  message: string|null,
+type FullScreenMessageState = {
+    display: boolean,
+    message: string|null,
 };
-
-type NewMessageAction = {
-  type: string,
-  message: string
-}
-
-type CloseMessageAction = {
-type: string
-}
-
-
-// Reducer
 
 const initialState = {
   display: false,
@@ -52,7 +36,10 @@ export default function reducer(
   }
 }
 
-// Action Creators
+type NewMessageAction = {
+    type: string,
+    message: string
+}
 
 export function displayNewFullScreenMessage(
   message: string,
@@ -65,6 +52,10 @@ export function displayNewFullScreenMessage(
     rgb,
     fontColor
   };
+}
+
+type CloseMessageAction = {
+    type: string
 }
 
 export function closeFullScreenMessage(): CloseMessageAction {

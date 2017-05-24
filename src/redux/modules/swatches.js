@@ -8,35 +8,9 @@ const REPLACE_SWATCH = 'REPLACE_SWATCH';
 const MOVE_SWATCH = 'MOVE_SWATCH';
 const DELETE_SWATCHES = 'DELETE_SWATCHES';
 
-export type SwatchesState = {
+type SwatchesState = {
   swatches: Array<SwatchType>
 };
-
-export type NewSwatchAction = {
-  type: string,
-  swatch: SwatchType
-};
-
-export type RemoveSwatchAction = {
-  type: string,
-  swatchId: string
-};
-
-export type ReplaceSwatchAction = {
-  type: string,
-  swatch: SwatchType,
-  swatchId: string
-}
-
-export type MoveSwatchAction = {
-  type: string,
-  oldIndex: number,
-  newIndex: number,
-}
-
-export type DeleteSwatchesAction = {
-  type: string
-}
 
 const initialState = {
   swatches: [
@@ -126,6 +100,11 @@ export default function reducer(
   }
 }
 
+type NewSwatchAction = {
+    type: string,
+    swatch: SwatchType
+};
+
 export function addNewSwatch(swatch: SwatchType): NewSwatchAction {
   return {
     type: ADD_SWATCH,
@@ -133,11 +112,22 @@ export function addNewSwatch(swatch: SwatchType): NewSwatchAction {
   };
 }
 
+type RemoveSwatchAction = {
+    type: string,
+    swatchId: string
+};
+
 export function removeSwatch(swatchId: string): RemoveSwatchAction {
   return {
     type: REMOVE_SWATCH,
     swatchId
   };
+}
+
+type ReplaceSwatchAction = {
+    type: string,
+    swatch: SwatchType,
+    swatchId: string
 }
 
 export function replaceSwatch(swatchId: string, swatch: SwatchType): ReplaceSwatchAction {
@@ -148,12 +138,22 @@ export function replaceSwatch(swatchId: string, swatch: SwatchType): ReplaceSwat
   };
 }
 
+type MoveSwatchAction = {
+    type: string,
+    oldIndex: number,
+    newIndex: number,
+}
+
 export function moveSwatch(oldIndex: number, newIndex: number): MoveSwatchAction {
   return {
     type: MOVE_SWATCH,
     oldIndex,
     newIndex
   };
+}
+
+type DeleteSwatchesAction = {
+    type: string
 }
 
 export function deleteSwatches(): DeleteSwatchesAction {

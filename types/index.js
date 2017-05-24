@@ -10,3 +10,9 @@ export type PaletteType = {
     name: string,ndkm
     colors: Array<string>
 };
+
+export type ModalType = {
+    display: boolean,
+    message: string|null,
+    heading: string|null
+};
