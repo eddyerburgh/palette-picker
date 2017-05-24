@@ -14,15 +14,9 @@ class AddSwatchForm extends Component {
       valid: false,
       active: false
     };
-
-    // Bind this to handleSubmit in constructor to avoid recreating function on render()
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     const value = event.target.querySelector('[type="text"]').value;
@@ -35,13 +29,13 @@ class AddSwatchForm extends Component {
     }
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     if (isColor(event.target.value)) {
       this.setState({ valid: true, invalid: false });
     }
   }
 
-  handleBlur(event) {
+  handleBlur = (event) => {
     if (event.target.value === '') {
       this.setState({ active: false, invalid: false, valid: false });
     }

@@ -34,14 +34,11 @@ class Swatch extends Component {
     this.state = {
       displayEdit: false
     };
-
-        // Bind this to copyToClipboard in constructor to avoid recreating function on render()
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
-    (this:any).copyToClipboard = this.copyToClipboard.bind(this);
   }
 
   state: State;
-  copyToClipboard(event: ClickEvent) {
+
+  copyToClipboard = (event: ClickEvent) => {
     if (event.target.className.indexOf('swatch ') === -1) {
       return;
     }
