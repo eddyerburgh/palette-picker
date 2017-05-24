@@ -9,19 +9,17 @@ type Props = {
   tabs: Array<string>
 }
 
-const Tabs = (props: Props): React$Element<any> => {
-  const tabs = props.tabs.map((tab, i) =>
-    <Tab
-      key={i}
-      name={tab}
-      isActive={tab === props.activeTab}
-      switchActiveTab={props.switchActiveTab}
-    />);
-  return (
-    <div className="tabs">
-      {tabs}
-    </div>
-  );
-};
+const Tabs = (props: Props): React$Element<any> => (
+  <div className="tabs">
+    {props.tabs.map((tab, i) =>
+      <Tab
+        key={i}
+        name={tab}
+        isActive={tab === props.activeTab}
+        switchActiveTab={props.switchActiveTab}
+      />
+    )}
+  </div>
+);
 
 export default Tabs;
