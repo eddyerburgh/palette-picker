@@ -3,7 +3,7 @@
 import React from 'react';
 import AddSwatchForm from './AddSwatchForm';
 import Palette from './Palette';
-import type { PaletteType } from '../../../redux/modules/palettes';
+import type { PaletteType } from '../../../../types';
 
 type Props = {
   palettes: Array<PaletteType>,

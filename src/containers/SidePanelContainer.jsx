@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as tabsActions from '../redux/modules/tabs';
 import * as swatchesActions from '../redux/modules/swatches';
-import type { PaletteType } from '../redux/modules/palettes';
+import type { PaletteType } from '../../types';
 import SidePanel from '../components/side-panel/SidePanel';
 
 type Props = {

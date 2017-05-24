@@ -4,7 +4,7 @@ import React from 'react';
 import Tabs from './tabs/Tabs';
 import AddSwatchesPanel from './add-swatches/AddSwatchesPanel';
 import AboutPanel from './about/AboutPanel';
-import type { PaletteType } from '../../redux/modules/palettes';
+import type { PaletteType } from '../../../types';
 
 type Props = {
     addNewSwatch: Function, // eslint-disable-line  react/no-unused-prop-types

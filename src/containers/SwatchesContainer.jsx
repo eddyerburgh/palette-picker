@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import type { SwatchType } from '../redux/modules/swatches';
+import type { SwatchType } from '../../types';
 import * as swatchesActions from '../redux/modules/swatches';
 import * as modalActions from '../redux/modules/modal';
 import * as fullScreenMessageActions from '../redux/modules/fullScreenMessage';

@@ -1,22 +1,12 @@
 // @flow
 
-// Constants
+import type { SwatchType } from '../../../types';
 
 const ADD_SWATCH = 'ADD_SWATCH';
 const REMOVE_SWATCH = 'REMOVE_SWATCH';
 const REPLACE_SWATCH = 'REPLACE_SWATCH';
 const MOVE_SWATCH = 'MOVE_SWATCH';
 const DELETE_SWATCHES = 'DELETE_SWATCHES';
-
-// Flow types
-
-export type SwatchType = {
-  id: string,
-  hex: string,
-  rgb: string,
-  rgbArray: Array<number>,
-  fontColor: string
-};
 
 export type SwatchesState = {
   swatches: Array<SwatchType>
@@ -47,8 +37,6 @@ export type MoveSwatchAction = {
 export type DeleteSwatchesAction = {
   type: string
 }
-
-// Reducer
 
 const initialState = {
   swatches: [
@@ -137,8 +125,6 @@ export default function reducer(
       return state;
   }
 }
-
-// Action Creators
 
 export function addNewSwatch(swatch: SwatchType): NewSwatchAction {
   return {

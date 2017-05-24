@@ -1,16 +1,4 @@
-// Flow types
-
-export type PaletteType = {
-  name: string,
-  colors: Array<string>
-};
-
-export type PalettesState = {
-  palettes: Array<PaletteType>
-};
-
 // Reducer
-
 const initialState = {
   palettes: [
     {
