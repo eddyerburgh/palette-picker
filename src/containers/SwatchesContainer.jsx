@@ -10,9 +10,9 @@ import Swatches from '../components/swatches/Swatches';
 
 type Props = {
   swatches: Array<SwatchType>,
-  displayNewModal: Function,  // eslint-disable-line react/no-unused-prop-types
-  removeSwatch: Function, // eslint-disable-line react/no-unused-prop-types
-  replaceSwatch: Function,  // eslint-disable-line react/no-unused-prop-types
+  displayNewModal: Function,
+  removeSwatch: Function,
+  replaceSwatch: Function,
   displayNewFullScreenMessage: Function,
   moveSwatch: Function
 }
