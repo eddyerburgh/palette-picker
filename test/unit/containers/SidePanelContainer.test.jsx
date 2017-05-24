@@ -1,6 +1,5 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { Provider } from 'react-redux';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 import storeMock from '../../resources/mocks/store.mock';
@@ -8,19 +7,15 @@ import storeMock from '../../resources/mocks/store.mock';
 proxyquire.noCallThru();
 
 describe('<SidePanelContainer />', () => {
-  let SidePanelContainerStub;
-  let TabsStub;
-  let AddSwatchesPanelStub;
-  let AboutPanelStub;
+  let SidePanelContainer;
   let swatchesActionsStub;
   let tabsActionsStub;
+  let SidePanelStub;
   let state;
   let store;
 
   beforeEach(() => {
-    TabsStub = () => <div />;
-    AddSwatchesPanelStub = () => <div />;
-    AboutPanelStub = () => <div />;
+    SidePanelStub = () => <div />;
     tabsActionsStub = {
       switchActiveTab: sinon.stub()
     };
@@ -33,10 +28,8 @@ describe('<SidePanelContainer />', () => {
     };
     store = storeMock(state);
 
-    SidePanelContainerStub = proxyquire('../../../src/containers/SidePanelContainer', {
-      '../components/side-panel/tabs/Tabs': TabsStub,
-      '../components/side-panel/about/AboutPanel': AboutPanelStub,
-      '../components/side-panel/add-swatches/AddSwatchesPanel': AddSwatchesPanelStub,
+    SidePanelContainer = proxyquire('../../../src/containers/SidePanelContainer', {
+      '../components/side-panel/SidePanel': SidePanelStub,
       '../redux/modules/tabs': tabsActionsStub,
       '../redux/modules/swatches': swatchesActionsStub
     }
@@ -44,73 +37,31 @@ describe('<SidePanelContainer />', () => {
   });
 
   it('renders <Tabs /> with props.activeTab', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <SidePanelContainerStub />
-      </Provider>
-    );
-    expect(wrapper.find(TabsStub).props().activeTab).to.equal(state.tabs.activeTab);
+    const wrapper = mount(<SidePanelContainer store={store} />);
+
+    expect(wrapper.find(SidePanelStub).props().activeTab).to.equal(state.tabs.activeTab);
   });
 
-  it('passes props.tabs to <Tabs />', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <SidePanelContainerStub />
-      </Provider>
-    );
-    expect(wrapper.find(TabsStub).props().tabs).to.deep.equal(state.tabs.tabs);
+  it('passes props.tabs to <SidePanel />', () => {
+    const wrapper = mount(<SidePanelContainer store={store} />);
+    expect(wrapper.find(SidePanelStub).props().tabs).to.deep.equal(state.tabs.tabs);
   });
 
-  it('maps dispatch to switchActiveTab and passes it to <Tabs />', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <SidePanelContainerStub />
-      </Provider>
-    );
-    const TabsProps = wrapper.find(TabsStub).props();
-    TabsProps.switchActiveTab();
+  it('maps dispatch to switchActiveTab and passes it to <SidePanel />', () => {
+    const wrapper = mount(<SidePanelContainer store={store} />);
+    wrapper.find(SidePanelStub).props().switchActiveTab();
     expect(tabsActionsStub.switchActiveTab).to.have.been.calledOnce;
   });
 
-  it('does not render <AddSwatchesPanel /> if props.activeTab do not equal "add swatches"', () => {
-    state.tabs.activeTab = 'not add swatches';
-    const wrapper = mount(
-      <Provider store={store}>
-        <SidePanelContainerStub />
-      </Provider>
-    );
-    const AddSwatchesPanel = wrapper.find(AddSwatchesPanelStub);
-    expect(AddSwatchesPanel.length).to.equal(0);
+  it('passes state.palettes.palettes to <SidePanel />', () => {
+    const wrapper = mount(<SidePanelContainer store={store} />);
+    expect(wrapper.find(SidePanelStub).props().palettes).to.deep.equal(state.palettes.palettes);
   });
 
-  it('passes state.palettes.palettes to <AddSwatchesPanel />', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <SidePanelContainerStub />
-      </Provider>
-    );
-    const AddSwatchesPanelProps = wrapper.find(AddSwatchesPanelStub).props();
-    expect(AddSwatchesPanelProps.palettes).to.deep.equal(state.palettes.palettes);
-  });
 
-  it('renders <AboutPanel /> if props.activeTab equals "about"', () => {
-    state.tabs.activeTab = 'about';
-    const wrapper = mount(
-      <Provider store={store}>
-        <SidePanelContainerStub />
-      </Provider>
-    );
-    expect(wrapper.find(AboutPanelStub).length).to.equal(1);
-  });
-
-  it('maps dispatch to switchActiveTab and passes it to <AddSwatchesPanel />', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        <SidePanelContainerStub />
-      </Provider>
-    );
-    const AddSwatchesPanelProps = wrapper.find(AddSwatchesPanelStub).props();
-    AddSwatchesPanelProps.addNewSwatch();
+  it('maps dispatch to switchActiveTab and passes it to <SidePanel />', () => {
+    const wrapper = mount(<SidePanelContainer store={store} />);
+    wrapper.find(SidePanelStub).props().addNewSwatch();
     expect(swatchesActionsStub.addNewSwatch).to.have.been.calledOnce;
   });
 });

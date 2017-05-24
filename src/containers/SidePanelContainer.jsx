@@ -2,12 +2,10 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import Tabs from '../components/side-panel/tabs/Tabs';
-import AddSwatchesPanel from '../components/side-panel/add-swatches/AddSwatchesPanel';
-import AboutPanel from '../components/side-panel/about/AboutPanel';
 import * as tabsActions from '../redux/modules/tabs';
 import * as swatchesActions from '../redux/modules/swatches';
 import type { PaletteType } from '../redux/modules/palettes';
+import SidePanel from '../components/side-panel/SidePanel';
 
 type Props = {
   addNewSwatch: Function, // eslint-disable-line  react/no-unused-prop-types
@@ -19,24 +17,14 @@ type Props = {
 }
 
 const SidePanelContainer = (props: Props): React$Element<any> => (
-  <div className="sidepanel">
-    <header className="sidepanel__header bg-secondary">
-      <Tabs
-        tabs={props.tabs}
-        activeTab={props.activeTab}
-        switchActiveTab={props.switchActiveTab}
-      />
-    </header>
-    <main className="sidepanel__content">
-      {props.activeTab === 'add swatches' &&
-      <AddSwatchesPanel
-        addNewSwatch={props.addNewSwatch}
-        deleteSwatches={props.deleteSwatches}
-        palettes={props.palettes}
-      />}
-      {props.activeTab === 'about' && <AboutPanel />}
-    </main>
-  </div>
+  <SidePanel
+    addNewSwatch={props.addNewSwatch}
+    tabs={props.tabs}
+    activeTab={props.activeTab}
+    switchActiveTab={props.switchActiveTab}
+    palettes={props.palettes}
+    deleteSwatches={props.deleteSwatches}
+  />
 );
 
 const mapStateToProps = state => ({
