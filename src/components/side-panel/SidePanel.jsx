@@ -7,12 +7,12 @@ import AboutPanel from './about/AboutPanel';
 import type { PaletteType } from '../../../types';
 
 type Props = {
-    addNewSwatch: Function, // eslint-disable-line  react/no-unused-prop-types
+    addNewSwatch: Function,
     tabs: Array<string>,
     activeTab: string,
     switchActiveTab: Function,
-    palettes: Array<PaletteType>, // eslint-disable-line react/no-unused-prop-types
-    deleteSwatches: Function // eslint-disable-line react/no-unused-prop-types
+    palettes: Array<PaletteType>,
+    deleteSwatches: Function
 }
 
 const SidePanel = (props: Props): React$Element<any> => (
