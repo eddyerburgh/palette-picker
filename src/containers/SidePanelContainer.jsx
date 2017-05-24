@@ -18,40 +18,26 @@ type Props = {
   deleteSwatches: Function // eslint-disable-line react/no-unused-prop-types
 }
 
-const SidePanelContainer = (props: Props): React$Element<any> => {
-  function renderPanel() {
-    switch (props.activeTab) {
-      case 'add swatches':
-        return (
-          <AddSwatchesPanel
-            addNewSwatch={props.addNewSwatch}
-            deleteSwatches={props.deleteSwatches}
-            palettes={props.palettes}
-          />
-        );
-      case 'about':
-        return (
-          <AboutPanel />
-        );
-      default:
-        return null;
-    }
-  }
-  return (
-    <div className="sidepanel">
-      <header className="sidepanel__header bg-secondary">
-        <Tabs
-          tabs={props.tabs}
-          activeTab={props.activeTab}
-          switchActiveTab={props.switchActiveTab}
-        />
-      </header>
-      <main className="sidepanel__content">
-        {renderPanel()}
-      </main>
-    </div>
-  );
-};
+const SidePanelContainer = (props: Props): React$Element<any> => (
+  <div className="sidepanel">
+    <header className="sidepanel__header bg-secondary">
+      <Tabs
+        tabs={props.tabs}
+        activeTab={props.activeTab}
+        switchActiveTab={props.switchActiveTab}
+      />
+    </header>
+    <main className="sidepanel__content">
+      {props.activeTab === 'add swatches' &&
+      <AddSwatchesPanel
+        addNewSwatch={props.addNewSwatch}
+        deleteSwatches={props.deleteSwatches}
+        palettes={props.palettes}
+      />}
+      {props.activeTab === 'about' && <AboutPanel />}
+    </main>
+  </div>
+);
 
 const mapStateToProps = state => ({
   tabs: state.tabs.tabs,
