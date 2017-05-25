@@ -7,10 +7,10 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('.modal__message', 10000)
-      .assert.containsText('.modal__message', 'This app lets you store swatches of color. Click them to copy to clipboard.')
+      .waitForElementVisible('.modal', 10000)
+      .assert.containsText('.modal', 'This app lets you store swatches of color. Click them to copy to clipboard.')
       .click('.modal input[type=button]')
-      .assert.elementNotPresent('.modal__message')
+      .assert.elementNotPresent('.modal')
       .end();
   },
 
@@ -19,7 +19,7 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('.modal__message', 10000)
+      .waitForElementVisible('.modal', 10000)
       .click('.modal input[type=button]')
       .waitForElementVisible('.swatch', 10000)
       .assert.elementCount('.swatch', 4)
@@ -34,7 +34,7 @@ module.exports = {
 
     browser
           .url(devServer)
-          .waitForElementVisible('.modal__message', 10000)
+          .waitForElementVisible('.modal', 10000)
           .click('.modal input[type=button]')
           .waitForElementVisible('.swatch', 10000)
           .click('#delete-all')
@@ -47,7 +47,7 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('.modal__message', 10000)
+      .waitForElementVisible('.modal', 10000)
       .click('.modal input[type=button]')
       .waitForElementVisible('.swatch', 10000)
       .assert.elementCount('.swatch', 4)
@@ -63,7 +63,7 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('.modal__message', 10000)
+      .waitForElementVisible('.modal', 10000)
       .click('.modal input[type=button]')
       .waitForElementVisible('.swatch', 10000)
       .assert.elementCount('.swatch', 4)
@@ -77,7 +77,7 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('.modal__message', 10000)
+      .waitForElementVisible('.modal', 10000)
       .click('.modal input[type=button]')
       .moveToElement('.swatch:nth-of-type(1)', 10, 10)
       .click('.swatch:nth-of-type(1) .swatch__edit')
