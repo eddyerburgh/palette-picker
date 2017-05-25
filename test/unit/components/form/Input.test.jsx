@@ -35,12 +35,6 @@ describe('<Input />', () => {
     expect(wrapper.find('input')).to.not.have.className('is-success');
   });
 
-  it('renders hint with props.error', () => {
-    props.meta.error = 'some error';
-    const wrapper = shallow(<Input {...props} />);
-    expect(wrapper.find('.form-input-hint').text()).to.equal(props.meta.error);
-  });
-
   it('renders input with props.type props.value props.name and props.id', () => {
     props.name = 'name';
     props.id = 'id';

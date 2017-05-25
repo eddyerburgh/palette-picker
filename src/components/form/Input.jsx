@@ -35,7 +35,6 @@ const Input = (props: Props): React$Element<any> => (
       onBlur={props.input.onBlur}
       onChange={props.input.onChange}
     />
-    <p className="form-input-hint">{props.meta.error}</p>
   </div>
 );
 
