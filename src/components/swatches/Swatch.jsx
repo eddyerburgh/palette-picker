@@ -67,11 +67,11 @@ class Swatch extends Component {
       >
         <div>
           <button
-            className="swatch__edit btn btn-primary btn-action btn-lg float-left"
+            className="swatch__edit btn btn-link btn-action btn-lg float-left"
             onClick={() => this.setState({ displayEdit: !this.state.displayEdit })}
           ><i className="icon icon-edit" /></button>
           <button
-            className="swatch__remove btn btn-primary btn-action btn-lg float-right"
+            className="swatch__remove btn btn-link btn-action btn-lg float-right"
             onClick={() => this.props.removeSwatch(this.props.id)}
           ><i className="icon icon-delete" /></button>
         </div>
