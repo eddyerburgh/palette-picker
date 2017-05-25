@@ -78,6 +78,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.16.0",
+    "classnames": "^2.2.5",
     "color-string": "^1.4.0",
     "contrast": "^1.0.1",
     "copy-to-clipboard": "^3.0.5",
