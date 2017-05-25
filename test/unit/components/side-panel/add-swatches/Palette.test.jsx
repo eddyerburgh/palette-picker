@@ -34,14 +34,9 @@ describe('<Palette />', () => {
     expect(props.addNewSwatch).to.have.been.calledOnce;
   });
 
-  it('renders props.name in .palette__name', () => {
+  it('calls addNewSwatch with each colorfor each props.color when button is clicked', () => {
     const wrapper = shallow(<Palette {...props} />);
-    expect(wrapper.find('.palette__name').text()).to.equal(props.name);
-  });
-
-  it('calls addNewSwatch with each colorfor each props.color when .palette__name is clicked', () => {
-    const wrapper = shallow(<Palette {...props} />);
-    wrapper.find('.palette__name').simulate('click');
+    wrapper.find('button').simulate('click');
     const argument = props.addNewSwatch.args[0][0];
     expect(argument).to.be.instanceOf(Swatch);
     expect(argument.hex).to.equal(props.colors[0]);

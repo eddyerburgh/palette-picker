@@ -21,7 +21,7 @@ let AddSwatchForm = (props: Props): React$Element<any> => { // eslint-disable-li
   }
 
   return (
-    <form className="add-swatch-form" onSubmit={handleSubmit}>
+    <form className="add-swatch-form mb-10" onSubmit={handleSubmit}>
       <div className="form-group">
         <Field
           id="add-swatch"

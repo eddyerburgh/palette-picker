@@ -10,7 +10,7 @@ type Props = {
 
 const PaletteColor = (props: Props): React$Element<any> => (
   <button
-    className="palette__color hoverable"
+    className="palette__color col-2"
     onClick={() => props.addNewSwatch(new Swatch(props.color))}
     style={{ backgroundColor: props.color }}
   />

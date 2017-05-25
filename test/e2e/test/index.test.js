@@ -67,7 +67,7 @@ module.exports = {
       .click('.modal input[type=button]')
       .waitForElementVisible('.swatch', 10000)
       .assert.elementCount('.swatch', 4)
-      .click('.palette:nth-of-type(1) .palette__name')
+      .click('.palette:nth-of-type(1) .btn-action')
       .assert.elementCount('.swatch', 9)
       .end();
   },

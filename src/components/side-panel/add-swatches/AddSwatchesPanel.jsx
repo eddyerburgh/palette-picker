@@ -13,9 +13,7 @@ type Props = {
 
 const AddSwatchesPanel = (props: Props): React$Element<any> => (
   <div>
-    <p>Enter a valid RGB, hex or CSS to add a swatch</p>
     <AddSwatchForm addNewSwatch={props.addNewSwatch} />
-    <p>Or choose from some pre made palettes</p>
     {props.palettes.map((palette, i) =>
       <Palette
         {...palette}

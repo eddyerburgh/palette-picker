@@ -19,8 +19,9 @@ const SidePanel = (props: Props): React$Element<any> => (
   <div className="sidepanel panel">
     <header className="bg-secondary panel-header">
       <div className="panel-title">Palette Picker</div>
+      <div className="panel-subtitle">Enter a color to add a swatch or choose from some pre made palettes</div>
     </header>
-    <nav className="panel-nav">
+    <nav className="panel-nav mb-10">
       <Tabs
         tabs={props.tabs}
         activeTab={props.activeTab}
