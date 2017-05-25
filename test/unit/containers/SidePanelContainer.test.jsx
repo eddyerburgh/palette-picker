@@ -24,7 +24,8 @@ describe('<SidePanelContainer />', () => {
     };
     state = {
       tabs: { activeTab: 'add swatches', tabs: ['add swatches'] },
-      palettes: { palettes: [{ color: '' }, { color: '' }] }
+      palettes: { palettes: [{ color: '' }, { color: '' }] },
+      form: { color: '' }
     };
     store = storeMock(state);
 
@@ -55,6 +56,11 @@ describe('<SidePanelContainer />', () => {
   it('passes state.palettes.palettes to <SidePanel />', () => {
     const wrapper = mount(<SidePanelContainer store={store} />);
     expect(wrapper.find(SidePanelStub).props().palettes).to.deep.equal(state.palettes.palettes);
+  });
+
+  it('passes state.form.color to <SidePanel />', () => {
+    const wrapper = mount(<SidePanelContainer store={store} />);
+    expect(wrapper.find(SidePanelStub).props().color).to.equal(state.form.color);
   });
 
   it('maps dispatch to switchActiveTab and passes it to <SidePanel />', () => {

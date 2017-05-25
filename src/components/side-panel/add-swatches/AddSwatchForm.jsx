@@ -1,77 +1,53 @@
-// Flow disabled - no support for event.target.querySelector
+// @flow
 
-import React, { Component, PropTypes } from 'react';
-import isColor from 'is-color';
+import React from 'react';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { connect } from 'react-redux';
+import validate from '../../../lib/validate';
 import Swatch from '../../../lib/Swatch';
+import Input from '../../form/Input';
 
-class AddSwatchForm extends Component {
+const selector = formValueSelector('add-swatch');
 
-  constructor(props) {
-    super(props);
+type Props = {
+    color: String,
+    addNewSwatch: Function
+}
 
-    this.state = {
-      invalid: false,
-      valid: false,
-      active: false
-    };
-  }
-
-  handleSubmit = (event) => {
+let AddSwatchForm = (props: Props): React$Element<any> => { // eslint-disable-line import/no-mutable-exports,max-len
+  function handleSubmit(event) {
     event.preventDefault();
-
-    const value = event.target.querySelector('[type="text"]').value;
-
-    if (isColor(value)) {
-      this.props.addNewSwatch(new Swatch(value));
-      this.setState({ valid: false, invalid: false });
-    } else {
-      this.setState({ valid: false, invalid: true });
-    }
+    props.addNewSwatch(new Swatch(props.color));
   }
 
-  handleChange = (event) => {
-    if (isColor(event.target.value)) {
-      this.setState({ valid: true, invalid: false });
-    }
-  }
-
-  handleBlur = (event) => {
-    if (event.target.value === '') {
-      this.setState({ active: false, invalid: false, valid: false });
-    }
-  }
-
-  render() {
-    return (
-      <form className="add-swatch-form" onSubmit={this.handleSubmit}>
-        <div className="input-field">
-          <input
-            className={(this.state.valid && 'valid') || (this.state.invalid && 'invalid')}
-            id="add-swatch"
-            type="text"
-            onChange={this.handleChange}
-            onFocus={() => this.setState({ active: true })}
-            onBlur={this.handleBlur}
-          />
-          <label
-            htmlFor="add-swatch"
-            data-error="invalid color"
-            data-success="valid color"
-            className={this.state.active && 'active'}
-          >enter color</label>
-        </div>
+  return (
+    <form className="add-swatch-form" onSubmit={handleSubmit}>
+      <div className="form-group">
+        <Field
+          id="add-swatch"
+          name="color"
+          component={Input}
+          type="text"
+        />
         <input
           type="submit"
           value="add swatch"
-          className="btn z-index-1"
+          className="btn "
         />
-      </form>
-    );
-  }
-}
-
-AddSwatchForm.propTypes = {
-  addNewSwatch: PropTypes.func
+      </div>
+    </form>
+  );
 };
+
+AddSwatchForm = reduxForm({
+  form: 'add-swatch',
+  validate
+})(AddSwatchForm);
+
+AddSwatchForm = connect(
+    state => ({
+      color: selector(state, 'color')
+    })
+)(AddSwatchForm);
 
 export default AddSwatchForm;

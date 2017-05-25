@@ -10,6 +10,7 @@ import SidePanel from '../components/side-panel/SidePanel';
 type Props = {
   addNewSwatch: Function, // eslint-disable-line  react/no-unused-prop-types
   tabs: Array<string>,
+  color: String,
   activeTab: string,
   switchActiveTab: Function,
   palettes: Array<PaletteType>, // eslint-disable-line react/no-unused-prop-types
@@ -18,6 +19,7 @@ type Props = {
 
 const SidePanelContainer = (props: Props): React$Element<any> => (
   <SidePanel
+    color={props.color}
     addNewSwatch={props.addNewSwatch}
     tabs={props.tabs}
     activeTab={props.activeTab}
@@ -30,7 +32,8 @@ const SidePanelContainer = (props: Props): React$Element<any> => (
 const mapStateToProps = state => ({
   tabs: state.tabs.tabs,
   activeTab: state.tabs.activeTab,
-  palettes: state.palettes.palettes
+  palettes: state.palettes.palettes,
+  color: state.form.color
 });
 
 const mapDispatchToProps = {
