@@ -38,8 +38,8 @@ const SidePanel = (props: Props): React$Element<any> => (
       {props.activeTab === 'about' && <AboutPanel />}
     </main>
     <div className="panel-footer">
-          Edd Yerburgh
-      </div>
+        Made by <a rel="noopener noreferrer" href="https://github.com/eddyerburgh" target="_blank">Edd Yerburgh</a>
+    </div>
   </div>
 );
 
