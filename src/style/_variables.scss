@@ -2,15 +2,8 @@
 // 1. Colors
 // ==========================================================================
 
-$primary-color: #3F51B5;
-$primary-color-light: lighten($primary-color, 15%);
-$primary-color-dark: darken($primary-color, 15%);
-
-$secondary-color: #424242;
 $white-color: #FFF;
-$success-color: #4CAF50;
-$error-color: #F44336;
-$link-color: $secondary-color;
+$dark-color: #50596c;
 
 // 2. Media Queries
 // ==========================================================================
