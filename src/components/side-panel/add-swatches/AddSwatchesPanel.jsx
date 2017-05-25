@@ -23,11 +23,11 @@ const AddSwatchesPanel = (props: Props): React$Element<any> => (
         key={`palette${i}`}
       />)}
     <button
-      className="btn"
+      className="btn btn-primary btn-block"
       id="delete-all"
       onClick={props.deleteSwatches}
     >
-          Delete all
+      <i className="icon icon-delete" /> Delete all
       </button>
   </div>
 );

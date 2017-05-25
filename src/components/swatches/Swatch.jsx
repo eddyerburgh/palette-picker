@@ -67,13 +67,13 @@ class Swatch extends Component {
       >
         <div>
           <button
-            className="swatch__edit btn-floating btn-inherit btn-large bg-transparent"
+            className="swatch__edit btn btn-primary btn-action btn-lg float-left"
             onClick={() => this.setState({ displayEdit: !this.state.displayEdit })}
-          ><i className="material-icons">mode_edit</i></button>
+          ><i className="icon icon-edit" /></button>
           <button
-            className="swatch__remove btn-floating  btn-inherit btn-large  bg-transparent align-right"
+            className="swatch__remove btn btn-primary btn-action btn-lg float-right"
             onClick={() => this.props.removeSwatch(this.props.id)}
-          ><i className="material-icons">delete</i></button>
+          ><i className="icon icon-delete" /></button>
         </div>
 
         {this.state.displayEdit &&
