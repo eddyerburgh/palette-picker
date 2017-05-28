@@ -5,6 +5,7 @@ import SidePanel from '../../../../src/components/side-panel/SidePanel';
 import Tabs from '../../../../src/components/side-panel/tabs/Tabs';
 import AddSwatchesPanel from '../../../../src/components/side-panel/add-swatches/AddSwatchesPanel';
 import AboutPanel from '../../../../src/components/side-panel/about/AboutPanel';
+import OptionsPanel from '../../../../src/components/side-panel/options/OptionsPanel';
 
 describe('<SidePanel {...props} />', () => {
   let props;
@@ -39,11 +40,23 @@ describe('<SidePanel {...props} />', () => {
   });
 
   it('passes state.palettes.palettes to <AddSwatchesPanel />', () => {
-    props.activeTab = 'add swatches';
+    props.activeTab = 'add';
     props.palettes = [{}];
     const wrapper = shallow(<SidePanel {...props} />);
     const AddSwatchesPanelProps = wrapper.find(AddSwatchesPanel).props();
     expect(AddSwatchesPanelProps.palettes).to.deep.equal(props.palettes);
+  });
+
+  it('renders <AddSwatchesPanel /> if props.activeTab equals "add"', () => {
+    props.activeTab = 'add';
+    const wrapper = shallow(<SidePanel {...props} />);
+    expect(wrapper.find(AddSwatchesPanel).length).to.equal(1);
+  });
+
+  it('renders <OptionsPanel /> if props.activeTab equals "options"', () => {
+    props.activeTab = 'options';
+    const wrapper = shallow(<SidePanel {...props} />);
+    expect(wrapper.find(OptionsPanel).length).to.equal(1);
   });
 
   it('renders <AboutPanel /> if props.activeTab equals "about"', () => {
@@ -53,7 +66,7 @@ describe('<SidePanel {...props} />', () => {
   });
 
   it('passes props.switchActiveTab to <AddSwatchesPanel />', () => {
-    props.activeTab = 'add swatches';
+    props.activeTab = 'add';
     props.addNewSwatch = sinon.stub();
     const wrapper = shallow(<SidePanel {...props} />);
     wrapper.find(AddSwatchesPanel).props().addNewSwatch();

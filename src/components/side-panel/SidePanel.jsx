@@ -4,6 +4,7 @@ import React from 'react';
 import Tabs from './tabs/Tabs';
 import AddSwatchesPanel from './add-swatches/AddSwatchesPanel';
 import AboutPanel from './about/AboutPanel';
+import OptionsPanel from './options/OptionsPanel';
 import type { PaletteType } from '../../../types';
 
 type Props = {
@@ -29,13 +30,16 @@ const SidePanel = (props: Props): React$Element<any> => (
       />
     </nav>
     <main className="panel-body">
-      {props.activeTab === 'add swatches' &&
+      {props.activeTab === 'add' &&
         <AddSwatchesPanel
           addNewSwatch={props.addNewSwatch}
-          deleteSwatches={props.deleteSwatches}
           palettes={props.palettes}
         />}
       {props.activeTab === 'about' && <AboutPanel />}
+      {props.activeTab === 'options' &&
+        <OptionsPanel
+          deleteSwatches={props.deleteSwatches}
+        />}
     </main>
     <div className="panel-footer">
         Made by <a rel="noopener noreferrer" href="https://github.com/eddyerburgh" target="_blank">Edd Yerburgh</a>

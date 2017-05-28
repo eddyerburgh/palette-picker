@@ -8,8 +8,8 @@ type TabsState = {
 };
 
 const initialState = {
-  tabs: ['add swatches', 'about'],
-  activeTab: 'add swatches'
+  tabs: ['add', 'options', 'about'],
+  activeTab: 'add'
 };
 
 export default function reducer(
