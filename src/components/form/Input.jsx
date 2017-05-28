@@ -19,23 +19,21 @@ type Props = {
 }
 
 const Input = (props: Props): React$Element<any> => (
-  <div>
-    <input
-      className={
+  <input
+    className={
                 classNames({
                   'form-input': true,
                   'is-success': props.meta.touched && !props.meta.error,
                   'is-error': props.meta.touched && props.meta.error
                 })
             }
-      name={props.name}
-      id={props.id}
-      type={props.type}
-      value={props.value}
-      onBlur={props.input.onBlur}
-      onChange={props.input.onChange}
-    />
-  </div>
+    name={props.name}
+    id={props.id}
+    type={props.type}
+    value={props.value}
+    onBlur={props.input.onBlur}
+    onChange={props.input.onChange}
+  />
 );
 
 export default Input;
