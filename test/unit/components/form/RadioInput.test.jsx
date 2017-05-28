@@ -16,17 +16,17 @@ describe('<RadioInput />', () => {
     expect(wrapper.find('input').prop('name')).to.equal(props.name);
   });
 
-  it('renders props.value as text', () => {
-    props.value = 'value';
+  it('renders props.option as text', () => {
+    props.option = 'option';
     const wrapper = shallow(<RadioInput {...props} />);
-    expect(wrapper.text()).to.contain(props.value);
+    expect(wrapper.text()).to.contain(props.option);
   });
 
-  it('calls props.input.onClick with props.value when input is clicked', () => {
+  it('calls props.input.onClick with props.option when input is clicked', () => {
     props.input.onChange = sinon.stub();
-    props.value = 'value';
+    props.option = 'option';
     const wrapper = shallow(<RadioInput {...props} />);
     wrapper.find('input').simulate('click');
-    expect(props.input.onChange).to.be.calledWith(props.value);
+    expect(props.input.onChange).to.be.calledWith(props.option);
   });
 });

@@ -4,7 +4,8 @@ import React from 'react';
 
 type Props = {
     name: String,
-    value: String,
+    option: String,
+    checked: Boolean,
     input: {
         onChange: Function
     }
@@ -13,15 +14,16 @@ type Props = {
 const RadioInput = (props: Props): React$Element<any> => (
   <label
     className="form-radio"
-    htmlFor={props.value}
+    htmlFor={props.option}
   >
     <input
       type="radio"
+      checked={props.checked}
       name={props.name}
-      onClick={() => props.input.onChange(props.value)}
-      id={props.value}
+      onClick={() => props.input.onChange(props.option)}
+      id={props.option}
     />
-    <i className="form-icon" /> {props.value}
+    <i className="form-icon" /> {props.option}
   </label>
 );
 
