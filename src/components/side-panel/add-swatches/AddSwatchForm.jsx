@@ -22,7 +22,7 @@ let AddSwatchForm = (props: Props): React$Element<any> => { // eslint-disable-li
 
   return (
     <form className="add-swatch-form mb-10" onSubmit={handleSubmit}>
-      <div className="form-group">
+      <div className="input-group">
         <Field
           id="add-swatch"
           name="color"
@@ -32,7 +32,7 @@ let AddSwatchForm = (props: Props): React$Element<any> => { // eslint-disable-li
         <input
           type="submit"
           value="add swatch"
-          className="btn btn-primary btn-block"
+          className="btn btn-primary input-group-btn"
         />
       </div>
     </form>
