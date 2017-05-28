@@ -7,13 +7,7 @@ test:
   override:
     - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --readyfile ~/sauce_is_ready:
         background: true
-    #Wait for tunnel to be ready
     - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
-    - npm start
-        background: true
-    # Wait for app to be ready
-    - curl --retry 10 --retry-delay 2 -v http://localhost:5000
-    # Run selenium tests
-    - npm run test:e2e
+    - npm test
   post:
-    - killall --wait sc  # wait for Sauce Connect to close the tunnel
+    - killall --wait sc
