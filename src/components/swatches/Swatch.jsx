@@ -13,7 +13,8 @@ type Props = {
     fontColor: string,
     rgb: string,
     id: string,
-    hex: string
+    hex: string,
+    format: String
 }
 
 type ClickEvent = {
@@ -43,7 +44,7 @@ class Swatch extends Component {
       return;
     }
     try {
-      copy(this.props.rgb);
+      copy(this.props[this.props.format]);
 
       this.props.displayNewFullScreenMessage(
                 'Copied to clipboard!',

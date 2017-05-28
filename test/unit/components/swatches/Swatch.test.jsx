@@ -50,6 +50,14 @@ describe('<Swatch />', () => {
     expect(props.displayNewFullScreenMessage.args[0][2]).to.equal(props.fontColor);
   });
 
+  it('calls copy with props[props.format]', () => {
+    props.rgb = 'rgb()';
+    props.format = 'rgb';
+    const wrapper = shallow(<Swatch {...props} />);
+    wrapper.simulate('click', { target: { className: 'swatch__inner' } });
+    expect(copyStub.calledWith(props.rgb)).to.equal(true);
+  });
+
   it('does nothing when .swatch__remove or .swatch__edit are clicked', () => {
     const wrapper = shallow(<Swatch {...props} />);
     wrapper.find('.swatch__remove').simulate('click', { target: { className: 'swatch__remove' } });

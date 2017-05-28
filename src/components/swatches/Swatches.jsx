@@ -31,6 +31,7 @@ const Swatches = (props: Props): React$Element<any> => {
       {props.swatches.map((swatch, index) =>
         <SwatchDragContainer
           {...swatch}
+          format={props.format}
           displayNewModal={props.displayNewModal}
           replaceSwatch={props.replaceSwatch}
           removeSwatch={props.removeSwatch}
