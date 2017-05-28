@@ -10,7 +10,6 @@ describe('<SidePanel {...props} />', () => {
     props = {};
   });
 
-
   it('calls props.deleteSwatches when button is clicked', () => {
     props.deleteSwatches = sinon.stub();
     shallow(<OptionsPanel {...props} />).find('button').simulate('click');
