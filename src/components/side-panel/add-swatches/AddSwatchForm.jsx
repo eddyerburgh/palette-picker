@@ -11,12 +11,14 @@ const selector = formValueSelector('add-swatch');
 
 type Props = {
     color: String,
-    addNewSwatch: Function
+    addNewSwatch: Function,
+    displayNewFullScreenMessage: Function
 }
 
 let AddSwatchForm = (props: Props): React$Element<any> => { // eslint-disable-line import/no-mutable-exports,max-len
   function handleSubmit(event) {
     event.preventDefault();
+    props.displayNewFullScreenMessage('Color added!');
     props.addNewSwatch(new Swatch(props.color));
   }
 

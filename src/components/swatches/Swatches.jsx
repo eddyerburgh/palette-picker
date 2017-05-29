@@ -29,7 +29,7 @@ const Swatches = (props: Props): React$Element<any> => {
   return (
     <div className="swatches">
       {props.swatches.map((swatch, index) =>
-        <SwatchDragContainer
+        (<SwatchDragContainer
           {...swatch}
           format={props.format}
           displayNewModal={props.displayNewModal}
@@ -41,7 +41,7 @@ const Swatches = (props: Props): React$Element<any> => {
           key={`swatch-${swatch.id}`}
           source={swatch}
           index={index}
-        />
+        />)
       )}
     </div>
   );

@@ -7,8 +7,9 @@ import PaletteColor from './PaletteColor';
 import Swatch from '../../../lib/Swatch';
 
 type Props = {
-  addNewSwatch: Function,
-    colors: Array<string>
+    addNewSwatch: Function,
+    colors: Array<string>,
+    displayNewFullScreenMessage: Function // eslint-disable-line react/no-unused-prop-types
 }
 
 const Palette = (props: Props): React$Element<any> => {
@@ -21,12 +22,12 @@ const Palette = (props: Props): React$Element<any> => {
       <div className="tile-content">
         <div className="columns col-gapless">
           {props.colors.map((color, i) =>
-            <PaletteColor
+            (<PaletteColor
               key={`palette-color-${i}`}
               displayNewFullScreenMessage={props.displayNewFullScreenMessage}
               addNewSwatch={props.addNewSwatch}
               color={color}
-            />
+            />)
           )}
         </div>
       </div>
@@ -40,4 +41,4 @@ const Palette = (props: Props): React$Element<any> => {
   );
 };
 
-export default Palette ;
+export default Palette;

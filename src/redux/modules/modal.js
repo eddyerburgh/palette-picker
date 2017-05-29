@@ -12,8 +12,8 @@ const initialState = {
 };
 
 export default function reducer(
-    state: ModalType = initialState,
-    action: Object = {}): ModalType {
+  state: ModalType = initialState,
+  action: Object = {}): ModalType {
   switch (action.type) {
     case NEW_MODAL:
       return {

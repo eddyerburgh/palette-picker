@@ -14,15 +14,18 @@ type Props = {
 const AddSwatchesPanel = (props: Props): React$Element<any> => (
   <div>
     <h4>Custom swatch</h4>
-    <AddSwatchForm addNewSwatch={props.addNewSwatch} />
+    <AddSwatchForm
+      addNewSwatch={props.addNewSwatch}
+      displayNewFullScreenMessage={props.displayNewFullScreenMessage}
+    />
     <h4>Pre-made palettes</h4>
     {props.palettes.map((palette, i) =>
-      <Palette
+      (<Palette
         {...palette}
         addNewSwatch={props.addNewSwatch}
         displayNewFullScreenMessage={props.displayNewFullScreenMessage}
         key={`palette${i}`}
-      />)}
+      />))}
   </div>
 );
 

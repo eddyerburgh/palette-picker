@@ -13,12 +13,12 @@ const Tabs = (props: Props): React$Element<any> => (
   <div className="panel-nav">
     <ul className="tab tab-block">
       {props.tabs.map((tab, i) =>
-        <Tab
+        (<Tab
           key={i}
           name={tab}
           isActive={tab === props.activeTab}
           switchActiveTab={props.switchActiveTab}
-        />
+        />)
     )}
     </ul>
   </div>

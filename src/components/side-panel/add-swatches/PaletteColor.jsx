@@ -4,10 +4,9 @@ import React from 'react';
 import Swatch from '../../../lib/Swatch';
 
 type Props = {
-  addNewSwatch: Function,
-  color: string,
-    displayNewFullScreenMessage: Function
-
+    addNewSwatch: Function,
+    color: string,
+    displayNewFullScreenMessage: Function // eslint-disable-line react/no-unused-prop-types
 }
 
 const PaletteColor = (props: Props): React$Element<any> => {
