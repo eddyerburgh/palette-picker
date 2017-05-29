@@ -16,6 +16,3 @@ node_modules/
 # Log files
 *.log
 reports
-
-# Build
-dist/
