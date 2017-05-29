@@ -8,6 +8,7 @@ import type { PaletteType } from '../../../../types';
 type Props = {
   palettes: Array<PaletteType>,
   addNewSwatch: Function,
+    displayNewFullScreenMessage: Function
 }
 
 const AddSwatchesPanel = (props: Props): React$Element<any> => (
@@ -19,6 +20,7 @@ const AddSwatchesPanel = (props: Props): React$Element<any> => (
       <Palette
         {...palette}
         addNewSwatch={props.addNewSwatch}
+        displayNewFullScreenMessage={props.displayNewFullScreenMessage}
         key={`palette${i}`}
       />)}
   </div>

@@ -34,12 +34,14 @@ describe('<Palette />', () => {
     expect(props.addNewSwatch).to.have.been.calledOnce;
   });
 
-  it('calls addNewSwatch with each colorfor each props.color when button is clicked', () => {
+  it('calls addNewSwatch with each colorfor each props.color when button is clicked and dispalyds full screen message', () => {
+    props.displayNewFullScreenMessage = sinon.stub();
     const wrapper = shallow(<Palette {...props} />);
     wrapper.find('button').simulate('click');
     const argument = props.addNewSwatch.args[0][0];
     expect(argument).to.be.instanceOf(Swatch);
     expect(argument.hex).to.equal(props.colors[0]);
     expect(props.addNewSwatch).to.have.callCount(props.colors.length);
+    expect(props.displayNewFullScreenMessage).to.be.calledWith('Palette added!');
   });
 });

@@ -8,11 +8,12 @@ import Swatch from '../../../lib/Swatch';
 
 type Props = {
   addNewSwatch: Function,
-  colors: Array<string>
+    colors: Array<string>
 }
 
 const Palette = (props: Props): React$Element<any> => {
   function addNewPalette() {
+    props.displayNewFullScreenMessage('Palette added!');
     props.colors.forEach(color => props.addNewSwatch(new Swatch(color)));
   }
   return (
@@ -22,6 +23,7 @@ const Palette = (props: Props): React$Element<any> => {
           {props.colors.map((color, i) =>
             <PaletteColor
               key={`palette-color-${i}`}
+              displayNewFullScreenMessage={props.displayNewFullScreenMessage}
               addNewSwatch={props.addNewSwatch}
               color={color}
             />

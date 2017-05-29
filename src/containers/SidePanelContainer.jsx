@@ -4,17 +4,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as tabsActions from '../redux/modules/tabs';
 import * as swatchesActions from '../redux/modules/swatches';
+import * as fullScreenMessageActions from '../redux/modules/fullScreenMessage';
 import type { PaletteType } from '../../types';
 import SidePanel from '../components/side-panel/SidePanel';
 
 type Props = {
-  addNewSwatch: Function, // eslint-disable-line  react/no-unused-prop-types
+  addNewSwatch: Function,
+      displayNewFullScreenMessage: Function,
   tabs: Array<string>,
   color: String,
   activeTab: string,
   switchActiveTab: Function,
-  palettes: Array<PaletteType>, // eslint-disable-line react/no-unused-prop-types
-  deleteSwatches: Function // eslint-disable-line react/no-unused-prop-types
+  palettes: Array<PaletteType>,
+  deleteSwatches: Function
 }
 
 const SidePanelContainer = (props: Props): React$Element<any> => (
@@ -26,6 +28,7 @@ const SidePanelContainer = (props: Props): React$Element<any> => (
     switchActiveTab={props.switchActiveTab}
     palettes={props.palettes}
     deleteSwatches={props.deleteSwatches}
+    displayNewFullScreenMessage={props.displayNewFullScreenMessage}
   />
 );
 
@@ -39,7 +42,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   addNewSwatch: swatchesActions.addNewSwatch,
   deleteSwatches: swatchesActions.deleteSwatches,
-  switchActiveTab: tabsActions.switchActiveTab
+  switchActiveTab: tabsActions.switchActiveTab,
+  displayNewFullScreenMessage: fullScreenMessageActions.displayNewFullScreenMessage
 };
 
 export default connect(

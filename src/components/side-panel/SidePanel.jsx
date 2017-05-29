@@ -13,7 +13,8 @@ type Props = {
     activeTab: string,
     switchActiveTab: Function,
     palettes: Array<PaletteType>,
-    deleteSwatches: Function
+    deleteSwatches: Function,
+    displayNewFullScreenMessage: Function
 }
 
 const SidePanel = (props: Props): React$Element<any> => (
@@ -33,6 +34,7 @@ const SidePanel = (props: Props): React$Element<any> => (
       {props.activeTab === 'add' &&
         <AddSwatchesPanel
           addNewSwatch={props.addNewSwatch}
+          displayNewFullScreenMessage={props.displayNewFullScreenMessage}
           palettes={props.palettes}
         />}
       {props.activeTab === 'about' && <AboutPanel />}

@@ -19,12 +19,14 @@ describe('<PaletteColor />', () => {
     expect(wrapper.find('.palette__color')).to.have.to.have.style('background-color', props.color);
   });
 
-  it('calls props.addNewSwatch with Swatch instance when clicked', () => {
+  it('calls props.addNewSwatch with Swatch instance when clicked and displays color added', () => {
+    props.displayNewFullScreenMessage = sinon.stub();
     const wrapper = shallow(<PaletteColor {...props} />);
     wrapper.simulate('click');
     const argument = props.addNewSwatch.args[0][0];
     expect(argument).to.be.instanceOf(Swatch);
     expect(argument.hex).to.equal(props.color);
     expect(props.addNewSwatch).to.have.been.calledOnce;
+    expect(props.displayNewFullScreenMessage).to.have.been.calledWith('Color added!');
   });
 });
