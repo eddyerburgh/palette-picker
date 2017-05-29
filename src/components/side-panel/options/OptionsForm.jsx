@@ -35,6 +35,7 @@ OptionsForm = reduxForm({
   initialValues: {
     format: 'rgb',
   },
+  destroyOnUnmount: false,
 })(OptionsForm);
 
 OptionsForm = connect(
