@@ -16,14 +16,14 @@ describe('<FullScreenMessageContainer />', () => {
   beforeEach(() => {
     FullScreenMessageStub = () => <div />;
     fullScreenMessageActionsStub = {
-      closeFullScreenMessage: sinon.stub()
+      closeFullScreenMessage: sinon.stub(),
     };
     state = { fullScreenMessage: { display: true, rgb: 'rgb', fontColor: 'light' } };
     store = storeMock(state);
 
     FullScreenMessageContainer = proxyquire('../../../src/containers/FullScreenMessageContainer', {
       '../components/full-screen-message/FullScreenMessage': FullScreenMessageStub,
-      '../redux/modules/fullScreenMessage': fullScreenMessageActionsStub
+      '../redux/modules/fullScreenMessage': fullScreenMessageActionsStub,
     }
     ).default;
   });

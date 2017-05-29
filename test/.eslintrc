@@ -1,7 +1,6 @@
 {
-  "extends": ["airbnb", "airbnb-flow"],
+  "extends": ["../.eslintrc"],
   "rules": {
-    "comma-dangle": ["error", "never"],
     "no-unused-expressions": "off",
     "import/no-extraneous-dependencies": "off"
   },

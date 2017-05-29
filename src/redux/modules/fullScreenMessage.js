@@ -11,7 +11,7 @@ type FullScreenMessageState = {
 const initialState = {
   display: false,
   message: null,
-  swatch: {}
+  swatch: {},
 };
 
 export default function reducer(
@@ -24,12 +24,12 @@ export default function reducer(
         display: true,
         message: action.message,
         rgb: action.rgb,
-        fontColor: action.fontColor
+        fontColor: action.fontColor,
       };
     case CLOSE_MESSAGE:
       return {
         ...state,
-        display: false
+        display: false,
       };
     default:
       return state;
@@ -50,7 +50,7 @@ export function displayNewFullScreenMessage(
     type: NEW_MESSAGE,
     message,
     rgb,
-    fontColor
+    fontColor,
   };
 }
 
@@ -60,6 +60,6 @@ type CloseMessageAction = {
 
 export function closeFullScreenMessage(): CloseMessageAction {
   return {
-    type: CLOSE_MESSAGE
+    type: CLOSE_MESSAGE,
   };
 }

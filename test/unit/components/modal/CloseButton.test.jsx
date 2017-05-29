@@ -10,7 +10,7 @@ describe('<CloseButton />', () => {
   beforeEach(() => {
     props = {
       clickHandler: sinon.spy(),
-      value: 'test value'
+      value: 'test value',
     };
   });
 

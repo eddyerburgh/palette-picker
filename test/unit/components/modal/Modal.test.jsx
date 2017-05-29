@@ -9,7 +9,7 @@ describe('<Modal />', () => {
   beforeEach(() => {
     props = {
       modal: { message: 'test message', heading: 'heading' },
-      closeModal: () => {}
+      closeModal: () => {},
     };
   });
 

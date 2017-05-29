@@ -24,7 +24,7 @@ const Input = (props: Props): React$Element<any> => (
                 classNames({
                   'form-input': true,
                   'is-success': props.meta.touched && !props.meta.error,
-                  'is-error': props.meta.touched && props.meta.error
+                  'is-error': props.meta.touched && props.meta.error,
                 })
             }
     name={props.name}

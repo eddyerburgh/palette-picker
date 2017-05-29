@@ -7,7 +7,7 @@ describe('fullScreenMessage', () => {
     beforeEach(() => {
       initialState = {
         display: false,
-        message: null
+        message: null,
       };
     });
 
@@ -42,7 +42,7 @@ describe('fullScreenMessage', () => {
           type: 'NEW_MESSAGE',
           message,
           rgb,
-          fontColor
+          fontColor,
         };
         const action = fullScreenActions.displayNewFullScreenMessage(message, rgb, fontColor);
         expect(action).to.deep.equal(expectedAction);
@@ -52,7 +52,7 @@ describe('fullScreenMessage', () => {
     describe('closefullScreen', () => {
       it('returns an action type set to CLOSE_fullScreen', () => {
         const expectedAction = {
-          type: 'CLOSE_MESSAGE'
+          type: 'CLOSE_MESSAGE',
         };
         const action = fullScreenActions.closeFullScreenMessage();
         expect(action).to.deep.equal(expectedAction);

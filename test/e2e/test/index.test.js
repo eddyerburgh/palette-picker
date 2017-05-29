@@ -85,5 +85,5 @@ module.exports = {
       .setValue('.swatch:nth-of-type(1) [type="text"]', '#000')
       .assert.cssProperty('.swatch:nth-of-type(1) .swatch__inner', 'background-color', 'rgba(0, 0, 0, 1)')
       .end();
-  }
+  },
 };

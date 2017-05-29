@@ -9,7 +9,7 @@ type TabsState = {
 
 const initialState = {
   tabs: ['add', 'options', 'about'],
-  activeTab: 'add'
+  activeTab: 'add',
 };
 
 export default function reducer(
@@ -19,7 +19,7 @@ export default function reducer(
     case SWITCH_ACTIVE_TAB:
       return {
         ...state,
-        activeTab: action.activeTab
+        activeTab: action.activeTab,
       };
     default:
       return state;
@@ -33,6 +33,6 @@ type SwitchActiveTabType = {
 export function switchActiveTab(activeTab: string): SwitchActiveTabType {
   return {
     type: SWITCH_ACTIVE_TAB,
-    activeTab
+    activeTab,
   };
 }

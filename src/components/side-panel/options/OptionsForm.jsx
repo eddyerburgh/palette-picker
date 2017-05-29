@@ -33,13 +33,13 @@ let OptionsForm = (props: Props): React$Element<any> => ( // eslint-disable-line
 OptionsForm = reduxForm({
   form: 'options',
   initialValues: {
-    format: 'rgb'
-  }
+    format: 'rgb',
+  },
 })(OptionsForm);
 
 OptionsForm = connect(
     state => ({
-      format: selector(state, 'format')
+      format: selector(state, 'format'),
     })
 )(OptionsForm);
 

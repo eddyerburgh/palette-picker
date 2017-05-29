@@ -10,7 +10,7 @@ describe('<PaletteColor />', () => {
   beforeEach(() => {
     props = {
       addNewSwatch: sinon.stub(),
-      color: '#666111'
+      color: '#666111',
     };
   });
 

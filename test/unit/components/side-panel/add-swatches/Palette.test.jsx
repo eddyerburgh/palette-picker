@@ -16,10 +16,10 @@ describe('<Palette />', () => {
     props = {
       addNewSwatch: sinon.spy(),
       name: 'palette',
-      colors: ['#555666', '#666666']
+      colors: ['#555666', '#666666'],
     };
     Palette = proxyquire('../../../../../src/components/side-panel/add-swatches/Palette', {
-      './PaletteColor': PaletteColorStub
+      './PaletteColor': PaletteColorStub,
     }).default;
   });
 

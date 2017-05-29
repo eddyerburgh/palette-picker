@@ -10,7 +10,7 @@ describe('<EditSwatch />', () => {
   beforeEach(() => {
     props = {
       id: 'id',
-      replaceSwatch: sinon.stub()
+      replaceSwatch: sinon.stub(),
     };
   });
 

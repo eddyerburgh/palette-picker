@@ -33,7 +33,7 @@ class Swatch extends Component {
     super(props);
 
     this.state = {
-      displayEdit: false
+      displayEdit: false,
     };
   }
 
@@ -54,7 +54,7 @@ class Swatch extends Component {
     } catch (error) {
       this.props.displayNewModal({
         heading: 'Error',
-        message: 'Could not copy to clipboard'
+        message: 'Could not copy to clipboard',
       });
     }
   }

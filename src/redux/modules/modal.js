@@ -8,7 +8,7 @@ const CLOSE_MODAL = 'CLOSE_MODAL';
 const initialState = {
   display: true,
   heading: 'Welcome!',
-  message: 'This app lets you store swatches of color. Click them to copy to clipboard.'
+  message: 'This app lets you store swatches of color. Click them to copy to clipboard.',
 };
 
 export default function reducer(
@@ -20,12 +20,12 @@ export default function reducer(
         ...state,
         display: true,
         heading: action.payload.heading,
-        message: action.payload.message
+        message: action.payload.message,
       };
     case CLOSE_MODAL:
       return {
         ...state,
-        display: false
+        display: false,
       };
     default:
       return state;
@@ -50,8 +50,8 @@ export function displayNewModal(args: NewModalArgs): NewModalAction {
     type: NEW_MODAL,
     payload: {
       message: args.message || null,
-      heading: args.heading || null
-    }
+      heading: args.heading || null,
+    },
   };
 }
 
@@ -61,6 +61,6 @@ type CloseModalAction = {
 
 export function closeModal(): CloseModalAction {
   return {
-    type: CLOSE_MODAL
+    type: CLOSE_MODAL,
   };
 }

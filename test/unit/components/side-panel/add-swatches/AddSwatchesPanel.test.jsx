@@ -15,14 +15,14 @@ describe('<AddSwatchesPanel />', () => {
     PaletteStub = () => <div />;
     AddSwatchesPanel = proxyquire('../../../../../src/components/side-panel/add-swatches/AddSwatchesPanel', {
       './AddSwatchForm': AddSwatchFormStub,
-      './Palette': PaletteStub
+      './Palette': PaletteStub,
     }).default;
 
     props = {
       addNewSwatch: () => {},
       palettes: [
-        { color: '', name: '' }, { color: '', name: '' }
-      ]
+        { color: '', name: '' }, { color: '', name: '' },
+      ],
     };
   });
 

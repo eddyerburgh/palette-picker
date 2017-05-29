@@ -21,11 +21,11 @@ describe('<Swatch />', () => {
       removeSwatch: sinon.stub(),
       displayNewModal: sinon.stub(),
       displayNewFullScreenMessage: sinon.stub(),
-      replaceSwatch: sinon.stub()
+      replaceSwatch: sinon.stub(),
     };
     Swatch = proxyquire('../../../../src/components/swatches/Swatch', {
       'copy-to-clipboard': copyStub,
-      './EditSwatch': EditSwatchStub
+      './EditSwatch': EditSwatchStub,
     }).default;
   });
 

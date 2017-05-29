@@ -8,7 +8,7 @@ describe('modal', () => {
       initialState = {
         display: false,
         heading: null,
-        message: null
+        message: null,
       };
     });
 
@@ -37,8 +37,8 @@ describe('modal', () => {
           type: 'NEW_MODAL',
           payload: {
             message,
-            heading
-          }
+            heading,
+          },
         };
         const action = modalActions.displayNewModal({ message, heading });
         expect(action).to.deep.equal(expectedAction);
@@ -49,8 +49,8 @@ describe('modal', () => {
           type: 'NEW_MODAL',
           payload: {
             message: null,
-            heading
-          }
+            heading,
+          },
         };
         const action = modalActions.displayNewModal({ heading });
         expect(action).to.deep.equal(expectedAction);
@@ -61,8 +61,8 @@ describe('modal', () => {
           type: 'NEW_MODAL',
           payload: {
             message,
-            heading: null
-          }
+            heading: null,
+          },
         };
         const action = modalActions.displayNewModal({ message });
         expect(action).to.deep.equal(expectedAction);
@@ -71,7 +71,7 @@ describe('modal', () => {
     describe('closeModal', () => {
       it('returns an action type set to CLOSE_MODAL', () => {
         const expectedAction = {
-          type: 'CLOSE_MODAL'
+          type: 'CLOSE_MODAL',
         };
         const action = modalActions.closeModal();
         expect(action).to.deep.equal(expectedAction);

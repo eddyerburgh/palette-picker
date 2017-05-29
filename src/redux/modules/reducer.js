@@ -12,5 +12,5 @@ export default combineReducers({
   modal,
   palettes,
   swatches,
-  tabs
+  tabs,
 });

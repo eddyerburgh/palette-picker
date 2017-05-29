@@ -36,14 +36,14 @@ const mapStateToProps = state => ({
   tabs: state.tabs.tabs,
   activeTab: state.tabs.activeTab,
   palettes: state.palettes.palettes,
-  color: state.form.color
+  color: state.form.color,
 });
 
 const mapDispatchToProps = {
   addNewSwatch: swatchesActions.addNewSwatch,
   deleteSwatches: swatchesActions.deleteSwatches,
   switchActiveTab: tabsActions.switchActiveTab,
-  displayNewFullScreenMessage: fullScreenMessageActions.displayNewFullScreenMessage
+  displayNewFullScreenMessage: fullScreenMessageActions.displayNewFullScreenMessage,
 };
 
 export default connect(

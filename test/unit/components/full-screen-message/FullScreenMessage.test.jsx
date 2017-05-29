@@ -11,7 +11,7 @@ describe('<FullScreenMessage />', () => {
       message: 'message',
       closeMessage: sinon.stub(),
       background: 'rgb(0,0,0)',
-      color: 'light'
+      color: 'light',
     };
   });
 

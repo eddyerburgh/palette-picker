@@ -20,9 +20,9 @@ const cardSource = {
   beginDrag(props: CardSourceProps) {
     return {
       index: props.index,
-      id: props.id
+      id: props.id,
     };
-  }
+  },
 };
 
 const cardTarget = {
@@ -48,7 +48,7 @@ const cardTarget = {
 
     props.moveSwatch(dragIndex, hoverIndex);
     monitor.getItem().index = hoverIndex; // eslint-disable-line no-param-reassign
-  }
+  },
 };
 
 class SwatchDragContainer extends Component {
@@ -69,10 +69,10 @@ class SwatchDragContainer extends Component {
 
 export default DragSource('swatch', cardSource, (connect, monitor) => ({ // eslint-disable-line new-cap
   connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.isDragging(),
 }))(
     DropTarget('swatch', cardTarget, connect => ({ // eslint-disable-line new-cap
-      connectDropTarget: connect.dropTarget()
+      connectDropTarget: connect.dropTarget(),
     }))(SwatchDragContainer)
 );
 

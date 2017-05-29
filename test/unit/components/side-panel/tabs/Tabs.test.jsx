@@ -14,13 +14,13 @@ describe('<Tabs />', () => {
     TabStub = () => <div />;
 
     Tabs = proxyquire('../../../../../src/components/side-panel/tabs/Tabs', {
-      './Tab': TabStub
+      './Tab': TabStub,
     }).default;
 
     props = {
       tabs: ['active tab', ''],
       activeTab: 'active tab',
-      switchActiveTab: () => {}
+      switchActiveTab: () => {},
     };
   });
 

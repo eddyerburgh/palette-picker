@@ -11,7 +11,7 @@ describe('Swatches', () => {
   beforeEach(() => {
     SwatchDragContainerStub = () => <div />;
     Swatches = proxyquire('../../../../src/components/swatches/Swatches', {
-      './SwatchDragContainer': SwatchDragContainerStub
+      './SwatchDragContainer': SwatchDragContainerStub,
     }).default;
   });
 

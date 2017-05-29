@@ -17,7 +17,7 @@ const Root = props => (
 );
 
 Root.propTypes = {
-  store: PropTypes.object // eslint-disable-line react/forbid-prop-types
+  store: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 export default Root;

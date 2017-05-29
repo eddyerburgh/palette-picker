@@ -20,13 +20,13 @@ describe('<SwatchesContainer />', () => {
     swatchesStub = {
       removeSwatch: sinon.stub(),
       replaceSwatch: sinon.stub(),
-      moveSwatch: sinon.stub()
+      moveSwatch: sinon.stub(),
     };
     modalStub = {
-      displayNewModal: sinon.stub()
+      displayNewModal: sinon.stub(),
     };
     fullScreenMessageStub = {
-      displayNewFullScreenMessage: sinon.stub()
+      displayNewFullScreenMessage: sinon.stub(),
     };
     state = { swatches: { swatches: [{ hex: '#666666', id: '1' }, { hex: '#777777', id: '2' }] } };
     store = storeMock(state);
@@ -35,7 +35,7 @@ describe('<SwatchesContainer />', () => {
       '../components/swatches/Swatches': SwatchesStub,
       '../redux/modules/swatches': swatchesStub,
       '../redux/modules/modal': modalStub,
-      '../redux/modules/fullScreenMessage': fullScreenMessageStub
+      '../redux/modules/fullScreenMessage': fullScreenMessageStub,
     }
     ).default;
   });

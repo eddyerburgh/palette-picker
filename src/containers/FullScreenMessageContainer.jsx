@@ -27,11 +27,11 @@ const mapStateToProps = state => ({
   message: state.fullScreenMessage.message,
   display: state.fullScreenMessage.display,
   color: state.fullScreenMessage.fontColor,
-  background: state.fullScreenMessage.rgb
+  background: state.fullScreenMessage.rgb,
 });
 
 const mapDispatchToProps = {
-  closeMessage: fullScreenMessageActions.closeFullScreenMessage
+  closeMessage: fullScreenMessageActions.closeFullScreenMessage,
 };
 
 export default connect(

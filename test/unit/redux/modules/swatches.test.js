@@ -6,7 +6,7 @@ describe('swatches', () => {
 
     beforeEach(() => {
       initialState = {
-        swatches: [{ rgb: '', hex: '', id: '1' }, { rgb: '', hex: '', id: '2' }, { rgb: '', hex: '', id: '3' }]
+        swatches: [{ rgb: '', hex: '', id: '1' }, { rgb: '', hex: '', id: '2' }, { rgb: '', hex: '', id: '3' }],
       };
     });
 
@@ -65,13 +65,13 @@ describe('swatches', () => {
         id: 1,
         color: 'red',
         hex: '#ff0000',
-        rgb: 'rgb(255,0,0)'
+        rgb: 'rgb(255,0,0)',
       };
 
       it('returns an action with swatch as payload', () => {
         const expectedAction = {
           type: 'ADD_SWATCH',
-          swatch
+          swatch,
         };
         const action = swatchesActions.addNewSwatch(swatch);
         expect(action).to.deep.equal(expectedAction);
@@ -83,7 +83,7 @@ describe('swatches', () => {
 
         const expectedAction = {
           type: 'REMOVE_SWATCH',
-          swatchId
+          swatchId,
         };
         const action = swatchesActions.removeSwatch(swatchId);
         expect(action).to.deep.equal(expectedAction);
@@ -98,7 +98,7 @@ describe('swatches', () => {
         const expectedAction = {
           type: 'REPLACE_SWATCH',
           swatch,
-          swatchId
+          swatchId,
         };
         const action = swatchesActions.replaceSwatch(swatchId, swatch);
         expect(action).to.deep.equal(expectedAction);
@@ -112,7 +112,7 @@ describe('swatches', () => {
         const expectedAction = {
           type: 'MOVE_SWATCH',
           oldIndex,
-          newIndex
+          newIndex,
         };
         const action = swatchesActions.moveSwatch(oldIndex, newIndex);
         expect(action).to.deep.equal(expectedAction);
@@ -122,7 +122,7 @@ describe('swatches', () => {
     describe('deleteSwatches', () => {
       it('returns an action with DELETE_SWATCHES type', () => {
         const expectedAction = {
-          type: 'DELETE_SWATCHES'
+          type: 'DELETE_SWATCHES',
         };
         const action = swatchesActions.deleteSwatches();
         expect(action).to.deep.equal(expectedAction);

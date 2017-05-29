@@ -8,7 +8,7 @@ describe('<Tab />', () => {
 
   beforeEach(() => {
     props = {
-      name: 'tab'
+      name: 'tab',
     };
   });
 

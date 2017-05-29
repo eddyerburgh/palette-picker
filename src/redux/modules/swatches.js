@@ -19,29 +19,29 @@ const initialState = {
       hex: '#AF9EFA',
       rgb: 'rgb(175,158,250)',
       rgbArray: [175, 158, 250],
-      fontColor: 'light'
+      fontColor: 'light',
     },
     {
       id: '2',
       hex: '#978BEF',
       rgb: 'rgb(151,139,239)',
       rgbArray: [151, 139, 239],
-      fontColor: 'light'
+      fontColor: 'light',
     },
     {
       id: '3',
       hex: '#7A72D5',
       rgb: 'rgb(122,114,213)',
       rgbArray: [122, 114, 213],
-      fontColor: 'light'
+      fontColor: 'light',
     },
     {
       id: '4',
       hex: '#282248',
       rgb: 'rgb(40,34,72)',
       rgbArray: [40, 34, 72],
-      fontColor: 'light'
-    }]
+      fontColor: 'light',
+    }],
 };
 
 export default function reducer(
@@ -51,12 +51,12 @@ export default function reducer(
     case ADD_SWATCH:
       return {
         ...state,
-        swatches: [...state.swatches, action.swatch]
+        swatches: [...state.swatches, action.swatch],
       };
     case REMOVE_SWATCH:
       return {
         ...state,
-        swatches: state.swatches.filter(swatch => swatch.id !== action.swatchId)
+        swatches: state.swatches.filter(swatch => swatch.id !== action.swatchId),
       };
     case REPLACE_SWATCH:
       return {
@@ -66,12 +66,12 @@ export default function reducer(
             return action.swatch;
           }
           return swatch;
-        })
+        }),
       };
     case DELETE_SWATCHES:
       return {
         ...state,
-        swatches: []
+        swatches: [],
       };
     case MOVE_SWATCH: // eslint-disable-line no-case-declarations
       const { oldIndex, newIndex } = action;
@@ -81,19 +81,19 @@ export default function reducer(
           ...state.swatches.slice(0, oldIndex),
           ...state.swatches.slice(oldIndex + 1, newIndex + 1),
           state.swatches[oldIndex],
-          ...state.swatches.slice(newIndex + 1)
+          ...state.swatches.slice(newIndex + 1),
         ];
       } else {
         newSwatches = [
           ...state.swatches.slice(0, newIndex),
           state.swatches[oldIndex],
           ...state.swatches.slice(newIndex, oldIndex),
-          ...state.swatches.slice(oldIndex + 1)
+          ...state.swatches.slice(oldIndex + 1),
         ];
       }
       return {
         ...state,
-        swatches: newSwatches
+        swatches: newSwatches,
       };
     default:
       return state;
@@ -108,7 +108,7 @@ type NewSwatchAction = {
 export function addNewSwatch(swatch: SwatchType): NewSwatchAction {
   return {
     type: ADD_SWATCH,
-    swatch
+    swatch,
   };
 }
 
@@ -120,7 +120,7 @@ type RemoveSwatchAction = {
 export function removeSwatch(swatchId: string): RemoveSwatchAction {
   return {
     type: REMOVE_SWATCH,
-    swatchId
+    swatchId,
   };
 }
 
@@ -134,7 +134,7 @@ export function replaceSwatch(swatchId: string, swatch: SwatchType): ReplaceSwat
   return {
     type: REPLACE_SWATCH,
     swatch,
-    swatchId
+    swatchId,
   };
 }
 
@@ -148,7 +148,7 @@ export function moveSwatch(oldIndex: number, newIndex: number): MoveSwatchAction
   return {
     type: MOVE_SWATCH,
     oldIndex,
-    newIndex
+    newIndex,
   };
 }
 
@@ -158,6 +158,6 @@ type DeleteSwatchesAction = {
 
 export function deleteSwatches(): DeleteSwatchesAction {
   return {
-    type: DELETE_SWATCHES
+    type: DELETE_SWATCHES,
   };
 }

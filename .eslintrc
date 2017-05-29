@@ -1,8 +1,5 @@
 {
   "extends": ["airbnb", "airbnb-flow"],
-  "rules": {
-    "comma-dangle": ["error", "never"]
-  },
   "globals": {
     "document": true
   }

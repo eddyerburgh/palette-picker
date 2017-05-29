@@ -18,12 +18,12 @@ describe('<ModalContainer />', () => {
     state = { modal: { display: true } };
     store = storeMock(state);
     modalActionsStub = {
-      closeModal: sinon.spy()
+      closeModal: sinon.spy(),
     };
 
     ModalContainer = proxyquire('../../../src/containers/ModalContainer', {
       '../components/modal/Modal': modalStub,
-      '../redux/modules/modal': modalActionsStub
+      '../redux/modules/modal': modalActionsStub,
     }
     ).default;
   });

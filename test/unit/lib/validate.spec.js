@@ -9,7 +9,7 @@ describe('validate', () => {
     isColorStub = sinon.stub();
 
     validate = proxyquire('../../../src/lib/validate', {
-      'is-color': isColorStub
+      'is-color': isColorStub,
     }).default;
   });
 

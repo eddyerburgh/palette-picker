@@ -17,22 +17,22 @@ describe('<SidePanelContainer />', () => {
   beforeEach(() => {
     SidePanelStub = () => <div />;
     tabsActionsStub = {
-      switchActiveTab: sinon.stub()
+      switchActiveTab: sinon.stub(),
     };
     swatchesActionsStub = {
-      addNewSwatch: sinon.stub()
+      addNewSwatch: sinon.stub(),
     };
     state = {
       tabs: { activeTab: 'add swatches', tabs: ['add swatches'] },
       palettes: { palettes: [{ color: '' }, { color: '' }] },
-      form: { color: '' }
+      form: { color: '' },
     };
     store = storeMock(state);
 
     SidePanelContainer = proxyquire('../../../src/containers/SidePanelContainer', {
       '../components/side-panel/SidePanel': SidePanelStub,
       '../redux/modules/tabs': tabsActionsStub,
-      '../redux/modules/swatches': swatchesActionsStub
+      '../redux/modules/swatches': swatchesActionsStub,
     }
     ).default;
   });

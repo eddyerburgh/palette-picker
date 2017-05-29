@@ -6,7 +6,7 @@ describe('tabs', () => {
 
     beforeEach(() => {
       initialState = {
-        activeTab: 'addSwatches'
+        activeTab: 'addSwatches',
       };
     });
 
@@ -25,7 +25,7 @@ describe('tabs', () => {
       it('returns an action with activeTab property', () => {
         const expectedAction = {
           type: 'SWITCH_ACTIVE_TAB',
-          activeTab
+          activeTab,
         };
         const action = tabsActions.switchActiveTab(activeTab);
         expect(action).to.deep.equal(expectedAction);

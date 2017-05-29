@@ -16,8 +16,8 @@ module.exports = {
     host: '127.0.0.1',
     port: SELENIUM_PORT,
     cli_args: {
-      'webdriver.chrome.driver': chromeDriver.path
-    }
+      'webdriver.chrome.driver': chromeDriver.path,
+    },
   },
 
   test_settings: {
@@ -26,24 +26,24 @@ module.exports = {
       selenium_host: 'localhost',
       silent: true,
       globals: {
-        devServerURL: `http://localhost:${PORT}`
-      }
+        devServerURL: `http://localhost:${PORT}`,
+      },
     },
 
     chrome: {
       desiredCapabilities: {
         browserName: 'chrome',
         javascriptEnabled: true,
-        acceptSslCerts: true
-      }
+        acceptSslCerts: true,
+      },
     },
 
     firefox: {
       desiredCapabilities: {
         browserName: 'firefox',
         javascriptEnabled: true,
-        acceptSslCerts: true
-      }
-    }
-  }
+        acceptSslCerts: true,
+      },
+    },
+  },
 };

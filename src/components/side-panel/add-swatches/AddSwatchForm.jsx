@@ -43,12 +43,12 @@ let AddSwatchForm = (props: Props): React$Element<any> => { // eslint-disable-li
 
 AddSwatchForm = reduxForm({
   form: 'add-swatch',
-  validate
+  validate,
 })(AddSwatchForm);
 
 AddSwatchForm = connect(
     state => ({
-      color: selector(state, 'color')
+      color: selector(state, 'color'),
     })
 )(AddSwatchForm);
 

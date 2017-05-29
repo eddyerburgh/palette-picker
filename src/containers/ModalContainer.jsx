@@ -22,7 +22,7 @@ const ModalContainer = (props: Props): React$Element<any> => (
 
 const mapStateToProps = state => ({
   modal: state.modal,
-  display: state.modal.display
+  display: state.modal.display,
 });
 
 export default connect(

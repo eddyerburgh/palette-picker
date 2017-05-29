@@ -35,7 +35,7 @@ const SwatchesContainer = (props: Props): React$Element<any> => (
 
 const mapStateToProps = state => ({
   swatches: state.swatches.swatches,
-  format: selector(state, 'format')
+  format: selector(state, 'format'),
 });
 
 const mapDispatchToProps = {
@@ -43,7 +43,7 @@ const mapDispatchToProps = {
   replaceSwatch: swatchesActions.replaceSwatch,
   moveSwatch: swatchesActions.moveSwatch,
   displayNewModal: modalActions.displayNewModal,
-  displayNewFullScreenMessage: fullScreenMessageActions.displayNewFullScreenMessage
+  displayNewFullScreenMessage: fullScreenMessageActions.displayNewFullScreenMessage,
 };
 
 export default connect(
